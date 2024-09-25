@@ -1,5 +1,11 @@
 syntax = "proto3";
 
+option go_package = ";proto";
+
+option java_package = "proto";
+
+option java_outer_classname = "TeamsProto";
+
 service Teams {
     rpc PostTeam(PostTeamRequest) returns (PostTeamResponse);
     rpc GetTeams(GetTeamsRequest) returns (GetTeamsResponse);
