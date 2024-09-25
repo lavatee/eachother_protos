@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+service Teams {
+    rpc PostTeam(PostTeamRequest) returns (PostTeamResponse);
+    rpc GetTeams(GetTeamsRequest) returns (GetTeamsResponse);
+    rpc GetOneTeam(GetOneTeamRequest) returns (GetOneTeamResponse);
+    rpc DeleteTeam(DeleteTeamRequest) returns (DeleteTeamResponse);
+    rpc EditTeam(EditTeamRequest) returns (EditTeamResponse);
+    rpc JoinTeam(JoinTeamRequest) returns (JoinTeamResponse);
+    rpc LeaveTeam(LeaveTeamRequest) returns (LeaveTeamResponse);
+}
+
+message Team {
+    int64 Id = 1;
+    string ProjectName = 2;
+    repeated Role Roles = 3;
+}
+
+message Role {
+    int64 Id = 1;
+    string Name = 2;
+    string MainTechnology = 3;
+    bool IsOpen = 4;
+    string NiceToHave = 5;
+    int64 TeamId = 6;
+}
+
+message UserInTeam {
+    int64 Id = 1;
+    int64 UserId = 2;
+    int64 RoleId = 3;
+    string RoleName = 4;
+    int64 TeamId = 5;
+}
+
+message PostTeamRequest {
+    string ProjectName = 1;
+    repeated Role Roles = 2;
+}
+
+message PostTeamResponse {
+    int64 Id = 1;
+}
+
+message GetTeamsRequest {
+    string RoleName = 1;
+    string MainTechnology = 2;
+}
+
+message GetTeamsResponse {
+    repeated Team Teams = 1;
+}
+
+message GetOneTeamRequest {
+    int64 Id = 1;
+}
+
+message GetOneTeamResponse {
+    Team Team = 1;
+}
+
+message DeleteTeamRequest {
+    int64 Id = 1;
+}
+
+message DeleteTeamResponse {
+    string Status = 1;
+}
+
+message EditTeamRequest {
+    Team Team = 1;
+}
+
+message EditTeamResponse {
+    string Status = 1;
+}
+
+message JoinTeamRequest {
+    int64 UserId = 1;
+    int64 TeamId = 2;
+    int64 RoleId = 3;
+}
+
+message JoinTeamResponse {
+    string Status = 1;
+}
+
+message LeaveTeamRequest {
+    int64 UserId = 1;
+    int64 TeamId = 2;
+}
+
+message LeaveTeamResponse {
+    string Status = 1;
+}
+

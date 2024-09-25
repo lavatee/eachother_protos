@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+option go_package = ";proto";
+option java_package = "proto";
+option java_outer_classname = "ChatsProto";
+
+service Chats {
+    rpc PostChat(PostChatRequest) returns (PostChatResponse);
+    rpc GetUserChats(GetUserChatsRequest) returns (GetUserChatsResponse);
+    rpc GetOneChat(GetOneChatRequest) returns (GetOneChatResponse);
+    rpc LeaveChat(LeaveChatRequest) returns (LeaveChatResponse);
+    rpc JoinChat(JoinChatRequest) returns (JoinChatResponse);
+}
+
+message Chat {
+    int64 Id = 1;
+    string TeamName = 2;
+    int64 TeamId = 3;
+    repeated string Github = 4;
+}
+
+message UserInChat {
+    int64 UserId = 1;
+    int64 ChatId = 2;
+    string UserName = 3;
+}
+
+message Message {
+    int64 Id = 1;
+    int64 UserId = 2;
+    int64 ChatId = 3;
+    string Text = 4;
+    string UserName = 5;
+}
+
+message PostChatRequest {
+    string TeamName = 1;
+    int64 TeamId = 2;
+    repeated string Github = 3;
+}
+
+message PostChatResponse {
+    int64 Id = 1;
+}
+
+message GetUserChatsRequest {
+    int64 UserId = 1;
+}
+
+message GetUserChatsResponse {
+    repeated Chat Chats = 1;
+}
+
+message GetOneChatRequest {
+    int64 ChatId = 1;
+}
+
+message GetOneChatResponse {
+    Chat Chat = 1;
+}
+
+message LeaveChatRequest {
+    int64 UserId = 1;
+    int64 ChatId = 2;
+}
+
+message LeaveChatResponse {
+    string Status = 1;
+}
+
+message JoinChatRequest {
+    int64 UserId = 1;
+    int64 TeamId = 2;
+}
+
+message JoinChatResponse {
+    int64 ChatId = 1;
+}
+
