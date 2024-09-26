@@ -1,9 +1,7 @@
 syntax = "proto3";
 
-option go_package = ";proto";
-
+option go_package = ".;proto";
 option java_package = "proto";
-
 option java_outer_classname = "TeamsProto";
 
 service Teams {
@@ -14,12 +12,16 @@ service Teams {
     rpc EditTeam(EditTeamRequest) returns (EditTeamResponse);
     rpc JoinTeam(JoinTeamRequest) returns (JoinTeamResponse);
     rpc LeaveTeam(LeaveTeamRequest) returns (LeaveTeamResponse);
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+    rpc GetTeamUsers(GetTeamUsersRequest) returns (GetTeamUsersResponse);
+    rpc GetUserTeams(GetUserTeamsRequest) returns (GetUserTeamsResponse);
 }
 
 message Team {
     int64 Id = 1;
     string ProjectName = 2;
     repeated Role Roles = 3;
+    int64 CreatorId = 4;
 }
 
 message Role {
@@ -36,12 +38,38 @@ message UserInTeam {
     int64 UserId = 2;
     int64 RoleId = 3;
     string RoleName = 4;
+    string RoleMainTechnology = 5;
+    string UserName = 6;
+}
+
+message GetUserRequest {
+    int64 UserId = 1;
+}
+
+message GetUserResponse {
+    int64 Id = 1;
+    int64 UserId = 2;
+    int64 RoleId = 3;
+    string RoleName = 4;
     int64 TeamId = 5;
+    string ProjectName = 6;
+    string RoleMainTechnology = 7;
+    string UserName = 8;
+    string UserTag = 9;
+}
+
+message GetTeamUsersRequest {
+    int64 TeamId = 1;
+}
+
+message GetTeamUsersResponse {
+    repeated UserInTeam Users = 1;
 }
 
 message PostTeamRequest {
     string ProjectName = 1;
     repeated Role Roles = 2;
+    int64 CreatorId = 3;
 }
 
 message PostTeamResponse {
@@ -100,3 +128,10 @@ message LeaveTeamResponse {
     string Status = 1;
 }
 
+message GetUserTeamsRequest {
+    int64 UserId = 1;
+}
+
+message GetUserTeamsResponse {
+    repeated Team Teams = 1;
+}
