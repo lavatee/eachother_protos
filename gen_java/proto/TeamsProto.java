@@ -76,6 +76,18 @@ public final class TeamsProto {
      * @return The creatorId.
      */
     long getCreatorId();
+
+    /**
+     * <code>string Description = 5;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string Description = 5;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
   }
   /**
    * Protobuf type {@code Team}
@@ -101,6 +113,7 @@ public final class TeamsProto {
     private Team() {
       projectName_ = "";
       roles_ = java.util.Collections.emptyList();
+      description_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -218,6 +231,45 @@ public final class TeamsProto {
       return creatorId_;
     }
 
+    public static final int DESCRIPTION_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object description_ = "";
+    /**
+     * <code>string Description = 5;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string Description = 5;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -244,6 +296,9 @@ public final class TeamsProto {
       if (creatorId_ != 0L) {
         output.writeInt64(4, creatorId_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(description_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, description_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -268,6 +323,9 @@ public final class TeamsProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, creatorId_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(description_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, description_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -291,6 +349,8 @@ public final class TeamsProto {
           .equals(other.getRolesList())) return false;
       if (getCreatorId()
           != other.getCreatorId()) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -314,6 +374,8 @@ public final class TeamsProto {
       hash = (37 * hash) + CREATORID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getCreatorId());
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -455,6 +517,7 @@ public final class TeamsProto {
         }
         bitField0_ = (bitField0_ & ~0x00000004);
         creatorId_ = 0L;
+        description_ = "";
         return this;
       }
 
@@ -510,6 +573,9 @@ public final class TeamsProto {
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.creatorId_ = creatorId_;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.description_ = description_;
+        }
       }
 
       @java.lang.Override
@@ -560,6 +626,11 @@ public final class TeamsProto {
         }
         if (other.getCreatorId() != 0L) {
           setCreatorId(other.getCreatorId());
+        }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          bitField0_ |= 0x00000010;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -615,6 +686,11 @@ public final class TeamsProto {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 32
+              case 42: {
+                description_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1004,6 +1080,78 @@ public final class TeamsProto {
       public Builder clearCreatorId() {
         bitField0_ = (bitField0_ & ~0x00000008);
         creatorId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>string Description = 5;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string Description = 5;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string Description = 5;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        description_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Description = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        description_ = getDefaultInstance().getDescription();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Description = 5;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        description_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -6158,6 +6306,18 @@ public final class TeamsProto {
      * @return The creatorId.
      */
     long getCreatorId();
+
+    /**
+     * <code>string Description = 4;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string Description = 4;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
   }
   /**
    * Protobuf type {@code PostTeamRequest}
@@ -6183,6 +6343,7 @@ public final class TeamsProto {
     private PostTeamRequest() {
       projectName_ = "";
       roles_ = java.util.Collections.emptyList();
+      description_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -6289,6 +6450,45 @@ public final class TeamsProto {
       return creatorId_;
     }
 
+    public static final int DESCRIPTION_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object description_ = "";
+    /**
+     * <code>string Description = 4;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string Description = 4;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -6312,6 +6512,9 @@ public final class TeamsProto {
       if (creatorId_ != 0L) {
         output.writeInt64(3, creatorId_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(description_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, description_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -6331,6 +6534,9 @@ public final class TeamsProto {
       if (creatorId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, creatorId_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(description_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, description_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -6353,6 +6559,8 @@ public final class TeamsProto {
           .equals(other.getRolesList())) return false;
       if (getCreatorId()
           != other.getCreatorId()) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -6373,6 +6581,8 @@ public final class TeamsProto {
       hash = (37 * hash) + CREATORID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getCreatorId());
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6513,6 +6723,7 @@ public final class TeamsProto {
         }
         bitField0_ = (bitField0_ & ~0x00000002);
         creatorId_ = 0L;
+        description_ = "";
         return this;
       }
 
@@ -6565,6 +6776,9 @@ public final class TeamsProto {
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.creatorId_ = creatorId_;
         }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.description_ = description_;
+        }
       }
 
       @java.lang.Override
@@ -6612,6 +6826,11 @@ public final class TeamsProto {
         }
         if (other.getCreatorId() != 0L) {
           setCreatorId(other.getCreatorId());
+        }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          bitField0_ |= 0x00000008;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -6662,6 +6881,11 @@ public final class TeamsProto {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 24
+              case 34: {
+                description_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -7019,6 +7243,78 @@ public final class TeamsProto {
       public Builder clearCreatorId() {
         bitField0_ = (bitField0_ & ~0x00000004);
         creatorId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>string Description = 4;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string Description = 4;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string Description = 4;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        description_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Description = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        description_ = getDefaultInstance().getDescription();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Description = 4;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        description_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -15345,55 +15641,56 @@ public final class TeamsProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013teams.proto\"P\n\004Team\022\n\n\002Id\030\001 \001(\003\022\023\n\013Pro" +
+      "\n\013teams.proto\"e\n\004Team\022\n\n\002Id\030\001 \001(\003\022\023\n\013Pro" +
       "jectName\030\002 \001(\t\022\024\n\005Roles\030\003 \003(\0132\005.Role\022\021\n\t" +
-      "CreatorId\030\004 \001(\003\"l\n\004Role\022\n\n\002Id\030\001 \001(\003\022\014\n\004N" +
-      "ame\030\002 \001(\t\022\026\n\016MainTechnology\030\003 \001(\t\022\016\n\006IsO" +
-      "pen\030\004 \001(\010\022\022\n\nNiceToHave\030\005 \001(\t\022\016\n\006TeamId\030" +
-      "\006 \001(\003\"x\n\nUserInTeam\022\n\n\002Id\030\001 \001(\003\022\016\n\006UserI" +
-      "d\030\002 \001(\003\022\016\n\006RoleId\030\003 \001(\003\022\020\n\010RoleName\030\004 \001(" +
-      "\t\022\032\n\022RoleMainTechnology\030\005 \001(\t\022\020\n\010UserNam" +
-      "e\030\006 \001(\t\" \n\016GetUserRequest\022\016\n\006UserId\030\001 \001(" +
-      "\003\"\263\001\n\017GetUserResponse\022\n\n\002Id\030\001 \001(\003\022\016\n\006Use" +
-      "rId\030\002 \001(\003\022\016\n\006RoleId\030\003 \001(\003\022\020\n\010RoleName\030\004 " +
-      "\001(\t\022\016\n\006TeamId\030\005 \001(\003\022\023\n\013ProjectName\030\006 \001(\t" +
-      "\022\032\n\022RoleMainTechnology\030\007 \001(\t\022\020\n\010UserName" +
-      "\030\010 \001(\t\022\017\n\007UserTag\030\t \001(\t\"%\n\023GetTeamUsersR" +
-      "equest\022\016\n\006TeamId\030\001 \001(\003\"2\n\024GetTeamUsersRe" +
-      "sponse\022\032\n\005Users\030\001 \003(\0132\013.UserInTeam\"O\n\017Po" +
-      "stTeamRequest\022\023\n\013ProjectName\030\001 \001(\t\022\024\n\005Ro" +
-      "les\030\002 \003(\0132\005.Role\022\021\n\tCreatorId\030\003 \001(\003\"\036\n\020P" +
-      "ostTeamResponse\022\n\n\002Id\030\001 \001(\003\";\n\017GetTeamsR" +
-      "equest\022\020\n\010RoleName\030\001 \001(\t\022\026\n\016MainTechnolo" +
-      "gy\030\002 \001(\t\"(\n\020GetTeamsResponse\022\024\n\005Teams\030\001 " +
-      "\003(\0132\005.Team\"\037\n\021GetOneTeamRequest\022\n\n\002Id\030\001 " +
-      "\001(\003\")\n\022GetOneTeamResponse\022\023\n\004Team\030\001 \001(\0132" +
-      "\005.Team\"\037\n\021DeleteTeamRequest\022\n\n\002Id\030\001 \001(\003\"" +
-      "$\n\022DeleteTeamResponse\022\016\n\006Status\030\001 \001(\t\"&\n" +
-      "\017EditTeamRequest\022\023\n\004Team\030\001 \001(\0132\005.Team\"\"\n" +
-      "\020EditTeamResponse\022\016\n\006Status\030\001 \001(\t\"A\n\017Joi" +
-      "nTeamRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006TeamId\030\002" +
-      " \001(\003\022\016\n\006RoleId\030\003 \001(\003\"\"\n\020JoinTeamResponse" +
-      "\022\016\n\006Status\030\001 \001(\t\"2\n\020LeaveTeamRequest\022\016\n\006" +
-      "UserId\030\001 \001(\003\022\016\n\006TeamId\030\002 \001(\003\"#\n\021LeaveTea" +
-      "mResponse\022\016\n\006Status\030\001 \001(\t\"%\n\023GetUserTeam" +
-      "sRequest\022\016\n\006UserId\030\001 \001(\003\",\n\024GetUserTeams" +
-      "Response\022\024\n\005Teams\030\001 \003(\0132\005.Team2\225\004\n\005Teams" +
-      "\022/\n\010PostTeam\022\020.PostTeamRequest\032\021.PostTea" +
-      "mResponse\022/\n\010GetTeams\022\020.GetTeamsRequest\032" +
-      "\021.GetTeamsResponse\0225\n\nGetOneTeam\022\022.GetOn" +
-      "eTeamRequest\032\023.GetOneTeamResponse\0225\n\nDel" +
-      "eteTeam\022\022.DeleteTeamRequest\032\023.DeleteTeam" +
-      "Response\022/\n\010EditTeam\022\020.EditTeamRequest\032\021" +
-      ".EditTeamResponse\022/\n\010JoinTeam\022\020.JoinTeam" +
-      "Request\032\021.JoinTeamResponse\0222\n\tLeaveTeam\022" +
-      "\021.LeaveTeamRequest\032\022.LeaveTeamResponse\022," +
-      "\n\007GetUser\022\017.GetUserRequest\032\020.GetUserResp" +
-      "onse\022;\n\014GetTeamUsers\022\024.GetTeamUsersReque" +
-      "st\032\025.GetTeamUsersResponse\022;\n\014GetUserTeam" +
-      "s\022\024.GetUserTeamsRequest\032\025.GetUserTeamsRe" +
-      "sponseB\033\n\005protoB\nTeamsProtoZ\006;protob\006pro" +
-      "to3"
+      "CreatorId\030\004 \001(\003\022\023\n\013Description\030\005 \001(\t\"l\n\004" +
+      "Role\022\n\n\002Id\030\001 \001(\003\022\014\n\004Name\030\002 \001(\t\022\026\n\016MainTe" +
+      "chnology\030\003 \001(\t\022\016\n\006IsOpen\030\004 \001(\010\022\022\n\nNiceTo" +
+      "Have\030\005 \001(\t\022\016\n\006TeamId\030\006 \001(\003\"x\n\nUserInTeam" +
+      "\022\n\n\002Id\030\001 \001(\003\022\016\n\006UserId\030\002 \001(\003\022\016\n\006RoleId\030\003" +
+      " \001(\003\022\020\n\010RoleName\030\004 \001(\t\022\032\n\022RoleMainTechno" +
+      "logy\030\005 \001(\t\022\020\n\010UserName\030\006 \001(\t\" \n\016GetUserR" +
+      "equest\022\016\n\006UserId\030\001 \001(\003\"\263\001\n\017GetUserRespon" +
+      "se\022\n\n\002Id\030\001 \001(\003\022\016\n\006UserId\030\002 \001(\003\022\016\n\006RoleId" +
+      "\030\003 \001(\003\022\020\n\010RoleName\030\004 \001(\t\022\016\n\006TeamId\030\005 \001(\003" +
+      "\022\023\n\013ProjectName\030\006 \001(\t\022\032\n\022RoleMainTechnol" +
+      "ogy\030\007 \001(\t\022\020\n\010UserName\030\010 \001(\t\022\017\n\007UserTag\030\t" +
+      " \001(\t\"%\n\023GetTeamUsersRequest\022\016\n\006TeamId\030\001 " +
+      "\001(\003\"2\n\024GetTeamUsersResponse\022\032\n\005Users\030\001 \003" +
+      "(\0132\013.UserInTeam\"d\n\017PostTeamRequest\022\023\n\013Pr" +
+      "ojectName\030\001 \001(\t\022\024\n\005Roles\030\002 \003(\0132\005.Role\022\021\n" +
+      "\tCreatorId\030\003 \001(\003\022\023\n\013Description\030\004 \001(\t\"\036\n" +
+      "\020PostTeamResponse\022\n\n\002Id\030\001 \001(\003\";\n\017GetTeam" +
+      "sRequest\022\020\n\010RoleName\030\001 \001(\t\022\026\n\016MainTechno" +
+      "logy\030\002 \001(\t\"(\n\020GetTeamsResponse\022\024\n\005Teams\030" +
+      "\001 \003(\0132\005.Team\"\037\n\021GetOneTeamRequest\022\n\n\002Id\030" +
+      "\001 \001(\003\")\n\022GetOneTeamResponse\022\023\n\004Team\030\001 \001(" +
+      "\0132\005.Team\"\037\n\021DeleteTeamRequest\022\n\n\002Id\030\001 \001(" +
+      "\003\"$\n\022DeleteTeamResponse\022\016\n\006Status\030\001 \001(\t\"" +
+      "&\n\017EditTeamRequest\022\023\n\004Team\030\001 \001(\0132\005.Team\"" +
+      "\"\n\020EditTeamResponse\022\016\n\006Status\030\001 \001(\t\"A\n\017J" +
+      "oinTeamRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006TeamId" +
+      "\030\002 \001(\003\022\016\n\006RoleId\030\003 \001(\003\"\"\n\020JoinTeamRespon" +
+      "se\022\016\n\006Status\030\001 \001(\t\"2\n\020LeaveTeamRequest\022\016" +
+      "\n\006UserId\030\001 \001(\003\022\016\n\006TeamId\030\002 \001(\003\"#\n\021LeaveT" +
+      "eamResponse\022\016\n\006Status\030\001 \001(\t\"%\n\023GetUserTe" +
+      "amsRequest\022\016\n\006UserId\030\001 \001(\003\",\n\024GetUserTea" +
+      "msResponse\022\024\n\005Teams\030\001 \003(\0132\005.Team2\225\004\n\005Tea" +
+      "ms\022/\n\010PostTeam\022\020.PostTeamRequest\032\021.PostT" +
+      "eamResponse\022/\n\010GetTeams\022\020.GetTeamsReques" +
+      "t\032\021.GetTeamsResponse\0225\n\nGetOneTeam\022\022.Get" +
+      "OneTeamRequest\032\023.GetOneTeamResponse\0225\n\nD" +
+      "eleteTeam\022\022.DeleteTeamRequest\032\023.DeleteTe" +
+      "amResponse\022/\n\010EditTeam\022\020.EditTeamRequest" +
+      "\032\021.EditTeamResponse\022/\n\010JoinTeam\022\020.JoinTe" +
+      "amRequest\032\021.JoinTeamResponse\0222\n\tLeaveTea" +
+      "m\022\021.LeaveTeamRequest\032\022.LeaveTeamResponse" +
+      "\022,\n\007GetUser\022\017.GetUserRequest\032\020.GetUserRe" +
+      "sponse\022;\n\014GetTeamUsers\022\024.GetTeamUsersReq" +
+      "uest\032\025.GetTeamUsersResponse\022;\n\014GetUserTe" +
+      "ams\022\024.GetUserTeamsRequest\032\025.GetUserTeams" +
+      "ResponseB\034\n\005protoB\nTeamsProtoZ\007.;protob\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -15404,7 +15701,7 @@ public final class TeamsProto {
     internal_static_Team_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Team_descriptor,
-        new java.lang.String[] { "Id", "ProjectName", "Roles", "CreatorId", });
+        new java.lang.String[] { "Id", "ProjectName", "Roles", "CreatorId", "Description", });
     internal_static_Role_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Role_fieldAccessorTable = new
@@ -15446,7 +15743,7 @@ public final class TeamsProto {
     internal_static_PostTeamRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_PostTeamRequest_descriptor,
-        new java.lang.String[] { "ProjectName", "Roles", "CreatorId", });
+        new java.lang.String[] { "ProjectName", "Roles", "CreatorId", "Description", });
     internal_static_PostTeamResponse_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_PostTeamResponse_fieldAccessorTable = new

@@ -12910,7 +12910,7 @@ public final class ChatsProto {
       "ChatMessages\022\027.GetChatMessagesRequest\032\030." +
       "GetChatMessagesResponse\0228\n\013EditMessage\022\023" +
       ".EditMessageRequest\032\024.EditMessageRespons" +
-      "eB\033\n\005protoB\nChatsProtoZ\006;protob\006proto3"
+      "eB\034\n\005protoB\nChatsProtoZ\007.;protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
