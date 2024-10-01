@@ -15,13 +15,14 @@ service Teams {
     rpc GetUser(GetUserRequest) returns (GetUserResponse);
     rpc GetTeamUsers(GetTeamUsersRequest) returns (GetTeamUsersResponse);
     rpc GetUserTeams(GetUserTeamsRequest) returns (GetUserTeamsResponse);
-}
+} 
 
 message Team {
     int64 Id = 1;
     string ProjectName = 2;
     repeated Role Roles = 3;
     int64 CreatorId = 4;
+    string Description = 5;
 }
 
 message Role {
