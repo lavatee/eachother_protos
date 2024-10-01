@@ -71,6 +71,7 @@ message PostTeamRequest {
     string ProjectName = 1;
     repeated Role Roles = 2;
     int64 CreatorId = 3;
+    string Description = 4;
 }
 
 message PostTeamResponse {
