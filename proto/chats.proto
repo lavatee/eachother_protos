@@ -19,11 +19,10 @@ service Chats {
 
 message Chat {
     int64 Id = 1;
-    string ProjectName = 2;
-    int64 TeamId = 3;
-    repeated string Github = 4;
-    Message LastMessage = 5;
-    int64 CreatorId = 6;
+    int64 TeamId = 2;
+    repeated string Github = 3;
+    Message LastMessage = 4;
+    int64 CreatorId = 5;
 }
 
 
@@ -36,10 +35,9 @@ message Message {
 }
 
 message PostChatRequest {
-    string ProjectName = 1;
-    int64 TeamId = 2;
-    repeated string Github = 3;
-    int64 CreatorId = 4;
+    int64 TeamId = 1;
+    repeated string Github = 2;
+    int64 CreatorId = 3;
 }
 
 message PostChatResponse {
