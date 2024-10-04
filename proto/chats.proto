@@ -77,7 +77,7 @@ message JoinChatRequest {
 }
 
 message JoinChatResponse {
-    int64 TeamId = 1;
+    string Status = 1;
 }
 
 message DeleteChatRequest {
