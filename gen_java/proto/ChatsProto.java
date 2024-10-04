@@ -5549,10 +5549,10 @@ public final class ChatsProto {
     long getUserId();
 
     /**
-     * <code>int64 ChatId = 2;</code>
-     * @return The chatId.
+     * <code>int64 TeamId = 2;</code>
+     * @return The teamId.
      */
-    long getChatId();
+    long getTeamId();
   }
   /**
    * Protobuf type {@code LeaveChatRequest}
@@ -5602,15 +5602,15 @@ public final class ChatsProto {
       return userId_;
     }
 
-    public static final int CHATID_FIELD_NUMBER = 2;
-    private long chatId_ = 0L;
+    public static final int TEAMID_FIELD_NUMBER = 2;
+    private long teamId_ = 0L;
     /**
-     * <code>int64 ChatId = 2;</code>
-     * @return The chatId.
+     * <code>int64 TeamId = 2;</code>
+     * @return The teamId.
      */
     @java.lang.Override
-    public long getChatId() {
-      return chatId_;
+    public long getTeamId() {
+      return teamId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5630,8 +5630,8 @@ public final class ChatsProto {
       if (userId_ != 0L) {
         output.writeInt64(1, userId_);
       }
-      if (chatId_ != 0L) {
-        output.writeInt64(2, chatId_);
+      if (teamId_ != 0L) {
+        output.writeInt64(2, teamId_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5646,9 +5646,9 @@ public final class ChatsProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(1, userId_);
       }
-      if (chatId_ != 0L) {
+      if (teamId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, chatId_);
+          .computeInt64Size(2, teamId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -5667,8 +5667,8 @@ public final class ChatsProto {
 
       if (getUserId()
           != other.getUserId()) return false;
-      if (getChatId()
-          != other.getChatId()) return false;
+      if (getTeamId()
+          != other.getTeamId()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -5683,9 +5683,9 @@ public final class ChatsProto {
       hash = (37 * hash) + USERID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getUserId());
-      hash = (37 * hash) + CHATID_FIELD_NUMBER;
+      hash = (37 * hash) + TEAMID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getChatId());
+          getTeamId());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5818,7 +5818,7 @@ public final class ChatsProto {
         super.clear();
         bitField0_ = 0;
         userId_ = 0L;
-        chatId_ = 0L;
+        teamId_ = 0L;
         return this;
       }
 
@@ -5856,7 +5856,7 @@ public final class ChatsProto {
           result.userId_ = userId_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.chatId_ = chatId_;
+          result.teamId_ = teamId_;
         }
       }
 
@@ -5875,8 +5875,8 @@ public final class ChatsProto {
         if (other.getUserId() != 0L) {
           setUserId(other.getUserId());
         }
-        if (other.getChatId() != 0L) {
-          setChatId(other.getChatId());
+        if (other.getTeamId() != 0L) {
+          setTeamId(other.getTeamId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -5910,7 +5910,7 @@ public final class ChatsProto {
                 break;
               } // case 8
               case 16: {
-                chatId_ = input.readInt64();
+                teamId_ = input.readInt64();
                 bitField0_ |= 0x00000002;
                 break;
               } // case 16
@@ -5963,34 +5963,34 @@ public final class ChatsProto {
         return this;
       }
 
-      private long chatId_ ;
+      private long teamId_ ;
       /**
-       * <code>int64 ChatId = 2;</code>
-       * @return The chatId.
+       * <code>int64 TeamId = 2;</code>
+       * @return The teamId.
        */
       @java.lang.Override
-      public long getChatId() {
-        return chatId_;
+      public long getTeamId() {
+        return teamId_;
       }
       /**
-       * <code>int64 ChatId = 2;</code>
-       * @param value The chatId to set.
+       * <code>int64 TeamId = 2;</code>
+       * @param value The teamId to set.
        * @return This builder for chaining.
        */
-      public Builder setChatId(long value) {
+      public Builder setTeamId(long value) {
 
-        chatId_ = value;
+        teamId_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 ChatId = 2;</code>
+       * <code>int64 TeamId = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearChatId() {
+      public Builder clearTeamId() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        chatId_ = 0L;
+        teamId_ = 0L;
         onChanged();
         return this;
       }
@@ -7069,10 +7069,16 @@ public final class ChatsProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 ChatId = 1;</code>
-     * @return The chatId.
+     * <code>string Status = 1;</code>
+     * @return The status.
      */
-    long getChatId();
+    java.lang.String getStatus();
+    /**
+     * <code>string Status = 1;</code>
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
   }
   /**
    * Protobuf type {@code JoinChatResponse}
@@ -7096,6 +7102,7 @@ public final class ChatsProto {
       super(builder);
     }
     private JoinChatResponse() {
+      status_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -7111,15 +7118,43 @@ public final class ChatsProto {
               proto.ChatsProto.JoinChatResponse.class, proto.ChatsProto.JoinChatResponse.Builder.class);
     }
 
-    public static final int CHATID_FIELD_NUMBER = 1;
-    private long chatId_ = 0L;
+    public static final int STATUS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object status_ = "";
     /**
-     * <code>int64 ChatId = 1;</code>
-     * @return The chatId.
+     * <code>string Status = 1;</code>
+     * @return The status.
      */
     @java.lang.Override
-    public long getChatId() {
-      return chatId_;
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string Status = 1;</code>
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7136,8 +7171,8 @@ public final class ChatsProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (chatId_ != 0L) {
-        output.writeInt64(1, chatId_);
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(status_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, status_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7148,9 +7183,8 @@ public final class ChatsProto {
       if (size != -1) return size;
 
       size = 0;
-      if (chatId_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, chatId_);
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(status_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, status_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -7167,8 +7201,8 @@ public final class ChatsProto {
       }
       proto.ChatsProto.JoinChatResponse other = (proto.ChatsProto.JoinChatResponse) obj;
 
-      if (getChatId()
-          != other.getChatId()) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -7180,9 +7214,8 @@ public final class ChatsProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CHATID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getChatId());
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7314,7 +7347,7 @@ public final class ChatsProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        chatId_ = 0L;
+        status_ = "";
         return this;
       }
 
@@ -7349,7 +7382,7 @@ public final class ChatsProto {
       private void buildPartial0(proto.ChatsProto.JoinChatResponse result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.chatId_ = chatId_;
+          result.status_ = status_;
         }
       }
 
@@ -7365,8 +7398,10 @@ public final class ChatsProto {
 
       public Builder mergeFrom(proto.ChatsProto.JoinChatResponse other) {
         if (other == proto.ChatsProto.JoinChatResponse.getDefaultInstance()) return this;
-        if (other.getChatId() != 0L) {
-          setChatId(other.getChatId());
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          bitField0_ |= 0x00000001;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -7394,11 +7429,11 @@ public final class ChatsProto {
               case 0:
                 done = true;
                 break;
-              case 8: {
-                chatId_ = input.readInt64();
+              case 10: {
+                status_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000001;
                 break;
-              } // case 8
+              } // case 10
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -7416,34 +7451,74 @@ public final class ChatsProto {
       }
       private int bitField0_;
 
-      private long chatId_ ;
+      private java.lang.Object status_ = "";
       /**
-       * <code>int64 ChatId = 1;</code>
-       * @return The chatId.
+       * <code>string Status = 1;</code>
+       * @return The status.
        */
-      @java.lang.Override
-      public long getChatId() {
-        return chatId_;
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>int64 ChatId = 1;</code>
-       * @param value The chatId to set.
+       * <code>string Status = 1;</code>
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string Status = 1;</code>
+       * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setChatId(long value) {
-
-        chatId_ = value;
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        status_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 ChatId = 1;</code>
+       * <code>string Status = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearChatId() {
+      public Builder clearStatus() {
+        status_ = getDefaultInstance().getStatus();
         bitField0_ = (bitField0_ & ~0x00000001);
-        chatId_ = 0L;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Status = 1;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        status_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -7504,10 +7579,10 @@ public final class ChatsProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 ChatId = 1;</code>
-     * @return The chatId.
+     * <code>int64 TeamId = 1;</code>
+     * @return The teamId.
      */
-    long getChatId();
+    long getTeamId();
   }
   /**
    * Protobuf type {@code DeleteChatRequest}
@@ -7546,15 +7621,15 @@ public final class ChatsProto {
               proto.ChatsProto.DeleteChatRequest.class, proto.ChatsProto.DeleteChatRequest.Builder.class);
     }
 
-    public static final int CHATID_FIELD_NUMBER = 1;
-    private long chatId_ = 0L;
+    public static final int TEAMID_FIELD_NUMBER = 1;
+    private long teamId_ = 0L;
     /**
-     * <code>int64 ChatId = 1;</code>
-     * @return The chatId.
+     * <code>int64 TeamId = 1;</code>
+     * @return The teamId.
      */
     @java.lang.Override
-    public long getChatId() {
-      return chatId_;
+    public long getTeamId() {
+      return teamId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7571,8 +7646,8 @@ public final class ChatsProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (chatId_ != 0L) {
-        output.writeInt64(1, chatId_);
+      if (teamId_ != 0L) {
+        output.writeInt64(1, teamId_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7583,9 +7658,9 @@ public final class ChatsProto {
       if (size != -1) return size;
 
       size = 0;
-      if (chatId_ != 0L) {
+      if (teamId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, chatId_);
+          .computeInt64Size(1, teamId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -7602,8 +7677,8 @@ public final class ChatsProto {
       }
       proto.ChatsProto.DeleteChatRequest other = (proto.ChatsProto.DeleteChatRequest) obj;
 
-      if (getChatId()
-          != other.getChatId()) return false;
+      if (getTeamId()
+          != other.getTeamId()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -7615,9 +7690,9 @@ public final class ChatsProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CHATID_FIELD_NUMBER;
+      hash = (37 * hash) + TEAMID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getChatId());
+          getTeamId());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7749,7 +7824,7 @@ public final class ChatsProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        chatId_ = 0L;
+        teamId_ = 0L;
         return this;
       }
 
@@ -7784,7 +7859,7 @@ public final class ChatsProto {
       private void buildPartial0(proto.ChatsProto.DeleteChatRequest result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.chatId_ = chatId_;
+          result.teamId_ = teamId_;
         }
       }
 
@@ -7800,8 +7875,8 @@ public final class ChatsProto {
 
       public Builder mergeFrom(proto.ChatsProto.DeleteChatRequest other) {
         if (other == proto.ChatsProto.DeleteChatRequest.getDefaultInstance()) return this;
-        if (other.getChatId() != 0L) {
-          setChatId(other.getChatId());
+        if (other.getTeamId() != 0L) {
+          setTeamId(other.getTeamId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -7830,7 +7905,7 @@ public final class ChatsProto {
                 done = true;
                 break;
               case 8: {
-                chatId_ = input.readInt64();
+                teamId_ = input.readInt64();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 8
@@ -7851,34 +7926,34 @@ public final class ChatsProto {
       }
       private int bitField0_;
 
-      private long chatId_ ;
+      private long teamId_ ;
       /**
-       * <code>int64 ChatId = 1;</code>
-       * @return The chatId.
+       * <code>int64 TeamId = 1;</code>
+       * @return The teamId.
        */
       @java.lang.Override
-      public long getChatId() {
-        return chatId_;
+      public long getTeamId() {
+        return teamId_;
       }
       /**
-       * <code>int64 ChatId = 1;</code>
-       * @param value The chatId to set.
+       * <code>int64 TeamId = 1;</code>
+       * @param value The teamId to set.
        * @return This builder for chaining.
        */
-      public Builder setChatId(long value) {
+      public Builder setTeamId(long value) {
 
-        chatId_ = value;
+        teamId_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 ChatId = 1;</code>
+       * <code>int64 TeamId = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearChatId() {
+      public Builder clearTeamId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        chatId_ = 0L;
+        teamId_ = 0L;
         onChanged();
         return this;
       }
@@ -12880,11 +12955,11 @@ public final class ChatsProto {
       "sResponse\022\024\n\005Chats\030\001 \003(\0132\005.Chat\"#\n\021GetOn" +
       "eChatRequest\022\016\n\006ChatId\030\001 \001(\003\")\n\022GetOneCh" +
       "atResponse\022\023\n\004Chat\030\001 \001(\0132\005.Chat\"2\n\020Leave" +
-      "ChatRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006ChatId\030\002 " +
+      "ChatRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006TeamId\030\002 " +
       "\001(\003\"#\n\021LeaveChatResponse\022\016\n\006Status\030\001 \001(\t" +
       "\"1\n\017JoinChatRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006T" +
-      "eamId\030\002 \001(\003\"\"\n\020JoinChatResponse\022\016\n\006ChatI" +
-      "d\030\001 \001(\003\"#\n\021DeleteChatRequest\022\016\n\006ChatId\030\001" +
+      "eamId\030\002 \001(\003\"\"\n\020JoinChatResponse\022\016\n\006Statu" +
+      "s\030\001 \001(\t\"#\n\021DeleteChatRequest\022\016\n\006TeamId\030\001" +
       " \001(\003\"$\n\022DeleteChatResponse\022\016\n\006Status\030\001 \001" +
       "(\t\"B\n\022PostMessageRequest\022\016\n\006UserId\030\001 \001(\003" +
       "\022\016\n\006ChatId\030\002 \001(\003\022\014\n\004Text\030\003 \001(\t\"!\n\023PostMe" +
@@ -12969,7 +13044,7 @@ public final class ChatsProto {
     internal_static_LeaveChatRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_LeaveChatRequest_descriptor,
-        new java.lang.String[] { "UserId", "ChatId", });
+        new java.lang.String[] { "UserId", "TeamId", });
     internal_static_LeaveChatResponse_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_LeaveChatResponse_fieldAccessorTable = new
@@ -12987,13 +13062,13 @@ public final class ChatsProto {
     internal_static_JoinChatResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_JoinChatResponse_descriptor,
-        new java.lang.String[] { "ChatId", });
+        new java.lang.String[] { "Status", });
     internal_static_DeleteChatRequest_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_DeleteChatRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_DeleteChatRequest_descriptor,
-        new java.lang.String[] { "ChatId", });
+        new java.lang.String[] { "TeamId", });
     internal_static_DeleteChatResponse_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_DeleteChatResponse_fieldAccessorTable = new
