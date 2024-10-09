@@ -15,6 +15,9 @@ service Teams {
     rpc GetUser(GetUserRequest) returns (GetUserResponse);
     rpc GetTeamUsers(GetTeamUsersRequest) returns (GetTeamUsersResponse);
     rpc GetUserTeams(GetUserTeamsRequest) returns (GetUserTeamsResponse);
+    rpc GetCreatorRequests(GetCreatorRequestsRequest) returns (GetCreatorRequestsResponse);
+    rpc PostRequest(PostRequestRequest) returns (PostRequestResponse);
+    rpc RejectRequest(RejectRequestRequest) returns (RejectRequestResponse);
 } 
 
 message Team {
@@ -41,6 +44,44 @@ message UserInTeam {
     string RoleName = 4;
     string RoleMainTechnology = 5;
     string UserName = 6;
+}
+
+message Request {
+    int64 Id = 1;
+    int64 TeamId = 2;
+    int64 RoleId = 3;
+    int64 UserId = 4;
+    string ProjectName = 5;
+    string RoleName = 6;
+    string RoleMainTechnology = 7;
+    string CV = 8;
+}
+
+message GetCreatorRequestsRequest {
+    int64 UserId = 1;
+}
+
+message GetCreatorRequestsResponse {
+    repeated Request Requests = 1;
+}
+
+message PostRequestRequest {
+    int64 TeamId = 2;
+    int64 RoleId = 3;
+    int64 UserId = 4;
+    string CV = 5;
+}
+
+message PostRequestResponse {
+    int64 Id = 1;
+}
+
+message RejectRequestRequest {
+    int64 RequestId = 1;
+}
+
+message RejectRequestResponse {
+    string Status = 1;
 }
 
 message GetUserRequest {
@@ -137,3 +178,4 @@ message GetUserTeamsRequest {
 message GetUserTeamsResponse {
     repeated Team Teams = 1;
 }
+
