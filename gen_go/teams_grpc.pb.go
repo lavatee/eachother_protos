@@ -19,16 +19,19 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Teams_PostTeam_FullMethodName     = "/Teams/PostTeam"
-	Teams_GetTeams_FullMethodName     = "/Teams/GetTeams"
-	Teams_GetOneTeam_FullMethodName   = "/Teams/GetOneTeam"
-	Teams_DeleteTeam_FullMethodName   = "/Teams/DeleteTeam"
-	Teams_EditTeam_FullMethodName     = "/Teams/EditTeam"
-	Teams_JoinTeam_FullMethodName     = "/Teams/JoinTeam"
-	Teams_LeaveTeam_FullMethodName    = "/Teams/LeaveTeam"
-	Teams_GetUser_FullMethodName      = "/Teams/GetUser"
-	Teams_GetTeamUsers_FullMethodName = "/Teams/GetTeamUsers"
-	Teams_GetUserTeams_FullMethodName = "/Teams/GetUserTeams"
+	Teams_PostTeam_FullMethodName           = "/Teams/PostTeam"
+	Teams_GetTeams_FullMethodName           = "/Teams/GetTeams"
+	Teams_GetOneTeam_FullMethodName         = "/Teams/GetOneTeam"
+	Teams_DeleteTeam_FullMethodName         = "/Teams/DeleteTeam"
+	Teams_EditTeam_FullMethodName           = "/Teams/EditTeam"
+	Teams_JoinTeam_FullMethodName           = "/Teams/JoinTeam"
+	Teams_LeaveTeam_FullMethodName          = "/Teams/LeaveTeam"
+	Teams_GetUser_FullMethodName            = "/Teams/GetUser"
+	Teams_GetTeamUsers_FullMethodName       = "/Teams/GetTeamUsers"
+	Teams_GetUserTeams_FullMethodName       = "/Teams/GetUserTeams"
+	Teams_GetCreatorRequests_FullMethodName = "/Teams/GetCreatorRequests"
+	Teams_PostRequest_FullMethodName        = "/Teams/PostRequest"
+	Teams_RejectRequest_FullMethodName      = "/Teams/RejectRequest"
 )
 
 // TeamsClient is the client API for Teams service.
@@ -45,6 +48,9 @@ type TeamsClient interface {
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	GetTeamUsers(ctx context.Context, in *GetTeamUsersRequest, opts ...grpc.CallOption) (*GetTeamUsersResponse, error)
 	GetUserTeams(ctx context.Context, in *GetUserTeamsRequest, opts ...grpc.CallOption) (*GetUserTeamsResponse, error)
+	GetCreatorRequests(ctx context.Context, in *GetCreatorRequestsRequest, opts ...grpc.CallOption) (*GetCreatorRequestsResponse, error)
+	PostRequest(ctx context.Context, in *PostRequestRequest, opts ...grpc.CallOption) (*PostRequestResponse, error)
+	RejectRequest(ctx context.Context, in *RejectRequestRequest, opts ...grpc.CallOption) (*RejectRequestResponse, error)
 }
 
 type teamsClient struct {
@@ -155,6 +161,36 @@ func (c *teamsClient) GetUserTeams(ctx context.Context, in *GetUserTeamsRequest,
 	return out, nil
 }
 
+func (c *teamsClient) GetCreatorRequests(ctx context.Context, in *GetCreatorRequestsRequest, opts ...grpc.CallOption) (*GetCreatorRequestsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCreatorRequestsResponse)
+	err := c.cc.Invoke(ctx, Teams_GetCreatorRequests_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *teamsClient) PostRequest(ctx context.Context, in *PostRequestRequest, opts ...grpc.CallOption) (*PostRequestResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PostRequestResponse)
+	err := c.cc.Invoke(ctx, Teams_PostRequest_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *teamsClient) RejectRequest(ctx context.Context, in *RejectRequestRequest, opts ...grpc.CallOption) (*RejectRequestResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RejectRequestResponse)
+	err := c.cc.Invoke(ctx, Teams_RejectRequest_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TeamsServer is the server API for Teams service.
 // All implementations must embed UnimplementedTeamsServer
 // for forward compatibility.
@@ -169,6 +205,9 @@ type TeamsServer interface {
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	GetTeamUsers(context.Context, *GetTeamUsersRequest) (*GetTeamUsersResponse, error)
 	GetUserTeams(context.Context, *GetUserTeamsRequest) (*GetUserTeamsResponse, error)
+	GetCreatorRequests(context.Context, *GetCreatorRequestsRequest) (*GetCreatorRequestsResponse, error)
+	PostRequest(context.Context, *PostRequestRequest) (*PostRequestResponse, error)
+	RejectRequest(context.Context, *RejectRequestRequest) (*RejectRequestResponse, error)
 	mustEmbedUnimplementedTeamsServer()
 }
 
@@ -208,6 +247,15 @@ func (UnimplementedTeamsServer) GetTeamUsers(context.Context, *GetTeamUsersReque
 }
 func (UnimplementedTeamsServer) GetUserTeams(context.Context, *GetUserTeamsRequest) (*GetUserTeamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserTeams not implemented")
+}
+func (UnimplementedTeamsServer) GetCreatorRequests(context.Context, *GetCreatorRequestsRequest) (*GetCreatorRequestsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCreatorRequests not implemented")
+}
+func (UnimplementedTeamsServer) PostRequest(context.Context, *PostRequestRequest) (*PostRequestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PostRequest not implemented")
+}
+func (UnimplementedTeamsServer) RejectRequest(context.Context, *RejectRequestRequest) (*RejectRequestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RejectRequest not implemented")
 }
 func (UnimplementedTeamsServer) mustEmbedUnimplementedTeamsServer() {}
 func (UnimplementedTeamsServer) testEmbeddedByValue()               {}
@@ -410,6 +458,60 @@ func _Teams_GetUserTeams_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Teams_GetCreatorRequests_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCreatorRequestsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TeamsServer).GetCreatorRequests(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Teams_GetCreatorRequests_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TeamsServer).GetCreatorRequests(ctx, req.(*GetCreatorRequestsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Teams_PostRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PostRequestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TeamsServer).PostRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Teams_PostRequest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TeamsServer).PostRequest(ctx, req.(*PostRequestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Teams_RejectRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RejectRequestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TeamsServer).RejectRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Teams_RejectRequest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TeamsServer).RejectRequest(ctx, req.(*RejectRequestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Teams_ServiceDesc is the grpc.ServiceDesc for Teams service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -456,6 +558,18 @@ var Teams_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserTeams",
 			Handler:    _Teams_GetUserTeams_Handler,
+		},
+		{
+			MethodName: "GetCreatorRequests",
+			Handler:    _Teams_GetCreatorRequests_Handler,
+		},
+		{
+			MethodName: "PostRequest",
+			Handler:    _Teams_PostRequest_Handler,
+		},
+		{
+			MethodName: "RejectRequest",
+			Handler:    _Teams_RejectRequest_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
