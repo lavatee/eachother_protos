@@ -3332,6 +3332,18 @@ public final class TeamsProto {
      */
     com.google.protobuf.ByteString
         getCVBytes();
+
+    /**
+     * <code>string UserName = 9;</code>
+     * @return The userName.
+     */
+    java.lang.String getUserName();
+    /**
+     * <code>string UserName = 9;</code>
+     * @return The bytes for userName.
+     */
+    com.google.protobuf.ByteString
+        getUserNameBytes();
   }
   /**
    * Protobuf type {@code Request}
@@ -3359,6 +3371,7 @@ public final class TeamsProto {
       roleName_ = "";
       roleMainTechnology_ = "";
       cV_ = "";
+      userName_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -3574,6 +3587,45 @@ public final class TeamsProto {
       }
     }
 
+    public static final int USERNAME_FIELD_NUMBER = 9;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object userName_ = "";
+    /**
+     * <code>string UserName = 9;</code>
+     * @return The userName.
+     */
+    @java.lang.Override
+    public java.lang.String getUserName() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string UserName = 9;</code>
+     * @return The bytes for userName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUserNameBytes() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3612,6 +3664,9 @@ public final class TeamsProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(cV_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 8, cV_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(userName_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 9, userName_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3649,6 +3704,9 @@ public final class TeamsProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(cV_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(8, cV_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(userName_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(9, userName_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -3680,6 +3738,8 @@ public final class TeamsProto {
           .equals(other.getRoleMainTechnology())) return false;
       if (!getCV()
           .equals(other.getCV())) return false;
+      if (!getUserName()
+          .equals(other.getUserName())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -3711,6 +3771,8 @@ public final class TeamsProto {
       hash = (53 * hash) + getRoleMainTechnology().hashCode();
       hash = (37 * hash) + CV_FIELD_NUMBER;
       hash = (53 * hash) + getCV().hashCode();
+      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUserName().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3850,6 +3912,7 @@ public final class TeamsProto {
         roleName_ = "";
         roleMainTechnology_ = "";
         cV_ = "";
+        userName_ = "";
         return this;
       }
 
@@ -3907,6 +3970,9 @@ public final class TeamsProto {
         if (((from_bitField0_ & 0x00000080) != 0)) {
           result.cV_ = cV_;
         }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.userName_ = userName_;
+        }
       }
 
       @java.lang.Override
@@ -3951,6 +4017,11 @@ public final class TeamsProto {
         if (!other.getCV().isEmpty()) {
           cV_ = other.cV_;
           bitField0_ |= 0x00000080;
+          onChanged();
+        }
+        if (!other.getUserName().isEmpty()) {
+          userName_ = other.userName_;
+          bitField0_ |= 0x00000100;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -4019,6 +4090,11 @@ public final class TeamsProto {
                 bitField0_ |= 0x00000080;
                 break;
               } // case 66
+              case 74: {
+                userName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 74
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4448,6 +4524,78 @@ public final class TeamsProto {
         checkByteStringIsUtf8(value);
         cV_ = value;
         bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object userName_ = "";
+      /**
+       * <code>string UserName = 9;</code>
+       * @return The userName.
+       */
+      public java.lang.String getUserName() {
+        java.lang.Object ref = userName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string UserName = 9;</code>
+       * @return The bytes for userName.
+       */
+      public com.google.protobuf.ByteString
+          getUserNameBytes() {
+        java.lang.Object ref = userName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string UserName = 9;</code>
+       * @param value The userName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        userName_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string UserName = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserName() {
+        userName_ = getDefaultInstance().getUserName();
+        bitField0_ = (bitField0_ & ~0x00000100);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string UserName = 9;</code>
+       * @param value The bytes for userName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        userName_ = value;
+        bitField0_ |= 0x00000100;
         onChanged();
         return this;
       }
@@ -20214,64 +20362,64 @@ public final class TeamsProto {
       "Have\030\005 \001(\t\022\016\n\006TeamId\030\006 \001(\003\"x\n\nUserInTeam" +
       "\022\n\n\002Id\030\001 \001(\003\022\016\n\006UserId\030\002 \001(\003\022\016\n\006RoleId\030\003" +
       " \001(\003\022\020\n\010RoleName\030\004 \001(\t\022\032\n\022RoleMainTechno" +
-      "logy\030\005 \001(\t\022\020\n\010UserName\030\006 \001(\t\"\224\001\n\007Request" +
+      "logy\030\005 \001(\t\022\020\n\010UserName\030\006 \001(\t\"\246\001\n\007Request" +
       "\022\n\n\002Id\030\001 \001(\003\022\016\n\006TeamId\030\002 \001(\003\022\016\n\006RoleId\030\003" +
       " \001(\003\022\016\n\006UserId\030\004 \001(\003\022\023\n\013ProjectName\030\005 \001(" +
       "\t\022\020\n\010RoleName\030\006 \001(\t\022\032\n\022RoleMainTechnolog" +
-      "y\030\007 \001(\t\022\n\n\002CV\030\010 \001(\t\"+\n\031GetCreatorRequest" +
-      "sRequest\022\016\n\006UserId\030\001 \001(\003\"8\n\032GetCreatorRe" +
-      "questsResponse\022\032\n\010Requests\030\001 \003(\0132\010.Reque" +
-      "st\"P\n\022PostRequestRequest\022\016\n\006TeamId\030\002 \001(\003" +
-      "\022\016\n\006RoleId\030\003 \001(\003\022\016\n\006UserId\030\004 \001(\003\022\n\n\002CV\030\005" +
-      " \001(\t\"!\n\023PostRequestResponse\022\n\n\002Id\030\001 \001(\003\"" +
-      ")\n\024RejectRequestRequest\022\021\n\tRequestId\030\001 \001" +
-      "(\003\"\'\n\025RejectRequestResponse\022\016\n\006Status\030\001 " +
-      "\001(\t\" \n\016GetUserRequest\022\016\n\006UserId\030\001 \001(\003\"\263\001" +
-      "\n\017GetUserResponse\022\n\n\002Id\030\001 \001(\003\022\016\n\006UserId\030" +
-      "\002 \001(\003\022\016\n\006RoleId\030\003 \001(\003\022\020\n\010RoleName\030\004 \001(\t\022" +
-      "\016\n\006TeamId\030\005 \001(\003\022\023\n\013ProjectName\030\006 \001(\t\022\032\n\022" +
-      "RoleMainTechnology\030\007 \001(\t\022\020\n\010UserName\030\010 \001" +
-      "(\t\022\017\n\007UserTag\030\t \001(\t\"%\n\023GetTeamUsersReque" +
-      "st\022\016\n\006TeamId\030\001 \001(\003\"2\n\024GetTeamUsersRespon" +
-      "se\022\032\n\005Users\030\001 \003(\0132\013.UserInTeam\"d\n\017PostTe" +
-      "amRequest\022\023\n\013ProjectName\030\001 \001(\t\022\024\n\005Roles\030" +
-      "\002 \003(\0132\005.Role\022\021\n\tCreatorId\030\003 \001(\003\022\023\n\013Descr" +
-      "iption\030\004 \001(\t\"\036\n\020PostTeamResponse\022\n\n\002Id\030\001" +
-      " \001(\003\";\n\017GetTeamsRequest\022\020\n\010RoleName\030\001 \001(" +
-      "\t\022\026\n\016MainTechnology\030\002 \001(\t\"(\n\020GetTeamsRes" +
-      "ponse\022\024\n\005Teams\030\001 \003(\0132\005.Team\"\037\n\021GetOneTea" +
-      "mRequest\022\n\n\002Id\030\001 \001(\003\")\n\022GetOneTeamRespon" +
-      "se\022\023\n\004Team\030\001 \001(\0132\005.Team\"\037\n\021DeleteTeamReq" +
-      "uest\022\n\n\002Id\030\001 \001(\003\"$\n\022DeleteTeamResponse\022\016" +
-      "\n\006Status\030\001 \001(\t\"&\n\017EditTeamRequest\022\023\n\004Tea" +
-      "m\030\001 \001(\0132\005.Team\"\"\n\020EditTeamResponse\022\016\n\006St" +
-      "atus\030\001 \001(\t\"A\n\017JoinTeamRequest\022\016\n\006UserId\030" +
-      "\001 \001(\003\022\016\n\006TeamId\030\002 \001(\003\022\016\n\006RoleId\030\003 \001(\003\"\"\n" +
-      "\020JoinTeamResponse\022\016\n\006Status\030\001 \001(\t\"2\n\020Lea" +
-      "veTeamRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006TeamId\030" +
-      "\002 \001(\003\"#\n\021LeaveTeamResponse\022\016\n\006Status\030\001 \001" +
-      "(\t\"%\n\023GetUserTeamsRequest\022\016\n\006UserId\030\001 \001(" +
-      "\003\",\n\024GetUserTeamsResponse\022\024\n\005Teams\030\001 \003(\013" +
-      "2\005.Team2\336\005\n\005Teams\022/\n\010PostTeam\022\020.PostTeam" +
-      "Request\032\021.PostTeamResponse\022/\n\010GetTeams\022\020" +
-      ".GetTeamsRequest\032\021.GetTeamsResponse\0225\n\nG" +
-      "etOneTeam\022\022.GetOneTeamRequest\032\023.GetOneTe" +
-      "amResponse\0225\n\nDeleteTeam\022\022.DeleteTeamReq" +
-      "uest\032\023.DeleteTeamResponse\022/\n\010EditTeam\022\020." +
-      "EditTeamRequest\032\021.EditTeamResponse\022/\n\010Jo" +
-      "inTeam\022\020.JoinTeamRequest\032\021.JoinTeamRespo" +
-      "nse\0222\n\tLeaveTeam\022\021.LeaveTeamRequest\032\022.Le" +
-      "aveTeamResponse\022,\n\007GetUser\022\017.GetUserRequ" +
-      "est\032\020.GetUserResponse\022;\n\014GetTeamUsers\022\024." +
-      "GetTeamUsersRequest\032\025.GetTeamUsersRespon" +
-      "se\022;\n\014GetUserTeams\022\024.GetUserTeamsRequest" +
-      "\032\025.GetUserTeamsResponse\022M\n\022GetCreatorReq" +
-      "uests\022\032.GetCreatorRequestsRequest\032\033.GetC" +
-      "reatorRequestsResponse\0228\n\013PostRequest\022\023." +
-      "PostRequestRequest\032\024.PostRequestResponse" +
-      "\022>\n\rRejectRequest\022\025.RejectRequestRequest" +
-      "\032\026.RejectRequestResponseB\034\n\005protoB\nTeams" +
-      "ProtoZ\007.;protob\006proto3"
+      "y\030\007 \001(\t\022\n\n\002CV\030\010 \001(\t\022\020\n\010UserName\030\t \001(\t\"+\n" +
+      "\031GetCreatorRequestsRequest\022\016\n\006UserId\030\001 \001" +
+      "(\003\"8\n\032GetCreatorRequestsResponse\022\032\n\010Requ" +
+      "ests\030\001 \003(\0132\010.Request\"P\n\022PostRequestReque" +
+      "st\022\016\n\006TeamId\030\002 \001(\003\022\016\n\006RoleId\030\003 \001(\003\022\016\n\006Us" +
+      "erId\030\004 \001(\003\022\n\n\002CV\030\005 \001(\t\"!\n\023PostRequestRes" +
+      "ponse\022\n\n\002Id\030\001 \001(\003\")\n\024RejectRequestReques" +
+      "t\022\021\n\tRequestId\030\001 \001(\003\"\'\n\025RejectRequestRes" +
+      "ponse\022\016\n\006Status\030\001 \001(\t\" \n\016GetUserRequest\022" +
+      "\016\n\006UserId\030\001 \001(\003\"\263\001\n\017GetUserResponse\022\n\n\002I" +
+      "d\030\001 \001(\003\022\016\n\006UserId\030\002 \001(\003\022\016\n\006RoleId\030\003 \001(\003\022" +
+      "\020\n\010RoleName\030\004 \001(\t\022\016\n\006TeamId\030\005 \001(\003\022\023\n\013Pro" +
+      "jectName\030\006 \001(\t\022\032\n\022RoleMainTechnology\030\007 \001" +
+      "(\t\022\020\n\010UserName\030\010 \001(\t\022\017\n\007UserTag\030\t \001(\t\"%\n" +
+      "\023GetTeamUsersRequest\022\016\n\006TeamId\030\001 \001(\003\"2\n\024" +
+      "GetTeamUsersResponse\022\032\n\005Users\030\001 \003(\0132\013.Us" +
+      "erInTeam\"d\n\017PostTeamRequest\022\023\n\013ProjectNa" +
+      "me\030\001 \001(\t\022\024\n\005Roles\030\002 \003(\0132\005.Role\022\021\n\tCreato" +
+      "rId\030\003 \001(\003\022\023\n\013Description\030\004 \001(\t\"\036\n\020PostTe" +
+      "amResponse\022\n\n\002Id\030\001 \001(\003\";\n\017GetTeamsReques" +
+      "t\022\020\n\010RoleName\030\001 \001(\t\022\026\n\016MainTechnology\030\002 " +
+      "\001(\t\"(\n\020GetTeamsResponse\022\024\n\005Teams\030\001 \003(\0132\005" +
+      ".Team\"\037\n\021GetOneTeamRequest\022\n\n\002Id\030\001 \001(\003\")" +
+      "\n\022GetOneTeamResponse\022\023\n\004Team\030\001 \001(\0132\005.Tea" +
+      "m\"\037\n\021DeleteTeamRequest\022\n\n\002Id\030\001 \001(\003\"$\n\022De" +
+      "leteTeamResponse\022\016\n\006Status\030\001 \001(\t\"&\n\017Edit" +
+      "TeamRequest\022\023\n\004Team\030\001 \001(\0132\005.Team\"\"\n\020Edit" +
+      "TeamResponse\022\016\n\006Status\030\001 \001(\t\"A\n\017JoinTeam" +
+      "Request\022\016\n\006UserId\030\001 \001(\003\022\016\n\006TeamId\030\002 \001(\003\022" +
+      "\016\n\006RoleId\030\003 \001(\003\"\"\n\020JoinTeamResponse\022\016\n\006S" +
+      "tatus\030\001 \001(\t\"2\n\020LeaveTeamRequest\022\016\n\006UserI" +
+      "d\030\001 \001(\003\022\016\n\006TeamId\030\002 \001(\003\"#\n\021LeaveTeamResp" +
+      "onse\022\016\n\006Status\030\001 \001(\t\"%\n\023GetUserTeamsRequ" +
+      "est\022\016\n\006UserId\030\001 \001(\003\",\n\024GetUserTeamsRespo" +
+      "nse\022\024\n\005Teams\030\001 \003(\0132\005.Team2\336\005\n\005Teams\022/\n\010P" +
+      "ostTeam\022\020.PostTeamRequest\032\021.PostTeamResp" +
+      "onse\022/\n\010GetTeams\022\020.GetTeamsRequest\032\021.Get" +
+      "TeamsResponse\0225\n\nGetOneTeam\022\022.GetOneTeam" +
+      "Request\032\023.GetOneTeamResponse\0225\n\nDeleteTe" +
+      "am\022\022.DeleteTeamRequest\032\023.DeleteTeamRespo" +
+      "nse\022/\n\010EditTeam\022\020.EditTeamRequest\032\021.Edit" +
+      "TeamResponse\022/\n\010JoinTeam\022\020.JoinTeamReque" +
+      "st\032\021.JoinTeamResponse\0222\n\tLeaveTeam\022\021.Lea" +
+      "veTeamRequest\032\022.LeaveTeamResponse\022,\n\007Get" +
+      "User\022\017.GetUserRequest\032\020.GetUserResponse\022" +
+      ";\n\014GetTeamUsers\022\024.GetTeamUsersRequest\032\025." +
+      "GetTeamUsersResponse\022;\n\014GetUserTeams\022\024.G" +
+      "etUserTeamsRequest\032\025.GetUserTeamsRespons" +
+      "e\022M\n\022GetCreatorRequests\022\032.GetCreatorRequ" +
+      "estsRequest\032\033.GetCreatorRequestsResponse" +
+      "\0228\n\013PostRequest\022\023.PostRequestRequest\032\024.P" +
+      "ostRequestResponse\022>\n\rRejectRequest\022\025.Re" +
+      "jectRequestRequest\032\026.RejectRequestRespon" +
+      "seB\034\n\005protoB\nTeamsProtoZ\007.;protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -20300,7 +20448,7 @@ public final class TeamsProto {
     internal_static_Request_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Request_descriptor,
-        new java.lang.String[] { "Id", "TeamId", "RoleId", "UserId", "ProjectName", "RoleName", "RoleMainTechnology", "CV", });
+        new java.lang.String[] { "Id", "TeamId", "RoleId", "UserId", "ProjectName", "RoleName", "RoleMainTechnology", "CV", "UserName", });
     internal_static_GetCreatorRequestsRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_GetCreatorRequestsRequest_fieldAccessorTable = new

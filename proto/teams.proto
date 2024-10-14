@@ -55,6 +55,7 @@ message Request {
     string RoleName = 6;
     string RoleMainTechnology = 7;
     string CV = 8;
+    string UserName = 9;
 }
 
 message GetCreatorRequestsRequest {

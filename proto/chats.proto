@@ -10,7 +10,6 @@ service Chats {
     rpc GetOneChat(GetOneChatRequest) returns (GetOneChatResponse);
     rpc LeaveChat(LeaveChatRequest) returns (LeaveChatResponse);
     rpc JoinChat(JoinChatRequest) returns (JoinChatResponse);
-    rpc DeleteChat(DeleteChatRequest) returns (DeleteChatResponse);
     rpc PostMessage(PostMessageRequest) returns (PostMessageResponse);
     rpc DeleteMessage(DeleteMessageRequest) returns (DeleteMessageResponse);
     rpc GetChatMessages(GetChatMessagesRequest) returns (GetChatMessagesResponse);
@@ -75,14 +74,6 @@ message JoinChatRequest {
 }
 
 message JoinChatResponse {
-    string Status = 1;
-}
-
-message DeleteChatRequest {
-    int64 TeamId = 1;
-}
-
-message DeleteChatResponse {
     string Status = 1;
 }
 
