@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option go_package = ".;proto";
+option java_package = "proto";
+option java_outer_classname = "MessagesProto";
+
+service Messages {
+    rpc PostMessage(PostMessageRequest) returns (PostMessageResponse);
+    rpc DeleteMessage(DeleteMessageRequest) returns (DeleteMessageResponse);
+    rpc GetChatMessages(GetChatMessagesRequest) returns (GetChatMessagesResponse);
+    rpc EditMessage(EditMessageRequest) returns (EditMessageResponse);
+    rpc GetChatLastMessage(GetChatLastMessageRequest) returns (GetChatLastMessageResponse);
+}
+
+message Message {
+    int64 Id = 1;
+    int64 UserId = 2;
+    int64 ChatId = 3;
+    string Text = 4;
+    string UserName = 5;
+}
+
+message PostMessageRequest {
+    int64 UserId = 1;
+    int64 ChatId = 2;
+    string Text = 3;
+}
+
+message PostMessageResponse {
+    int64 Id = 1;
+}
+
+message DeleteMessageRequest {
+    int64 MessageId = 1;
+}
+
+message DeleteMessageResponse {
+    string Status = 1;
+}
+
+message GetChatMessagesRequest {
+    int64 ChatId = 1;
+}
+
+message GetChatMessagesResponse {
+    repeated Message Messages = 1;
+}
+
+message EditMessageRequest {
+    int64 MessageId = 1;
+    string Text = 2;
+}
+
+message EditMessageResponse {
+    string Status = 1;
+}
+
+message GetChatLastMessageRequest {
+    int64 ChatId = 1;
+}
+
+message GetChatLastMessageResponse {
+    Message Message = 1;
+}

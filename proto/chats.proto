@@ -10,27 +10,13 @@ service Chats {
     rpc GetOneChat(GetOneChatRequest) returns (GetOneChatResponse);
     rpc LeaveChat(LeaveChatRequest) returns (LeaveChatResponse);
     rpc JoinChat(JoinChatRequest) returns (JoinChatResponse);
-    rpc PostMessage(PostMessageRequest) returns (PostMessageResponse);
-    rpc DeleteMessage(DeleteMessageRequest) returns (DeleteMessageResponse);
-    rpc GetChatMessages(GetChatMessagesRequest) returns (GetChatMessagesResponse);
-    rpc EditMessage(EditMessageRequest) returns (EditMessageResponse);
 }
 
 message Chat {
     int64 Id = 1;
     int64 TeamId = 2;
     repeated string Github = 3;
-    Message LastMessage = 4;
     int64 CreatorId = 5;
-}
-
-
-message Message {
-    int64 Id = 1;
-    int64 UserId = 2;
-    int64 ChatId = 3;
-    string Text = 4;
-    string UserName = 5;
 }
 
 message PostChatRequest {
@@ -78,37 +64,3 @@ message JoinChatResponse {
 }
 
 
-message PostMessageRequest {
-    int64 UserId = 1;
-    int64 ChatId = 2;
-    string Text = 3;
-}
-
-message PostMessageResponse {
-    int64 Id = 1;
-}
-
-message DeleteMessageRequest {
-    int64 MessageId = 1;
-}
-
-message DeleteMessageResponse {
-    string Status = 1;
-}
-
-message GetChatMessagesRequest {
-    int64 ChatId = 1;
-}
-
-message GetChatMessagesResponse {
-    repeated Message Messages = 1;
-}
-
-message EditMessageRequest {
-    int64 MessageId = 1;
-    string Text = 2;
-}
-
-message EditMessageResponse {
-    string Status = 1;
-}
