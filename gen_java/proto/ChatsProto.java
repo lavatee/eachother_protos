@@ -913,29 +913,16 @@ public final class ChatsProto {
     long getTeamId();
 
     /**
-     * <code>repeated string Github = 2;</code>
-     * @return A list containing the github.
+     * <code>string Github = 2;</code>
+     * @return The github.
      */
-    java.util.List<java.lang.String>
-        getGithubList();
+    java.lang.String getGithub();
     /**
-     * <code>repeated string Github = 2;</code>
-     * @return The count of github.
-     */
-    int getGithubCount();
-    /**
-     * <code>repeated string Github = 2;</code>
-     * @param index The index of the element to return.
-     * @return The github at the given index.
-     */
-    java.lang.String getGithub(int index);
-    /**
-     * <code>repeated string Github = 2;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the github at the given index.
+     * <code>string Github = 2;</code>
+     * @return The bytes for github.
      */
     com.google.protobuf.ByteString
-        getGithubBytes(int index);
+        getGithubBytes();
 
     /**
      * <code>int64 CreatorId = 3;</code>
@@ -965,8 +952,7 @@ public final class ChatsProto {
       super(builder);
     }
     private PostChatRequest() {
-      github_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      github_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -995,39 +981,41 @@ public final class ChatsProto {
 
     public static final int GITHUB_FIELD_NUMBER = 2;
     @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringArrayList github_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private volatile java.lang.Object github_ = "";
     /**
-     * <code>repeated string Github = 2;</code>
-     * @return A list containing the github.
+     * <code>string Github = 2;</code>
+     * @return The github.
      */
-    public com.google.protobuf.ProtocolStringList
-        getGithubList() {
-      return github_;
+    @java.lang.Override
+    public java.lang.String getGithub() {
+      java.lang.Object ref = github_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        github_ = s;
+        return s;
+      }
     }
     /**
-     * <code>repeated string Github = 2;</code>
-     * @return The count of github.
+     * <code>string Github = 2;</code>
+     * @return The bytes for github.
      */
-    public int getGithubCount() {
-      return github_.size();
-    }
-    /**
-     * <code>repeated string Github = 2;</code>
-     * @param index The index of the element to return.
-     * @return The github at the given index.
-     */
-    public java.lang.String getGithub(int index) {
-      return github_.get(index);
-    }
-    /**
-     * <code>repeated string Github = 2;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the github at the given index.
-     */
+    @java.lang.Override
     public com.google.protobuf.ByteString
-        getGithubBytes(int index) {
-      return github_.getByteString(index);
+        getGithubBytes() {
+      java.lang.Object ref = github_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        github_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int CREATORID_FIELD_NUMBER = 3;
@@ -1058,8 +1046,8 @@ public final class ChatsProto {
       if (teamId_ != 0L) {
         output.writeInt64(1, teamId_);
       }
-      for (int i = 0; i < github_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, github_.getRaw(i));
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(github_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, github_);
       }
       if (creatorId_ != 0L) {
         output.writeInt64(3, creatorId_);
@@ -1077,13 +1065,8 @@ public final class ChatsProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(1, teamId_);
       }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < github_.size(); i++) {
-          dataSize += computeStringSizeNoTag(github_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getGithubList().size();
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(github_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, github_);
       }
       if (creatorId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -1106,8 +1089,8 @@ public final class ChatsProto {
 
       if (getTeamId()
           != other.getTeamId()) return false;
-      if (!getGithubList()
-          .equals(other.getGithubList())) return false;
+      if (!getGithub()
+          .equals(other.getGithub())) return false;
       if (getCreatorId()
           != other.getCreatorId()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -1124,10 +1107,8 @@ public final class ChatsProto {
       hash = (37 * hash) + TEAMID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTeamId());
-      if (getGithubCount() > 0) {
-        hash = (37 * hash) + GITHUB_FIELD_NUMBER;
-        hash = (53 * hash) + getGithubList().hashCode();
-      }
+      hash = (37 * hash) + GITHUB_FIELD_NUMBER;
+      hash = (53 * hash) + getGithub().hashCode();
       hash = (37 * hash) + CREATORID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getCreatorId());
@@ -1263,8 +1244,7 @@ public final class ChatsProto {
         super.clear();
         bitField0_ = 0;
         teamId_ = 0L;
-        github_ =
-            com.google.protobuf.LazyStringArrayList.emptyList();
+        github_ = "";
         creatorId_ = 0L;
         return this;
       }
@@ -1303,7 +1283,6 @@ public final class ChatsProto {
           result.teamId_ = teamId_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          github_.makeImmutable();
           result.github_ = github_;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
@@ -1326,14 +1305,9 @@ public final class ChatsProto {
         if (other.getTeamId() != 0L) {
           setTeamId(other.getTeamId());
         }
-        if (!other.github_.isEmpty()) {
-          if (github_.isEmpty()) {
-            github_ = other.github_;
-            bitField0_ |= 0x00000002;
-          } else {
-            ensureGithubIsMutable();
-            github_.addAll(other.github_);
-          }
+        if (!other.getGithub().isEmpty()) {
+          github_ = other.github_;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (other.getCreatorId() != 0L) {
@@ -1371,9 +1345,8 @@ public final class ChatsProto {
                 break;
               } // case 8
               case 18: {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureGithubIsMutable();
-                github_.add(s);
+                github_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
                 break;
               } // case 18
               case 24: {
@@ -1430,112 +1403,73 @@ public final class ChatsProto {
         return this;
       }
 
-      private com.google.protobuf.LazyStringArrayList github_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-      private void ensureGithubIsMutable() {
-        if (!github_.isModifiable()) {
-          github_ = new com.google.protobuf.LazyStringArrayList(github_);
+      private java.lang.Object github_ = "";
+      /**
+       * <code>string Github = 2;</code>
+       * @return The github.
+       */
+      public java.lang.String getGithub() {
+        java.lang.Object ref = github_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          github_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
         }
-        bitField0_ |= 0x00000002;
       }
       /**
-       * <code>repeated string Github = 2;</code>
-       * @return A list containing the github.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getGithubList() {
-        github_.makeImmutable();
-        return github_;
-      }
-      /**
-       * <code>repeated string Github = 2;</code>
-       * @return The count of github.
-       */
-      public int getGithubCount() {
-        return github_.size();
-      }
-      /**
-       * <code>repeated string Github = 2;</code>
-       * @param index The index of the element to return.
-       * @return The github at the given index.
-       */
-      public java.lang.String getGithub(int index) {
-        return github_.get(index);
-      }
-      /**
-       * <code>repeated string Github = 2;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the github at the given index.
+       * <code>string Github = 2;</code>
+       * @return The bytes for github.
        */
       public com.google.protobuf.ByteString
-          getGithubBytes(int index) {
-        return github_.getByteString(index);
+          getGithubBytes() {
+        java.lang.Object ref = github_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          github_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
       /**
-       * <code>repeated string Github = 2;</code>
-       * @param index The index to set the value at.
+       * <code>string Github = 2;</code>
        * @param value The github to set.
        * @return This builder for chaining.
        */
       public Builder setGithub(
-          int index, java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureGithubIsMutable();
-        github_.set(index, value);
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string Github = 2;</code>
-       * @param value The github to add.
-       * @return This builder for chaining.
-       */
-      public Builder addGithub(
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
-        ensureGithubIsMutable();
-        github_.add(value);
+        github_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string Github = 2;</code>
-       * @param values The github to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllGithub(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureGithubIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, github_);
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string Github = 2;</code>
+       * <code>string Github = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearGithub() {
-        github_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);;
+        github_ = getDefaultInstance().getGithub();
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string Github = 2;</code>
-       * @param value The bytes of the github to add.
+       * <code>string Github = 2;</code>
+       * @param value The bytes for github to set.
        * @return This builder for chaining.
        */
-      public Builder addGithubBytes(
+      public Builder setGithubBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        ensureGithubIsMutable();
-        github_.add(value);
+        github_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
@@ -4056,7 +3990,7 @@ public final class ChatsProto {
       "\n\013chats.proto\"^\n\004Chat\022\n\n\002Id\030\001 \001(\003\022\016\n\006Tea" +
       "mId\030\002 \001(\003\022\016\n\006Github\030\003 \001(\t\022\027\n\017TeamProject" +
       "Name\030\004 \001(\t\022\021\n\tCreatorId\030\005 \001(\003\"D\n\017PostCha" +
-      "tRequest\022\016\n\006TeamId\030\001 \001(\003\022\016\n\006Github\030\002 \003(\t" +
+      "tRequest\022\016\n\006TeamId\030\001 \001(\003\022\016\n\006Github\030\002 \001(\t" +
       "\022\021\n\tCreatorId\030\003 \001(\003\"\036\n\020PostChatResponse\022" +
       "\n\n\002Id\030\001 \001(\003\"#\n\021GetOneChatRequest\022\016\n\006Chat" +
       "Id\030\001 \001(\003\")\n\022GetOneChatResponse\022\023\n\004Chat\030\001" +

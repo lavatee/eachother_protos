@@ -20,7 +20,7 @@ message Chat {
 
 message PostChatRequest {
     int64 TeamId = 1;
-    repeated string Github = 2;
+    string Github = 2;
     int64 CreatorId = 3;
 }
 
