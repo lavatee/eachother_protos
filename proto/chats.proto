@@ -9,6 +9,7 @@ service Chats {
     rpc GetOneChat(GetOneChatRequest) returns (GetOneChatResponse);
     rpc LeaveChat(LeaveChatRequest) returns (LeaveChatResponse);
     rpc JoinChat(JoinChatRequest) returns (JoinChatResponse);
+    rpc DeleteChat(DeleteChatRequest) returns (DeleteChatResponse);
 }
 
 message Chat {
@@ -63,4 +64,10 @@ message JoinChatResponse {
     string Status = 1;
 }
 
+message DeleteChatRequest {
+    int64 ChatId = 1;
+}
 
+message DeleteChatResponse {
+    string Status = 1;
+}

@@ -6341,6 +6341,951 @@ public final class ChatsProto {
 
   }
 
+  public interface DeleteChatRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DeleteChatRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int64 ChatId = 1;</code>
+     * @return The chatId.
+     */
+    long getChatId();
+  }
+  /**
+   * Protobuf type {@code DeleteChatRequest}
+   */
+  public static final class DeleteChatRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:DeleteChatRequest)
+      DeleteChatRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        DeleteChatRequest.class.getName());
+    }
+    // Use DeleteChatRequest.newBuilder() to construct.
+    private DeleteChatRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DeleteChatRequest() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.ChatsProto.internal_static_DeleteChatRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.ChatsProto.internal_static_DeleteChatRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.ChatsProto.DeleteChatRequest.class, proto.ChatsProto.DeleteChatRequest.Builder.class);
+    }
+
+    public static final int CHATID_FIELD_NUMBER = 1;
+    private long chatId_ = 0L;
+    /**
+     * <code>int64 ChatId = 1;</code>
+     * @return The chatId.
+     */
+    @java.lang.Override
+    public long getChatId() {
+      return chatId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (chatId_ != 0L) {
+        output.writeInt64(1, chatId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (chatId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, chatId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.ChatsProto.DeleteChatRequest)) {
+        return super.equals(obj);
+      }
+      proto.ChatsProto.DeleteChatRequest other = (proto.ChatsProto.DeleteChatRequest) obj;
+
+      if (getChatId()
+          != other.getChatId()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CHATID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getChatId());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.ChatsProto.DeleteChatRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ChatsProto.DeleteChatRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ChatsProto.DeleteChatRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ChatsProto.DeleteChatRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ChatsProto.DeleteChatRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ChatsProto.DeleteChatRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ChatsProto.DeleteChatRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.ChatsProto.DeleteChatRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static proto.ChatsProto.DeleteChatRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static proto.ChatsProto.DeleteChatRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.ChatsProto.DeleteChatRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.ChatsProto.DeleteChatRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.ChatsProto.DeleteChatRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DeleteChatRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DeleteChatRequest)
+        proto.ChatsProto.DeleteChatRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.ChatsProto.internal_static_DeleteChatRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.ChatsProto.internal_static_DeleteChatRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.ChatsProto.DeleteChatRequest.class, proto.ChatsProto.DeleteChatRequest.Builder.class);
+      }
+
+      // Construct using proto.ChatsProto.DeleteChatRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        chatId_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.ChatsProto.internal_static_DeleteChatRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.ChatsProto.DeleteChatRequest getDefaultInstanceForType() {
+        return proto.ChatsProto.DeleteChatRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.ChatsProto.DeleteChatRequest build() {
+        proto.ChatsProto.DeleteChatRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.ChatsProto.DeleteChatRequest buildPartial() {
+        proto.ChatsProto.DeleteChatRequest result = new proto.ChatsProto.DeleteChatRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(proto.ChatsProto.DeleteChatRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.chatId_ = chatId_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.ChatsProto.DeleteChatRequest) {
+          return mergeFrom((proto.ChatsProto.DeleteChatRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.ChatsProto.DeleteChatRequest other) {
+        if (other == proto.ChatsProto.DeleteChatRequest.getDefaultInstance()) return this;
+        if (other.getChatId() != 0L) {
+          setChatId(other.getChatId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                chatId_ = input.readInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private long chatId_ ;
+      /**
+       * <code>int64 ChatId = 1;</code>
+       * @return The chatId.
+       */
+      @java.lang.Override
+      public long getChatId() {
+        return chatId_;
+      }
+      /**
+       * <code>int64 ChatId = 1;</code>
+       * @param value The chatId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChatId(long value) {
+
+        chatId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 ChatId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearChatId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        chatId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:DeleteChatRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:DeleteChatRequest)
+    private static final proto.ChatsProto.DeleteChatRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.ChatsProto.DeleteChatRequest();
+    }
+
+    public static proto.ChatsProto.DeleteChatRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DeleteChatRequest>
+        PARSER = new com.google.protobuf.AbstractParser<DeleteChatRequest>() {
+      @java.lang.Override
+      public DeleteChatRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<DeleteChatRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DeleteChatRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.ChatsProto.DeleteChatRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DeleteChatResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DeleteChatResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string Status = 1;</code>
+     * @return The status.
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>string Status = 1;</code>
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+  }
+  /**
+   * Protobuf type {@code DeleteChatResponse}
+   */
+  public static final class DeleteChatResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:DeleteChatResponse)
+      DeleteChatResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        DeleteChatResponse.class.getName());
+    }
+    // Use DeleteChatResponse.newBuilder() to construct.
+    private DeleteChatResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DeleteChatResponse() {
+      status_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.ChatsProto.internal_static_DeleteChatResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.ChatsProto.internal_static_DeleteChatResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.ChatsProto.DeleteChatResponse.class, proto.ChatsProto.DeleteChatResponse.Builder.class);
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object status_ = "";
+    /**
+     * <code>string Status = 1;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string Status = 1;</code>
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(status_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, status_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(status_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, status_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.ChatsProto.DeleteChatResponse)) {
+        return super.equals(obj);
+      }
+      proto.ChatsProto.DeleteChatResponse other = (proto.ChatsProto.DeleteChatResponse) obj;
+
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.ChatsProto.DeleteChatResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ChatsProto.DeleteChatResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ChatsProto.DeleteChatResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ChatsProto.DeleteChatResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ChatsProto.DeleteChatResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.ChatsProto.DeleteChatResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.ChatsProto.DeleteChatResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.ChatsProto.DeleteChatResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static proto.ChatsProto.DeleteChatResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static proto.ChatsProto.DeleteChatResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.ChatsProto.DeleteChatResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.ChatsProto.DeleteChatResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.ChatsProto.DeleteChatResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DeleteChatResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DeleteChatResponse)
+        proto.ChatsProto.DeleteChatResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.ChatsProto.internal_static_DeleteChatResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.ChatsProto.internal_static_DeleteChatResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.ChatsProto.DeleteChatResponse.class, proto.ChatsProto.DeleteChatResponse.Builder.class);
+      }
+
+      // Construct using proto.ChatsProto.DeleteChatResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        status_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.ChatsProto.internal_static_DeleteChatResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.ChatsProto.DeleteChatResponse getDefaultInstanceForType() {
+        return proto.ChatsProto.DeleteChatResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.ChatsProto.DeleteChatResponse build() {
+        proto.ChatsProto.DeleteChatResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.ChatsProto.DeleteChatResponse buildPartial() {
+        proto.ChatsProto.DeleteChatResponse result = new proto.ChatsProto.DeleteChatResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(proto.ChatsProto.DeleteChatResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.status_ = status_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.ChatsProto.DeleteChatResponse) {
+          return mergeFrom((proto.ChatsProto.DeleteChatResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.ChatsProto.DeleteChatResponse other) {
+        if (other == proto.ChatsProto.DeleteChatResponse.getDefaultInstance()) return this;
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                status_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>string Status = 1;</code>
+       * @return The status.
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string Status = 1;</code>
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string Status = 1;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        status_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Status = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        status_ = getDefaultInstance().getStatus();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Status = 1;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        status_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:DeleteChatResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:DeleteChatResponse)
+    private static final proto.ChatsProto.DeleteChatResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.ChatsProto.DeleteChatResponse();
+    }
+
+    public static proto.ChatsProto.DeleteChatResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DeleteChatResponse>
+        PARSER = new com.google.protobuf.AbstractParser<DeleteChatResponse>() {
+      @java.lang.Override
+      public DeleteChatResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<DeleteChatResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DeleteChatResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.ChatsProto.DeleteChatResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Chat_descriptor;
   private static final 
@@ -6396,6 +7341,16 @@ public final class ChatsProto {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_JoinChatResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DeleteChatRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_DeleteChatRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DeleteChatResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_DeleteChatResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6418,14 +7373,17 @@ public final class ChatsProto {
       "UserId\030\001 \001(\003\022\016\n\006TeamId\030\002 \001(\003\"#\n\021LeaveCha" +
       "tResponse\022\016\n\006Status\030\001 \001(\t\"1\n\017JoinChatReq" +
       "uest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006TeamId\030\002 \001(\003\"\"\n\020" +
-      "JoinChatResponse\022\016\n\006Status\030\001 \001(\t2\324\001\n\005Cha" +
-      "ts\022/\n\010PostChat\022\020.PostChatRequest\032\021.PostC" +
-      "hatResponse\0225\n\nGetOneChat\022\022.GetOneChatRe" +
-      "quest\032\023.GetOneChatResponse\0222\n\tLeaveChat\022" +
-      "\021.LeaveChatRequest\032\022.LeaveChatResponse\022/" +
-      "\n\010JoinChat\022\020.JoinChatRequest\032\021.JoinChatR" +
-      "esponseB\034\n\005protoB\nChatsProtoZ\007.;protob\006p" +
-      "roto3"
+      "JoinChatResponse\022\016\n\006Status\030\001 \001(\t\"#\n\021Dele" +
+      "teChatRequest\022\016\n\006ChatId\030\001 \001(\003\"$\n\022DeleteC" +
+      "hatResponse\022\016\n\006Status\030\001 \001(\t2\213\002\n\005Chats\022/\n" +
+      "\010PostChat\022\020.PostChatRequest\032\021.PostChatRe" +
+      "sponse\0225\n\nGetOneChat\022\022.GetOneChatRequest" +
+      "\032\023.GetOneChatResponse\0222\n\tLeaveChat\022\021.Lea" +
+      "veChatRequest\032\022.LeaveChatResponse\022/\n\010Joi" +
+      "nChat\022\020.JoinChatRequest\032\021.JoinChatRespon" +
+      "se\0225\n\nDeleteChat\022\022.DeleteChatRequest\032\023.D" +
+      "eleteChatResponseB\034\n\005protoB\nChatsProtoZ\007" +
+      ".;protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6496,6 +7454,18 @@ public final class ChatsProto {
     internal_static_JoinChatResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_JoinChatResponse_descriptor,
+        new java.lang.String[] { "Status", });
+    internal_static_DeleteChatRequest_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_DeleteChatRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_DeleteChatRequest_descriptor,
+        new java.lang.String[] { "ChatId", });
+    internal_static_DeleteChatResponse_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_DeleteChatResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_DeleteChatResponse_descriptor,
         new java.lang.String[] { "Status", });
     descriptor.resolveAllFeaturesImmutable();
   }

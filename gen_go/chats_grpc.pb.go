@@ -23,6 +23,7 @@ const (
 	Chats_GetOneChat_FullMethodName = "/Chats/GetOneChat"
 	Chats_LeaveChat_FullMethodName  = "/Chats/LeaveChat"
 	Chats_JoinChat_FullMethodName   = "/Chats/JoinChat"
+	Chats_DeleteChat_FullMethodName = "/Chats/DeleteChat"
 )
 
 // ChatsClient is the client API for Chats service.
@@ -33,6 +34,7 @@ type ChatsClient interface {
 	GetOneChat(ctx context.Context, in *GetOneChatRequest, opts ...grpc.CallOption) (*GetOneChatResponse, error)
 	LeaveChat(ctx context.Context, in *LeaveChatRequest, opts ...grpc.CallOption) (*LeaveChatResponse, error)
 	JoinChat(ctx context.Context, in *JoinChatRequest, opts ...grpc.CallOption) (*JoinChatResponse, error)
+	DeleteChat(ctx context.Context, in *DeleteChatRequest, opts ...grpc.CallOption) (*DeleteChatResponse, error)
 }
 
 type chatsClient struct {
@@ -83,6 +85,16 @@ func (c *chatsClient) JoinChat(ctx context.Context, in *JoinChatRequest, opts ..
 	return out, nil
 }
 
+func (c *chatsClient) DeleteChat(ctx context.Context, in *DeleteChatRequest, opts ...grpc.CallOption) (*DeleteChatResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteChatResponse)
+	err := c.cc.Invoke(ctx, Chats_DeleteChat_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ChatsServer is the server API for Chats service.
 // All implementations must embed UnimplementedChatsServer
 // for forward compatibility.
@@ -91,6 +103,7 @@ type ChatsServer interface {
 	GetOneChat(context.Context, *GetOneChatRequest) (*GetOneChatResponse, error)
 	LeaveChat(context.Context, *LeaveChatRequest) (*LeaveChatResponse, error)
 	JoinChat(context.Context, *JoinChatRequest) (*JoinChatResponse, error)
+	DeleteChat(context.Context, *DeleteChatRequest) (*DeleteChatResponse, error)
 	mustEmbedUnimplementedChatsServer()
 }
 
@@ -112,6 +125,9 @@ func (UnimplementedChatsServer) LeaveChat(context.Context, *LeaveChatRequest) (*
 }
 func (UnimplementedChatsServer) JoinChat(context.Context, *JoinChatRequest) (*JoinChatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method JoinChat not implemented")
+}
+func (UnimplementedChatsServer) DeleteChat(context.Context, *DeleteChatRequest) (*DeleteChatResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteChat not implemented")
 }
 func (UnimplementedChatsServer) mustEmbedUnimplementedChatsServer() {}
 func (UnimplementedChatsServer) testEmbeddedByValue()               {}
@@ -206,6 +222,24 @@ func _Chats_JoinChat_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Chats_DeleteChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteChatRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).DeleteChat(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_DeleteChat_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).DeleteChat(ctx, req.(*DeleteChatRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Chats_ServiceDesc is the grpc.ServiceDesc for Chats service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,6 +262,10 @@ var Chats_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "JoinChat",
 			Handler:    _Chats_JoinChat_Handler,
+		},
+		{
+			MethodName: "DeleteChat",
+			Handler:    _Chats_DeleteChat_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
