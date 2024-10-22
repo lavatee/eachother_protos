@@ -28,14 +28,6 @@ message PostChatResponse {
     int64 Id = 1;
 }
 
-message GetUserChatsRequest {
-    int64 UserId = 1;
-}
-
-message GetUserChatsResponse {
-    repeated Chat Chats = 1;
-}
-
 message GetOneChatRequest {
     int64 ChatId = 1;
 }

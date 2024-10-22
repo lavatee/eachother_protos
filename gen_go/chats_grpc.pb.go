@@ -21,8 +21,6 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	Chats_PostChat_FullMethodName   = "/Chats/PostChat"
 	Chats_GetOneChat_FullMethodName = "/Chats/GetOneChat"
-	Chats_LeaveChat_FullMethodName  = "/Chats/LeaveChat"
-	Chats_JoinChat_FullMethodName   = "/Chats/JoinChat"
 	Chats_DeleteChat_FullMethodName = "/Chats/DeleteChat"
 )
 
@@ -32,8 +30,6 @@ const (
 type ChatsClient interface {
 	PostChat(ctx context.Context, in *PostChatRequest, opts ...grpc.CallOption) (*PostChatResponse, error)
 	GetOneChat(ctx context.Context, in *GetOneChatRequest, opts ...grpc.CallOption) (*GetOneChatResponse, error)
-	LeaveChat(ctx context.Context, in *LeaveChatRequest, opts ...grpc.CallOption) (*LeaveChatResponse, error)
-	JoinChat(ctx context.Context, in *JoinChatRequest, opts ...grpc.CallOption) (*JoinChatResponse, error)
 	DeleteChat(ctx context.Context, in *DeleteChatRequest, opts ...grpc.CallOption) (*DeleteChatResponse, error)
 }
 
@@ -65,26 +61,6 @@ func (c *chatsClient) GetOneChat(ctx context.Context, in *GetOneChatRequest, opt
 	return out, nil
 }
 
-func (c *chatsClient) LeaveChat(ctx context.Context, in *LeaveChatRequest, opts ...grpc.CallOption) (*LeaveChatResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LeaveChatResponse)
-	err := c.cc.Invoke(ctx, Chats_LeaveChat_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chatsClient) JoinChat(ctx context.Context, in *JoinChatRequest, opts ...grpc.CallOption) (*JoinChatResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(JoinChatResponse)
-	err := c.cc.Invoke(ctx, Chats_JoinChat_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *chatsClient) DeleteChat(ctx context.Context, in *DeleteChatRequest, opts ...grpc.CallOption) (*DeleteChatResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteChatResponse)
@@ -101,8 +77,6 @@ func (c *chatsClient) DeleteChat(ctx context.Context, in *DeleteChatRequest, opt
 type ChatsServer interface {
 	PostChat(context.Context, *PostChatRequest) (*PostChatResponse, error)
 	GetOneChat(context.Context, *GetOneChatRequest) (*GetOneChatResponse, error)
-	LeaveChat(context.Context, *LeaveChatRequest) (*LeaveChatResponse, error)
-	JoinChat(context.Context, *JoinChatRequest) (*JoinChatResponse, error)
 	DeleteChat(context.Context, *DeleteChatRequest) (*DeleteChatResponse, error)
 	mustEmbedUnimplementedChatsServer()
 }
@@ -119,12 +93,6 @@ func (UnimplementedChatsServer) PostChat(context.Context, *PostChatRequest) (*Po
 }
 func (UnimplementedChatsServer) GetOneChat(context.Context, *GetOneChatRequest) (*GetOneChatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOneChat not implemented")
-}
-func (UnimplementedChatsServer) LeaveChat(context.Context, *LeaveChatRequest) (*LeaveChatResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LeaveChat not implemented")
-}
-func (UnimplementedChatsServer) JoinChat(context.Context, *JoinChatRequest) (*JoinChatResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method JoinChat not implemented")
 }
 func (UnimplementedChatsServer) DeleteChat(context.Context, *DeleteChatRequest) (*DeleteChatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteChat not implemented")
@@ -186,42 +154,6 @@ func _Chats_GetOneChat_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Chats_LeaveChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LeaveChatRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChatsServer).LeaveChat(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Chats_LeaveChat_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatsServer).LeaveChat(ctx, req.(*LeaveChatRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Chats_JoinChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(JoinChatRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChatsServer).JoinChat(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Chats_JoinChat_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatsServer).JoinChat(ctx, req.(*JoinChatRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Chats_DeleteChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteChatRequest)
 	if err := dec(in); err != nil {
@@ -254,14 +186,6 @@ var Chats_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetOneChat",
 			Handler:    _Chats_GetOneChat_Handler,
-		},
-		{
-			MethodName: "LeaveChat",
-			Handler:    _Chats_LeaveChat_Handler,
-		},
-		{
-			MethodName: "JoinChat",
-			Handler:    _Chats_JoinChat_Handler,
 		},
 		{
 			MethodName: "DeleteChat",
