@@ -19,11 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Chats_PostChat_FullMethodName     = "/Chats/PostChat"
-	Chats_GetUserChats_FullMethodName = "/Chats/GetUserChats"
-	Chats_GetOneChat_FullMethodName   = "/Chats/GetOneChat"
-	Chats_LeaveChat_FullMethodName    = "/Chats/LeaveChat"
-	Chats_JoinChat_FullMethodName     = "/Chats/JoinChat"
+	Chats_PostChat_FullMethodName   = "/Chats/PostChat"
+	Chats_GetOneChat_FullMethodName = "/Chats/GetOneChat"
+	Chats_LeaveChat_FullMethodName  = "/Chats/LeaveChat"
+	Chats_JoinChat_FullMethodName   = "/Chats/JoinChat"
 )
 
 // ChatsClient is the client API for Chats service.
@@ -31,7 +30,6 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ChatsClient interface {
 	PostChat(ctx context.Context, in *PostChatRequest, opts ...grpc.CallOption) (*PostChatResponse, error)
-	GetUserChats(ctx context.Context, in *GetUserChatsRequest, opts ...grpc.CallOption) (*GetUserChatsResponse, error)
 	GetOneChat(ctx context.Context, in *GetOneChatRequest, opts ...grpc.CallOption) (*GetOneChatResponse, error)
 	LeaveChat(ctx context.Context, in *LeaveChatRequest, opts ...grpc.CallOption) (*LeaveChatResponse, error)
 	JoinChat(ctx context.Context, in *JoinChatRequest, opts ...grpc.CallOption) (*JoinChatResponse, error)
@@ -49,16 +47,6 @@ func (c *chatsClient) PostChat(ctx context.Context, in *PostChatRequest, opts ..
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(PostChatResponse)
 	err := c.cc.Invoke(ctx, Chats_PostChat_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *chatsClient) GetUserChats(ctx context.Context, in *GetUserChatsRequest, opts ...grpc.CallOption) (*GetUserChatsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUserChatsResponse)
-	err := c.cc.Invoke(ctx, Chats_GetUserChats_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +88,6 @@ func (c *chatsClient) JoinChat(ctx context.Context, in *JoinChatRequest, opts ..
 // for forward compatibility.
 type ChatsServer interface {
 	PostChat(context.Context, *PostChatRequest) (*PostChatResponse, error)
-	GetUserChats(context.Context, *GetUserChatsRequest) (*GetUserChatsResponse, error)
 	GetOneChat(context.Context, *GetOneChatRequest) (*GetOneChatResponse, error)
 	LeaveChat(context.Context, *LeaveChatRequest) (*LeaveChatResponse, error)
 	JoinChat(context.Context, *JoinChatRequest) (*JoinChatResponse, error)
@@ -116,9 +103,6 @@ type UnimplementedChatsServer struct{}
 
 func (UnimplementedChatsServer) PostChat(context.Context, *PostChatRequest) (*PostChatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PostChat not implemented")
-}
-func (UnimplementedChatsServer) GetUserChats(context.Context, *GetUserChatsRequest) (*GetUserChatsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserChats not implemented")
 }
 func (UnimplementedChatsServer) GetOneChat(context.Context, *GetOneChatRequest) (*GetOneChatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOneChat not implemented")
@@ -164,24 +148,6 @@ func _Chats_PostChat_Handler(srv interface{}, ctx context.Context, dec func(inte
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ChatsServer).PostChat(ctx, req.(*PostChatRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Chats_GetUserChats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserChatsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ChatsServer).GetUserChats(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Chats_GetUserChats_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ChatsServer).GetUserChats(ctx, req.(*GetUserChatsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -250,10 +216,6 @@ var Chats_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PostChat",
 			Handler:    _Chats_PostChat_Handler,
-		},
-		{
-			MethodName: "GetUserChats",
-			Handler:    _Chats_GetUserChats_Handler,
 		},
 		{
 			MethodName: "GetOneChat",

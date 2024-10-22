@@ -6,7 +6,6 @@ option java_outer_classname = "ChatsProto";
 
 service Chats {
     rpc PostChat(PostChatRequest) returns (PostChatResponse);
-    rpc GetUserChats(GetUserChatsRequest) returns (GetUserChatsResponse);
     rpc GetOneChat(GetOneChatRequest) returns (GetOneChatResponse);
     rpc LeaveChat(LeaveChatRequest) returns (LeaveChatResponse);
     rpc JoinChat(JoinChatRequest) returns (JoinChatResponse);
@@ -16,6 +15,7 @@ message Chat {
     int64 Id = 1;
     int64 TeamId = 2;
     repeated string Github = 3;
+    string TeamProjectName = 4;
     int64 CreatorId = 5;
 }
 

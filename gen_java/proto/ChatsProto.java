@@ -67,6 +67,18 @@ public final class ChatsProto {
         getGithubBytes(int index);
 
     /**
+     * <code>string TeamProjectName = 4;</code>
+     * @return The teamProjectName.
+     */
+    java.lang.String getTeamProjectName();
+    /**
+     * <code>string TeamProjectName = 4;</code>
+     * @return The bytes for teamProjectName.
+     */
+    com.google.protobuf.ByteString
+        getTeamProjectNameBytes();
+
+    /**
      * <code>int64 CreatorId = 5;</code>
      * @return The creatorId.
      */
@@ -96,6 +108,7 @@ public final class ChatsProto {
     private Chat() {
       github_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
+      teamProjectName_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -170,6 +183,45 @@ public final class ChatsProto {
       return github_.getByteString(index);
     }
 
+    public static final int TEAMPROJECTNAME_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object teamProjectName_ = "";
+    /**
+     * <code>string TeamProjectName = 4;</code>
+     * @return The teamProjectName.
+     */
+    @java.lang.Override
+    public java.lang.String getTeamProjectName() {
+      java.lang.Object ref = teamProjectName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        teamProjectName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string TeamProjectName = 4;</code>
+     * @return The bytes for teamProjectName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTeamProjectNameBytes() {
+      java.lang.Object ref = teamProjectName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        teamProjectName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     public static final int CREATORID_FIELD_NUMBER = 5;
     private long creatorId_ = 0L;
     /**
@@ -204,6 +256,9 @@ public final class ChatsProto {
       for (int i = 0; i < github_.size(); i++) {
         com.google.protobuf.GeneratedMessage.writeString(output, 3, github_.getRaw(i));
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(teamProjectName_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, teamProjectName_);
+      }
       if (creatorId_ != 0L) {
         output.writeInt64(5, creatorId_);
       }
@@ -232,6 +287,9 @@ public final class ChatsProto {
         size += dataSize;
         size += 1 * getGithubList().size();
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(teamProjectName_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, teamProjectName_);
+      }
       if (creatorId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(5, creatorId_);
@@ -257,6 +315,8 @@ public final class ChatsProto {
           != other.getTeamId()) return false;
       if (!getGithubList()
           .equals(other.getGithubList())) return false;
+      if (!getTeamProjectName()
+          .equals(other.getTeamProjectName())) return false;
       if (getCreatorId()
           != other.getCreatorId()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -280,6 +340,8 @@ public final class ChatsProto {
         hash = (37 * hash) + GITHUB_FIELD_NUMBER;
         hash = (53 * hash) + getGithubList().hashCode();
       }
+      hash = (37 * hash) + TEAMPROJECTNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getTeamProjectName().hashCode();
       hash = (37 * hash) + CREATORID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getCreatorId());
@@ -418,6 +480,7 @@ public final class ChatsProto {
         teamId_ = 0L;
         github_ =
             com.google.protobuf.LazyStringArrayList.emptyList();
+        teamProjectName_ = "";
         creatorId_ = 0L;
         return this;
       }
@@ -463,6 +526,9 @@ public final class ChatsProto {
           result.github_ = github_;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.teamProjectName_ = teamProjectName_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
           result.creatorId_ = creatorId_;
         }
       }
@@ -493,6 +559,11 @@ public final class ChatsProto {
             ensureGithubIsMutable();
             github_.addAll(other.github_);
           }
+          onChanged();
+        }
+        if (!other.getTeamProjectName().isEmpty()) {
+          teamProjectName_ = other.teamProjectName_;
+          bitField0_ |= 0x00000008;
           onChanged();
         }
         if (other.getCreatorId() != 0L) {
@@ -540,9 +611,14 @@ public final class ChatsProto {
                 github_.add(s);
                 break;
               } // case 26
+              case 34: {
+                teamProjectName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
               case 40: {
                 creatorId_ = input.readInt64();
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000010;
                 break;
               } // case 40
               default: {
@@ -737,6 +813,78 @@ public final class ChatsProto {
         return this;
       }
 
+      private java.lang.Object teamProjectName_ = "";
+      /**
+       * <code>string TeamProjectName = 4;</code>
+       * @return The teamProjectName.
+       */
+      public java.lang.String getTeamProjectName() {
+        java.lang.Object ref = teamProjectName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          teamProjectName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string TeamProjectName = 4;</code>
+       * @return The bytes for teamProjectName.
+       */
+      public com.google.protobuf.ByteString
+          getTeamProjectNameBytes() {
+        java.lang.Object ref = teamProjectName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          teamProjectName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string TeamProjectName = 4;</code>
+       * @param value The teamProjectName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTeamProjectName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        teamProjectName_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string TeamProjectName = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTeamProjectName() {
+        teamProjectName_ = getDefaultInstance().getTeamProjectName();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string TeamProjectName = 4;</code>
+       * @param value The bytes for teamProjectName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTeamProjectNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        teamProjectName_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+
       private long creatorId_ ;
       /**
        * <code>int64 CreatorId = 5;</code>
@@ -754,7 +902,7 @@ public final class ChatsProto {
       public Builder setCreatorId(long value) {
 
         creatorId_ = value;
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -763,7 +911,7 @@ public final class ChatsProto {
        * @return This builder for chaining.
        */
       public Builder clearCreatorId() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         creatorId_ = 0L;
         onChanged();
         return this;
@@ -6257,28 +6405,27 @@ public final class ChatsProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013chats.proto\"E\n\004Chat\022\n\n\002Id\030\001 \001(\003\022\016\n\006Tea" +
-      "mId\030\002 \001(\003\022\016\n\006Github\030\003 \003(\t\022\021\n\tCreatorId\030\005" +
-      " \001(\003\"D\n\017PostChatRequest\022\016\n\006TeamId\030\001 \001(\003\022" +
-      "\016\n\006Github\030\002 \003(\t\022\021\n\tCreatorId\030\003 \001(\003\"\036\n\020Po" +
-      "stChatResponse\022\n\n\002Id\030\001 \001(\003\"%\n\023GetUserCha" +
-      "tsRequest\022\016\n\006UserId\030\001 \001(\003\",\n\024GetUserChat" +
-      "sResponse\022\024\n\005Chats\030\001 \003(\0132\005.Chat\"#\n\021GetOn" +
-      "eChatRequest\022\016\n\006ChatId\030\001 \001(\003\")\n\022GetOneCh" +
-      "atResponse\022\023\n\004Chat\030\001 \001(\0132\005.Chat\"2\n\020Leave" +
-      "ChatRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006TeamId\030\002 " +
-      "\001(\003\"#\n\021LeaveChatResponse\022\016\n\006Status\030\001 \001(\t" +
-      "\"1\n\017JoinChatRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006T" +
-      "eamId\030\002 \001(\003\"\"\n\020JoinChatResponse\022\016\n\006Statu" +
-      "s\030\001 \001(\t2\221\002\n\005Chats\022/\n\010PostChat\022\020.PostChat" +
-      "Request\032\021.PostChatResponse\022;\n\014GetUserCha" +
-      "ts\022\024.GetUserChatsRequest\032\025.GetUserChatsR" +
-      "esponse\0225\n\nGetOneChat\022\022.GetOneChatReques" +
-      "t\032\023.GetOneChatResponse\0222\n\tLeaveChat\022\021.Le" +
-      "aveChatRequest\032\022.LeaveChatResponse\022/\n\010Jo" +
-      "inChat\022\020.JoinChatRequest\032\021.JoinChatRespo" +
-      "nseB\034\n\005protoB\nChatsProtoZ\007.;protob\006proto" +
-      "3"
+      "\n\013chats.proto\"^\n\004Chat\022\n\n\002Id\030\001 \001(\003\022\016\n\006Tea" +
+      "mId\030\002 \001(\003\022\016\n\006Github\030\003 \003(\t\022\027\n\017TeamProject" +
+      "Name\030\004 \001(\t\022\021\n\tCreatorId\030\005 \001(\003\"D\n\017PostCha" +
+      "tRequest\022\016\n\006TeamId\030\001 \001(\003\022\016\n\006Github\030\002 \003(\t" +
+      "\022\021\n\tCreatorId\030\003 \001(\003\"\036\n\020PostChatResponse\022" +
+      "\n\n\002Id\030\001 \001(\003\"%\n\023GetUserChatsRequest\022\016\n\006Us" +
+      "erId\030\001 \001(\003\",\n\024GetUserChatsResponse\022\024\n\005Ch" +
+      "ats\030\001 \003(\0132\005.Chat\"#\n\021GetOneChatRequest\022\016\n" +
+      "\006ChatId\030\001 \001(\003\")\n\022GetOneChatResponse\022\023\n\004C" +
+      "hat\030\001 \001(\0132\005.Chat\"2\n\020LeaveChatRequest\022\016\n\006" +
+      "UserId\030\001 \001(\003\022\016\n\006TeamId\030\002 \001(\003\"#\n\021LeaveCha" +
+      "tResponse\022\016\n\006Status\030\001 \001(\t\"1\n\017JoinChatReq" +
+      "uest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006TeamId\030\002 \001(\003\"\"\n\020" +
+      "JoinChatResponse\022\016\n\006Status\030\001 \001(\t2\324\001\n\005Cha" +
+      "ts\022/\n\010PostChat\022\020.PostChatRequest\032\021.PostC" +
+      "hatResponse\0225\n\nGetOneChat\022\022.GetOneChatRe" +
+      "quest\032\023.GetOneChatResponse\0222\n\tLeaveChat\022" +
+      "\021.LeaveChatRequest\032\022.LeaveChatResponse\022/" +
+      "\n\010JoinChat\022\020.JoinChatRequest\032\021.JoinChatR" +
+      "esponseB\034\n\005protoB\nChatsProtoZ\007.;protob\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6289,7 +6436,7 @@ public final class ChatsProto {
     internal_static_Chat_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Chat_descriptor,
-        new java.lang.String[] { "Id", "TeamId", "Github", "CreatorId", });
+        new java.lang.String[] { "Id", "TeamId", "Github", "TeamProjectName", "CreatorId", });
     internal_static_PostChatRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_PostChatRequest_fieldAccessorTable = new

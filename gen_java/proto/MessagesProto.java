@@ -70,6 +70,18 @@ public final class MessagesProto {
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
+
+    /**
+     * <code>string TeamProjectName = 6;</code>
+     * @return The teamProjectName.
+     */
+    java.lang.String getTeamProjectName();
+    /**
+     * <code>string TeamProjectName = 6;</code>
+     * @return The bytes for teamProjectName.
+     */
+    com.google.protobuf.ByteString
+        getTeamProjectNameBytes();
   }
   /**
    * Protobuf type {@code Message}
@@ -95,6 +107,7 @@ public final class MessagesProto {
     private Message() {
       text_ = "";
       userName_ = "";
+      teamProjectName_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -221,6 +234,45 @@ public final class MessagesProto {
       }
     }
 
+    public static final int TEAMPROJECTNAME_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object teamProjectName_ = "";
+    /**
+     * <code>string TeamProjectName = 6;</code>
+     * @return The teamProjectName.
+     */
+    @java.lang.Override
+    public java.lang.String getTeamProjectName() {
+      java.lang.Object ref = teamProjectName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        teamProjectName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string TeamProjectName = 6;</code>
+     * @return The bytes for teamProjectName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTeamProjectNameBytes() {
+      java.lang.Object ref = teamProjectName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        teamProjectName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -250,6 +302,9 @@ public final class MessagesProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(userName_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 5, userName_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(teamProjectName_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, teamProjectName_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -277,6 +332,9 @@ public final class MessagesProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(userName_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(5, userName_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(teamProjectName_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, teamProjectName_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -302,6 +360,8 @@ public final class MessagesProto {
           .equals(other.getText())) return false;
       if (!getUserName()
           .equals(other.getUserName())) return false;
+      if (!getTeamProjectName()
+          .equals(other.getTeamProjectName())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -326,6 +386,8 @@ public final class MessagesProto {
       hash = (53 * hash) + getText().hashCode();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUserName().hashCode();
+      hash = (37 * hash) + TEAMPROJECTNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getTeamProjectName().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -462,6 +524,7 @@ public final class MessagesProto {
         chatId_ = 0L;
         text_ = "";
         userName_ = "";
+        teamProjectName_ = "";
         return this;
       }
 
@@ -510,6 +573,9 @@ public final class MessagesProto {
         if (((from_bitField0_ & 0x00000010) != 0)) {
           result.userName_ = userName_;
         }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.teamProjectName_ = teamProjectName_;
+        }
       }
 
       @java.lang.Override
@@ -541,6 +607,11 @@ public final class MessagesProto {
         if (!other.getUserName().isEmpty()) {
           userName_ = other.userName_;
           bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (!other.getTeamProjectName().isEmpty()) {
+          teamProjectName_ = other.teamProjectName_;
+          bitField0_ |= 0x00000020;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -594,6 +665,11 @@ public final class MessagesProto {
                 bitField0_ |= 0x00000010;
                 break;
               } // case 42
+              case 50: {
+                teamProjectName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -847,6 +923,78 @@ public final class MessagesProto {
         checkByteStringIsUtf8(value);
         userName_ = value;
         bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object teamProjectName_ = "";
+      /**
+       * <code>string TeamProjectName = 6;</code>
+       * @return The teamProjectName.
+       */
+      public java.lang.String getTeamProjectName() {
+        java.lang.Object ref = teamProjectName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          teamProjectName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string TeamProjectName = 6;</code>
+       * @return The bytes for teamProjectName.
+       */
+      public com.google.protobuf.ByteString
+          getTeamProjectNameBytes() {
+        java.lang.Object ref = teamProjectName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          teamProjectName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string TeamProjectName = 6;</code>
+       * @param value The teamProjectName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTeamProjectName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        teamProjectName_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string TeamProjectName = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTeamProjectName() {
+        teamProjectName_ = getDefaultInstance().getTeamProjectName();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string TeamProjectName = 6;</code>
+       * @param value The bytes for teamProjectName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTeamProjectNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        teamProjectName_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -5206,23 +5354,23 @@ public final class MessagesProto {
 
   }
 
-  public interface GetChatLastMessageRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetChatLastMessageRequest)
+  public interface GetUserLastMessagesRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetUserLastMessagesRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 ChatId = 1;</code>
-     * @return The chatId.
+     * <code>int64 UserId = 1;</code>
+     * @return The userId.
      */
-    long getChatId();
+    long getUserId();
   }
   /**
-   * Protobuf type {@code GetChatLastMessageRequest}
+   * Protobuf type {@code GetUserLastMessagesRequest}
    */
-  public static final class GetChatLastMessageRequest extends
+  public static final class GetUserLastMessagesRequest extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:GetChatLastMessageRequest)
-      GetChatLastMessageRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:GetUserLastMessagesRequest)
+      GetUserLastMessagesRequestOrBuilder {
   private static final long serialVersionUID = 0L;
     static {
       com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -5231,37 +5379,37 @@ public final class MessagesProto {
         /* minor= */ 28,
         /* patch= */ 1,
         /* suffix= */ "",
-        GetChatLastMessageRequest.class.getName());
+        GetUserLastMessagesRequest.class.getName());
     }
-    // Use GetChatLastMessageRequest.newBuilder() to construct.
-    private GetChatLastMessageRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    // Use GetUserLastMessagesRequest.newBuilder() to construct.
+    private GetUserLastMessagesRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
-    private GetChatLastMessageRequest() {
+    private GetUserLastMessagesRequest() {
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return proto.MessagesProto.internal_static_GetChatLastMessageRequest_descriptor;
+      return proto.MessagesProto.internal_static_GetUserLastMessagesRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return proto.MessagesProto.internal_static_GetChatLastMessageRequest_fieldAccessorTable
+      return proto.MessagesProto.internal_static_GetUserLastMessagesRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              proto.MessagesProto.GetChatLastMessageRequest.class, proto.MessagesProto.GetChatLastMessageRequest.Builder.class);
+              proto.MessagesProto.GetUserLastMessagesRequest.class, proto.MessagesProto.GetUserLastMessagesRequest.Builder.class);
     }
 
-    public static final int CHATID_FIELD_NUMBER = 1;
-    private long chatId_ = 0L;
+    public static final int USERID_FIELD_NUMBER = 1;
+    private long userId_ = 0L;
     /**
-     * <code>int64 ChatId = 1;</code>
-     * @return The chatId.
+     * <code>int64 UserId = 1;</code>
+     * @return The userId.
      */
     @java.lang.Override
-    public long getChatId() {
-      return chatId_;
+    public long getUserId() {
+      return userId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5278,8 +5426,8 @@ public final class MessagesProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (chatId_ != 0L) {
-        output.writeInt64(1, chatId_);
+      if (userId_ != 0L) {
+        output.writeInt64(1, userId_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5290,9 +5438,9 @@ public final class MessagesProto {
       if (size != -1) return size;
 
       size = 0;
-      if (chatId_ != 0L) {
+      if (userId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, chatId_);
+          .computeInt64Size(1, userId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -5304,13 +5452,13 @@ public final class MessagesProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof proto.MessagesProto.GetChatLastMessageRequest)) {
+      if (!(obj instanceof proto.MessagesProto.GetUserLastMessagesRequest)) {
         return super.equals(obj);
       }
-      proto.MessagesProto.GetChatLastMessageRequest other = (proto.MessagesProto.GetChatLastMessageRequest) obj;
+      proto.MessagesProto.GetUserLastMessagesRequest other = (proto.MessagesProto.GetUserLastMessagesRequest) obj;
 
-      if (getChatId()
-          != other.getChatId()) return false;
+      if (getUserId()
+          != other.getUserId()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -5322,52 +5470,52 @@ public final class MessagesProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CHATID_FIELD_NUMBER;
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getChatId());
+          getUserId());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static proto.MessagesProto.GetChatLastMessageRequest parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.MessagesProto.GetChatLastMessageRequest parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.MessagesProto.GetChatLastMessageRequest parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.MessagesProto.GetChatLastMessageRequest parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.MessagesProto.GetChatLastMessageRequest parseFrom(byte[] data)
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.MessagesProto.GetChatLastMessageRequest parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.MessagesProto.GetChatLastMessageRequest parseFrom(java.io.InputStream input)
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static proto.MessagesProto.GetChatLastMessageRequest parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5375,26 +5523,26 @@ public final class MessagesProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static proto.MessagesProto.GetChatLastMessageRequest parseDelimitedFrom(java.io.InputStream input)
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static proto.MessagesProto.GetChatLastMessageRequest parseDelimitedFrom(
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static proto.MessagesProto.GetChatLastMessageRequest parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static proto.MessagesProto.GetChatLastMessageRequest parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5407,7 +5555,7 @@ public final class MessagesProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(proto.MessagesProto.GetChatLastMessageRequest prototype) {
+    public static Builder newBuilder(proto.MessagesProto.GetUserLastMessagesRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5423,26 +5571,26 @@ public final class MessagesProto {
       return builder;
     }
     /**
-     * Protobuf type {@code GetChatLastMessageRequest}
+     * Protobuf type {@code GetUserLastMessagesRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetChatLastMessageRequest)
-        proto.MessagesProto.GetChatLastMessageRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:GetUserLastMessagesRequest)
+        proto.MessagesProto.GetUserLastMessagesRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return proto.MessagesProto.internal_static_GetChatLastMessageRequest_descriptor;
+        return proto.MessagesProto.internal_static_GetUserLastMessagesRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return proto.MessagesProto.internal_static_GetChatLastMessageRequest_fieldAccessorTable
+        return proto.MessagesProto.internal_static_GetUserLastMessagesRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                proto.MessagesProto.GetChatLastMessageRequest.class, proto.MessagesProto.GetChatLastMessageRequest.Builder.class);
+                proto.MessagesProto.GetUserLastMessagesRequest.class, proto.MessagesProto.GetUserLastMessagesRequest.Builder.class);
       }
 
-      // Construct using proto.MessagesProto.GetChatLastMessageRequest.newBuilder()
+      // Construct using proto.MessagesProto.GetUserLastMessagesRequest.newBuilder()
       private Builder() {
 
       }
@@ -5456,24 +5604,24 @@ public final class MessagesProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        chatId_ = 0L;
+        userId_ = 0L;
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return proto.MessagesProto.internal_static_GetChatLastMessageRequest_descriptor;
+        return proto.MessagesProto.internal_static_GetUserLastMessagesRequest_descriptor;
       }
 
       @java.lang.Override
-      public proto.MessagesProto.GetChatLastMessageRequest getDefaultInstanceForType() {
-        return proto.MessagesProto.GetChatLastMessageRequest.getDefaultInstance();
+      public proto.MessagesProto.GetUserLastMessagesRequest getDefaultInstanceForType() {
+        return proto.MessagesProto.GetUserLastMessagesRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public proto.MessagesProto.GetChatLastMessageRequest build() {
-        proto.MessagesProto.GetChatLastMessageRequest result = buildPartial();
+      public proto.MessagesProto.GetUserLastMessagesRequest build() {
+        proto.MessagesProto.GetUserLastMessagesRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5481,34 +5629,34 @@ public final class MessagesProto {
       }
 
       @java.lang.Override
-      public proto.MessagesProto.GetChatLastMessageRequest buildPartial() {
-        proto.MessagesProto.GetChatLastMessageRequest result = new proto.MessagesProto.GetChatLastMessageRequest(this);
+      public proto.MessagesProto.GetUserLastMessagesRequest buildPartial() {
+        proto.MessagesProto.GetUserLastMessagesRequest result = new proto.MessagesProto.GetUserLastMessagesRequest(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(proto.MessagesProto.GetChatLastMessageRequest result) {
+      private void buildPartial0(proto.MessagesProto.GetUserLastMessagesRequest result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.chatId_ = chatId_;
+          result.userId_ = userId_;
         }
       }
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof proto.MessagesProto.GetChatLastMessageRequest) {
-          return mergeFrom((proto.MessagesProto.GetChatLastMessageRequest)other);
+        if (other instanceof proto.MessagesProto.GetUserLastMessagesRequest) {
+          return mergeFrom((proto.MessagesProto.GetUserLastMessagesRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(proto.MessagesProto.GetChatLastMessageRequest other) {
-        if (other == proto.MessagesProto.GetChatLastMessageRequest.getDefaultInstance()) return this;
-        if (other.getChatId() != 0L) {
-          setChatId(other.getChatId());
+      public Builder mergeFrom(proto.MessagesProto.GetUserLastMessagesRequest other) {
+        if (other == proto.MessagesProto.GetUserLastMessagesRequest.getDefaultInstance()) return this;
+        if (other.getUserId() != 0L) {
+          setUserId(other.getUserId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -5537,7 +5685,7 @@ public final class MessagesProto {
                 done = true;
                 break;
               case 8: {
-                chatId_ = input.readInt64();
+                userId_ = input.readInt64();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 8
@@ -5558,55 +5706,55 @@ public final class MessagesProto {
       }
       private int bitField0_;
 
-      private long chatId_ ;
+      private long userId_ ;
       /**
-       * <code>int64 ChatId = 1;</code>
-       * @return The chatId.
+       * <code>int64 UserId = 1;</code>
+       * @return The userId.
        */
       @java.lang.Override
-      public long getChatId() {
-        return chatId_;
+      public long getUserId() {
+        return userId_;
       }
       /**
-       * <code>int64 ChatId = 1;</code>
-       * @param value The chatId to set.
+       * <code>int64 UserId = 1;</code>
+       * @param value The userId to set.
        * @return This builder for chaining.
        */
-      public Builder setChatId(long value) {
+      public Builder setUserId(long value) {
 
-        chatId_ = value;
+        userId_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 ChatId = 1;</code>
+       * <code>int64 UserId = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearChatId() {
+      public Builder clearUserId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        chatId_ = 0L;
+        userId_ = 0L;
         onChanged();
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:GetChatLastMessageRequest)
+      // @@protoc_insertion_point(builder_scope:GetUserLastMessagesRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:GetChatLastMessageRequest)
-    private static final proto.MessagesProto.GetChatLastMessageRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:GetUserLastMessagesRequest)
+    private static final proto.MessagesProto.GetUserLastMessagesRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new proto.MessagesProto.GetChatLastMessageRequest();
+      DEFAULT_INSTANCE = new proto.MessagesProto.GetUserLastMessagesRequest();
     }
 
-    public static proto.MessagesProto.GetChatLastMessageRequest getDefaultInstance() {
+    public static proto.MessagesProto.GetUserLastMessagesRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GetChatLastMessageRequest>
-        PARSER = new com.google.protobuf.AbstractParser<GetChatLastMessageRequest>() {
+    private static final com.google.protobuf.Parser<GetUserLastMessagesRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetUserLastMessagesRequest>() {
       @java.lang.Override
-      public GetChatLastMessageRequest parsePartialFrom(
+      public GetUserLastMessagesRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5625,48 +5773,57 @@ public final class MessagesProto {
       }
     };
 
-    public static com.google.protobuf.Parser<GetChatLastMessageRequest> parser() {
+    public static com.google.protobuf.Parser<GetUserLastMessagesRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GetChatLastMessageRequest> getParserForType() {
+    public com.google.protobuf.Parser<GetUserLastMessagesRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public proto.MessagesProto.GetChatLastMessageRequest getDefaultInstanceForType() {
+    public proto.MessagesProto.GetUserLastMessagesRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface GetChatLastMessageResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetChatLastMessageResponse)
+  public interface GetUserLastMessagesResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetUserLastMessagesResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.Message Message = 1;</code>
-     * @return Whether the message field is set.
+     * <code>repeated .Message Message = 1;</code>
      */
-    boolean hasMessage();
+    java.util.List<proto.MessagesProto.Message> 
+        getMessageList();
     /**
-     * <code>.Message Message = 1;</code>
-     * @return The message.
+     * <code>repeated .Message Message = 1;</code>
      */
-    proto.MessagesProto.Message getMessage();
+    proto.MessagesProto.Message getMessage(int index);
     /**
-     * <code>.Message Message = 1;</code>
+     * <code>repeated .Message Message = 1;</code>
      */
-    proto.MessagesProto.MessageOrBuilder getMessageOrBuilder();
+    int getMessageCount();
+    /**
+     * <code>repeated .Message Message = 1;</code>
+     */
+    java.util.List<? extends proto.MessagesProto.MessageOrBuilder> 
+        getMessageOrBuilderList();
+    /**
+     * <code>repeated .Message Message = 1;</code>
+     */
+    proto.MessagesProto.MessageOrBuilder getMessageOrBuilder(
+        int index);
   }
   /**
-   * Protobuf type {@code GetChatLastMessageResponse}
+   * Protobuf type {@code GetUserLastMessagesResponse}
    */
-  public static final class GetChatLastMessageResponse extends
+  public static final class GetUserLastMessagesResponse extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:GetChatLastMessageResponse)
-      GetChatLastMessageResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:GetUserLastMessagesResponse)
+      GetUserLastMessagesResponseOrBuilder {
   private static final long serialVersionUID = 0L;
     static {
       com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -5675,53 +5832,68 @@ public final class MessagesProto {
         /* minor= */ 28,
         /* patch= */ 1,
         /* suffix= */ "",
-        GetChatLastMessageResponse.class.getName());
+        GetUserLastMessagesResponse.class.getName());
     }
-    // Use GetChatLastMessageResponse.newBuilder() to construct.
-    private GetChatLastMessageResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    // Use GetUserLastMessagesResponse.newBuilder() to construct.
+    private GetUserLastMessagesResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
-    private GetChatLastMessageResponse() {
+    private GetUserLastMessagesResponse() {
+      message_ = java.util.Collections.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return proto.MessagesProto.internal_static_GetChatLastMessageResponse_descriptor;
+      return proto.MessagesProto.internal_static_GetUserLastMessagesResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return proto.MessagesProto.internal_static_GetChatLastMessageResponse_fieldAccessorTable
+      return proto.MessagesProto.internal_static_GetUserLastMessagesResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              proto.MessagesProto.GetChatLastMessageResponse.class, proto.MessagesProto.GetChatLastMessageResponse.Builder.class);
+              proto.MessagesProto.GetUserLastMessagesResponse.class, proto.MessagesProto.GetUserLastMessagesResponse.Builder.class);
     }
 
-    private int bitField0_;
     public static final int MESSAGE_FIELD_NUMBER = 1;
-    private proto.MessagesProto.Message message_;
+    @SuppressWarnings("serial")
+    private java.util.List<proto.MessagesProto.Message> message_;
     /**
-     * <code>.Message Message = 1;</code>
-     * @return Whether the message field is set.
+     * <code>repeated .Message Message = 1;</code>
      */
     @java.lang.Override
-    public boolean hasMessage() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public java.util.List<proto.MessagesProto.Message> getMessageList() {
+      return message_;
     }
     /**
-     * <code>.Message Message = 1;</code>
-     * @return The message.
+     * <code>repeated .Message Message = 1;</code>
      */
     @java.lang.Override
-    public proto.MessagesProto.Message getMessage() {
-      return message_ == null ? proto.MessagesProto.Message.getDefaultInstance() : message_;
+    public java.util.List<? extends proto.MessagesProto.MessageOrBuilder> 
+        getMessageOrBuilderList() {
+      return message_;
     }
     /**
-     * <code>.Message Message = 1;</code>
+     * <code>repeated .Message Message = 1;</code>
      */
     @java.lang.Override
-    public proto.MessagesProto.MessageOrBuilder getMessageOrBuilder() {
-      return message_ == null ? proto.MessagesProto.Message.getDefaultInstance() : message_;
+    public int getMessageCount() {
+      return message_.size();
+    }
+    /**
+     * <code>repeated .Message Message = 1;</code>
+     */
+    @java.lang.Override
+    public proto.MessagesProto.Message getMessage(int index) {
+      return message_.get(index);
+    }
+    /**
+     * <code>repeated .Message Message = 1;</code>
+     */
+    @java.lang.Override
+    public proto.MessagesProto.MessageOrBuilder getMessageOrBuilder(
+        int index) {
+      return message_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5738,8 +5910,8 @@ public final class MessagesProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(1, getMessage());
+      for (int i = 0; i < message_.size(); i++) {
+        output.writeMessage(1, message_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -5750,9 +5922,9 @@ public final class MessagesProto {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      for (int i = 0; i < message_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getMessage());
+          .computeMessageSize(1, message_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -5764,16 +5936,13 @@ public final class MessagesProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof proto.MessagesProto.GetChatLastMessageResponse)) {
+      if (!(obj instanceof proto.MessagesProto.GetUserLastMessagesResponse)) {
         return super.equals(obj);
       }
-      proto.MessagesProto.GetChatLastMessageResponse other = (proto.MessagesProto.GetChatLastMessageResponse) obj;
+      proto.MessagesProto.GetUserLastMessagesResponse other = (proto.MessagesProto.GetUserLastMessagesResponse) obj;
 
-      if (hasMessage() != other.hasMessage()) return false;
-      if (hasMessage()) {
-        if (!getMessage()
-            .equals(other.getMessage())) return false;
-      }
+      if (!getMessageList()
+          .equals(other.getMessageList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -5785,53 +5954,53 @@ public final class MessagesProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasMessage()) {
+      if (getMessageCount() > 0) {
         hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-        hash = (53 * hash) + getMessage().hashCode();
+        hash = (53 * hash) + getMessageList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static proto.MessagesProto.GetChatLastMessageResponse parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.MessagesProto.GetChatLastMessageResponse parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.MessagesProto.GetChatLastMessageResponse parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.MessagesProto.GetChatLastMessageResponse parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.MessagesProto.GetChatLastMessageResponse parseFrom(byte[] data)
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static proto.MessagesProto.GetChatLastMessageResponse parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static proto.MessagesProto.GetChatLastMessageResponse parseFrom(java.io.InputStream input)
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static proto.MessagesProto.GetChatLastMessageResponse parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5839,26 +6008,26 @@ public final class MessagesProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static proto.MessagesProto.GetChatLastMessageResponse parseDelimitedFrom(java.io.InputStream input)
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static proto.MessagesProto.GetChatLastMessageResponse parseDelimitedFrom(
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static proto.MessagesProto.GetChatLastMessageResponse parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static proto.MessagesProto.GetChatLastMessageResponse parseFrom(
+    public static proto.MessagesProto.GetUserLastMessagesResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5871,7 +6040,7 @@ public final class MessagesProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(proto.MessagesProto.GetChatLastMessageResponse prototype) {
+    public static Builder newBuilder(proto.MessagesProto.GetUserLastMessagesResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5887,67 +6056,63 @@ public final class MessagesProto {
       return builder;
     }
     /**
-     * Protobuf type {@code GetChatLastMessageResponse}
+     * Protobuf type {@code GetUserLastMessagesResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetChatLastMessageResponse)
-        proto.MessagesProto.GetChatLastMessageResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:GetUserLastMessagesResponse)
+        proto.MessagesProto.GetUserLastMessagesResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return proto.MessagesProto.internal_static_GetChatLastMessageResponse_descriptor;
+        return proto.MessagesProto.internal_static_GetUserLastMessagesResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return proto.MessagesProto.internal_static_GetChatLastMessageResponse_fieldAccessorTable
+        return proto.MessagesProto.internal_static_GetUserLastMessagesResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                proto.MessagesProto.GetChatLastMessageResponse.class, proto.MessagesProto.GetChatLastMessageResponse.Builder.class);
+                proto.MessagesProto.GetUserLastMessagesResponse.class, proto.MessagesProto.GetUserLastMessagesResponse.Builder.class);
       }
 
-      // Construct using proto.MessagesProto.GetChatLastMessageResponse.newBuilder()
+      // Construct using proto.MessagesProto.GetUserLastMessagesResponse.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage
-                .alwaysUseFieldBuilders) {
-          getMessageFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        message_ = null;
-        if (messageBuilder_ != null) {
-          messageBuilder_.dispose();
-          messageBuilder_ = null;
+        if (messageBuilder_ == null) {
+          message_ = java.util.Collections.emptyList();
+        } else {
+          message_ = null;
+          messageBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return proto.MessagesProto.internal_static_GetChatLastMessageResponse_descriptor;
+        return proto.MessagesProto.internal_static_GetUserLastMessagesResponse_descriptor;
       }
 
       @java.lang.Override
-      public proto.MessagesProto.GetChatLastMessageResponse getDefaultInstanceForType() {
-        return proto.MessagesProto.GetChatLastMessageResponse.getDefaultInstance();
+      public proto.MessagesProto.GetUserLastMessagesResponse getDefaultInstanceForType() {
+        return proto.MessagesProto.GetUserLastMessagesResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public proto.MessagesProto.GetChatLastMessageResponse build() {
-        proto.MessagesProto.GetChatLastMessageResponse result = buildPartial();
+      public proto.MessagesProto.GetUserLastMessagesResponse build() {
+        proto.MessagesProto.GetUserLastMessagesResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5955,39 +6120,67 @@ public final class MessagesProto {
       }
 
       @java.lang.Override
-      public proto.MessagesProto.GetChatLastMessageResponse buildPartial() {
-        proto.MessagesProto.GetChatLastMessageResponse result = new proto.MessagesProto.GetChatLastMessageResponse(this);
+      public proto.MessagesProto.GetUserLastMessagesResponse buildPartial() {
+        proto.MessagesProto.GetUserLastMessagesResponse result = new proto.MessagesProto.GetUserLastMessagesResponse(this);
+        buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(proto.MessagesProto.GetChatLastMessageResponse result) {
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.message_ = messageBuilder_ == null
-              ? message_
-              : messageBuilder_.build();
-          to_bitField0_ |= 0x00000001;
+      private void buildPartialRepeatedFields(proto.MessagesProto.GetUserLastMessagesResponse result) {
+        if (messageBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            message_ = java.util.Collections.unmodifiableList(message_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.message_ = message_;
+        } else {
+          result.message_ = messageBuilder_.build();
         }
-        result.bitField0_ |= to_bitField0_;
+      }
+
+      private void buildPartial0(proto.MessagesProto.GetUserLastMessagesResponse result) {
+        int from_bitField0_ = bitField0_;
       }
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof proto.MessagesProto.GetChatLastMessageResponse) {
-          return mergeFrom((proto.MessagesProto.GetChatLastMessageResponse)other);
+        if (other instanceof proto.MessagesProto.GetUserLastMessagesResponse) {
+          return mergeFrom((proto.MessagesProto.GetUserLastMessagesResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(proto.MessagesProto.GetChatLastMessageResponse other) {
-        if (other == proto.MessagesProto.GetChatLastMessageResponse.getDefaultInstance()) return this;
-        if (other.hasMessage()) {
-          mergeMessage(other.getMessage());
+      public Builder mergeFrom(proto.MessagesProto.GetUserLastMessagesResponse other) {
+        if (other == proto.MessagesProto.GetUserLastMessagesResponse.getDefaultInstance()) return this;
+        if (messageBuilder_ == null) {
+          if (!other.message_.isEmpty()) {
+            if (message_.isEmpty()) {
+              message_ = other.message_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureMessageIsMutable();
+              message_.addAll(other.message_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.message_.isEmpty()) {
+            if (messageBuilder_.isEmpty()) {
+              messageBuilder_.dispose();
+              messageBuilder_ = null;
+              message_ = other.message_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              messageBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMessageFieldBuilder() : null;
+            } else {
+              messageBuilder_.addAllMessages(other.message_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -6016,10 +6209,16 @@ public final class MessagesProto {
                 done = true;
                 break;
               case 10: {
-                input.readMessage(
-                    getMessageFieldBuilder().getBuilder(),
-                    extensionRegistry);
-                bitField0_ |= 0x00000001;
+                proto.MessagesProto.Message m =
+                    input.readMessage(
+                        proto.MessagesProto.Message.parser(),
+                        extensionRegistry);
+                if (messageBuilder_ == null) {
+                  ensureMessageIsMutable();
+                  message_.add(m);
+                } else {
+                  messageBuilder_.addMessage(m);
+                }
                 break;
               } // case 10
               default: {
@@ -6039,120 +6238,239 @@ public final class MessagesProto {
       }
       private int bitField0_;
 
-      private proto.MessagesProto.Message message_;
-      private com.google.protobuf.SingleFieldBuilder<
-          proto.MessagesProto.Message, proto.MessagesProto.Message.Builder, proto.MessagesProto.MessageOrBuilder> messageBuilder_;
-      /**
-       * <code>.Message Message = 1;</code>
-       * @return Whether the message field is set.
-       */
-      public boolean hasMessage() {
-        return ((bitField0_ & 0x00000001) != 0);
+      private java.util.List<proto.MessagesProto.Message> message_ =
+        java.util.Collections.emptyList();
+      private void ensureMessageIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          message_ = new java.util.ArrayList<proto.MessagesProto.Message>(message_);
+          bitField0_ |= 0x00000001;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          proto.MessagesProto.Message, proto.MessagesProto.Message.Builder, proto.MessagesProto.MessageOrBuilder> messageBuilder_;
+
       /**
-       * <code>.Message Message = 1;</code>
-       * @return The message.
+       * <code>repeated .Message Message = 1;</code>
        */
-      public proto.MessagesProto.Message getMessage() {
+      public java.util.List<proto.MessagesProto.Message> getMessageList() {
         if (messageBuilder_ == null) {
-          return message_ == null ? proto.MessagesProto.Message.getDefaultInstance() : message_;
+          return java.util.Collections.unmodifiableList(message_);
         } else {
-          return messageBuilder_.getMessage();
+          return messageBuilder_.getMessageList();
         }
       }
       /**
-       * <code>.Message Message = 1;</code>
+       * <code>repeated .Message Message = 1;</code>
        */
-      public Builder setMessage(proto.MessagesProto.Message value) {
+      public int getMessageCount() {
+        if (messageBuilder_ == null) {
+          return message_.size();
+        } else {
+          return messageBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public proto.MessagesProto.Message getMessage(int index) {
+        if (messageBuilder_ == null) {
+          return message_.get(index);
+        } else {
+          return messageBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public Builder setMessage(
+          int index, proto.MessagesProto.Message value) {
         if (messageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          message_ = value;
+          ensureMessageIsMutable();
+          message_.set(index, value);
+          onChanged();
         } else {
-          messageBuilder_.setMessage(value);
+          messageBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000001;
-        onChanged();
         return this;
       }
       /**
-       * <code>.Message Message = 1;</code>
+       * <code>repeated .Message Message = 1;</code>
        */
       public Builder setMessage(
+          int index, proto.MessagesProto.Message.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public Builder addMessage(proto.MessagesProto.Message value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.add(value);
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public Builder addMessage(
+          int index, proto.MessagesProto.Message value) {
+        if (messageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessageIsMutable();
+          message_.add(index, value);
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public Builder addMessage(
           proto.MessagesProto.Message.Builder builderForValue) {
         if (messageBuilder_ == null) {
-          message_ = builderForValue.build();
-        } else {
-          messageBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.Message Message = 1;</code>
-       */
-      public Builder mergeMessage(proto.MessagesProto.Message value) {
-        if (messageBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-            message_ != null &&
-            message_ != proto.MessagesProto.Message.getDefaultInstance()) {
-            getMessageBuilder().mergeFrom(value);
-          } else {
-            message_ = value;
-          }
-        } else {
-          messageBuilder_.mergeFrom(value);
-        }
-        if (message_ != null) {
-          bitField0_ |= 0x00000001;
+          ensureMessageIsMutable();
+          message_.add(builderForValue.build());
           onChanged();
+        } else {
+          messageBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>.Message Message = 1;</code>
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public Builder addMessage(
+          int index, proto.MessagesProto.Message.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          messageBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public Builder addAllMessage(
+          java.lang.Iterable<? extends proto.MessagesProto.Message> values) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, message_);
+          onChanged();
+        } else {
+          messageBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
        */
       public Builder clearMessage() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        message_ = null;
-        if (messageBuilder_ != null) {
-          messageBuilder_.dispose();
-          messageBuilder_ = null;
+        if (messageBuilder_ == null) {
+          message_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          messageBuilder_.clear();
         }
-        onChanged();
         return this;
       }
       /**
-       * <code>.Message Message = 1;</code>
+       * <code>repeated .Message Message = 1;</code>
        */
-      public proto.MessagesProto.Message.Builder getMessageBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getMessageFieldBuilder().getBuilder();
+      public Builder removeMessage(int index) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.remove(index);
+          onChanged();
+        } else {
+          messageBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>.Message Message = 1;</code>
+       * <code>repeated .Message Message = 1;</code>
        */
-      public proto.MessagesProto.MessageOrBuilder getMessageOrBuilder() {
-        if (messageBuilder_ != null) {
-          return messageBuilder_.getMessageOrBuilder();
-        } else {
-          return message_ == null ?
-              proto.MessagesProto.Message.getDefaultInstance() : message_;
+      public proto.MessagesProto.Message.Builder getMessageBuilder(
+          int index) {
+        return getMessageFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public proto.MessagesProto.MessageOrBuilder getMessageOrBuilder(
+          int index) {
+        if (messageBuilder_ == null) {
+          return message_.get(index);  } else {
+          return messageBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>.Message Message = 1;</code>
+       * <code>repeated .Message Message = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      public java.util.List<? extends proto.MessagesProto.MessageOrBuilder> 
+           getMessageOrBuilderList() {
+        if (messageBuilder_ != null) {
+          return messageBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(message_);
+        }
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public proto.MessagesProto.Message.Builder addMessageBuilder() {
+        return getMessageFieldBuilder().addBuilder(
+            proto.MessagesProto.Message.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public proto.MessagesProto.Message.Builder addMessageBuilder(
+          int index) {
+        return getMessageFieldBuilder().addBuilder(
+            index, proto.MessagesProto.Message.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Message Message = 1;</code>
+       */
+      public java.util.List<proto.MessagesProto.Message.Builder> 
+           getMessageBuilderList() {
+        return getMessageFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
           proto.MessagesProto.Message, proto.MessagesProto.Message.Builder, proto.MessagesProto.MessageOrBuilder> 
           getMessageFieldBuilder() {
         if (messageBuilder_ == null) {
-          messageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          messageBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               proto.MessagesProto.Message, proto.MessagesProto.Message.Builder, proto.MessagesProto.MessageOrBuilder>(
-                  getMessage(),
+                  message_,
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           message_ = null;
@@ -6160,23 +6478,23 @@ public final class MessagesProto {
         return messageBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:GetChatLastMessageResponse)
+      // @@protoc_insertion_point(builder_scope:GetUserLastMessagesResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:GetChatLastMessageResponse)
-    private static final proto.MessagesProto.GetChatLastMessageResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:GetUserLastMessagesResponse)
+    private static final proto.MessagesProto.GetUserLastMessagesResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new proto.MessagesProto.GetChatLastMessageResponse();
+      DEFAULT_INSTANCE = new proto.MessagesProto.GetUserLastMessagesResponse();
     }
 
-    public static proto.MessagesProto.GetChatLastMessageResponse getDefaultInstance() {
+    public static proto.MessagesProto.GetUserLastMessagesResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GetChatLastMessageResponse>
-        PARSER = new com.google.protobuf.AbstractParser<GetChatLastMessageResponse>() {
+    private static final com.google.protobuf.Parser<GetUserLastMessagesResponse>
+        PARSER = new com.google.protobuf.AbstractParser<GetUserLastMessagesResponse>() {
       @java.lang.Override
-      public GetChatLastMessageResponse parsePartialFrom(
+      public GetUserLastMessagesResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6195,17 +6513,17 @@ public final class MessagesProto {
       }
     };
 
-    public static com.google.protobuf.Parser<GetChatLastMessageResponse> parser() {
+    public static com.google.protobuf.Parser<GetUserLastMessagesResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GetChatLastMessageResponse> getParserForType() {
+    public com.google.protobuf.Parser<GetUserLastMessagesResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public proto.MessagesProto.GetChatLastMessageResponse getDefaultInstanceForType() {
+    public proto.MessagesProto.GetUserLastMessagesResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6257,15 +6575,15 @@ public final class MessagesProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_EditMessageResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetChatLastMessageRequest_descriptor;
+    internal_static_GetUserLastMessagesRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_GetChatLastMessageRequest_fieldAccessorTable;
+      internal_static_GetUserLastMessagesRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetChatLastMessageResponse_descriptor;
+    internal_static_GetUserLastMessagesResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_GetChatLastMessageResponse_fieldAccessorTable;
+      internal_static_GetUserLastMessagesResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6275,31 +6593,31 @@ public final class MessagesProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016messages.proto\"U\n\007Message\022\n\n\002Id\030\001 \001(\003\022" +
+      "\n\016messages.proto\"n\n\007Message\022\n\n\002Id\030\001 \001(\003\022" +
       "\016\n\006UserId\030\002 \001(\003\022\016\n\006ChatId\030\003 \001(\003\022\014\n\004Text\030" +
-      "\004 \001(\t\022\020\n\010UserName\030\005 \001(\t\"B\n\022PostMessageRe" +
-      "quest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006ChatId\030\002 \001(\003\022\014\n" +
-      "\004Text\030\003 \001(\t\"!\n\023PostMessageResponse\022\n\n\002Id" +
-      "\030\001 \001(\003\")\n\024DeleteMessageRequest\022\021\n\tMessag" +
-      "eId\030\001 \001(\003\"\'\n\025DeleteMessageResponse\022\016\n\006St" +
-      "atus\030\001 \001(\t\"(\n\026GetChatMessagesRequest\022\016\n\006" +
-      "ChatId\030\001 \001(\003\"5\n\027GetChatMessagesResponse\022" +
-      "\032\n\010Messages\030\001 \003(\0132\010.Message\"5\n\022EditMessa" +
-      "geRequest\022\021\n\tMessageId\030\001 \001(\003\022\014\n\004Text\030\002 \001" +
-      "(\t\"%\n\023EditMessageResponse\022\016\n\006Status\030\001 \001(" +
-      "\t\"+\n\031GetChatLastMessageRequest\022\016\n\006ChatId" +
-      "\030\001 \001(\003\"7\n\032GetChatLastMessageResponse\022\031\n\007" +
-      "Message\030\001 \001(\0132\010.Message2\323\002\n\010Messages\0228\n\013" +
-      "PostMessage\022\023.PostMessageRequest\032\024.PostM" +
-      "essageResponse\022>\n\rDeleteMessage\022\025.Delete" +
-      "MessageRequest\032\026.DeleteMessageResponse\022D" +
-      "\n\017GetChatMessages\022\027.GetChatMessagesReque" +
-      "st\032\030.GetChatMessagesResponse\0228\n\013EditMess" +
-      "age\022\023.EditMessageRequest\032\024.EditMessageRe" +
-      "sponse\022M\n\022GetChatLastMessage\022\032.GetChatLa" +
-      "stMessageRequest\032\033.GetChatLastMessageRes" +
-      "ponseB\037\n\005protoB\rMessagesProtoZ\007.;protob\006" +
-      "proto3"
+      "\004 \001(\t\022\020\n\010UserName\030\005 \001(\t\022\027\n\017TeamProjectNa" +
+      "me\030\006 \001(\t\"B\n\022PostMessageRequest\022\016\n\006UserId" +
+      "\030\001 \001(\003\022\016\n\006ChatId\030\002 \001(\003\022\014\n\004Text\030\003 \001(\t\"!\n\023" +
+      "PostMessageResponse\022\n\n\002Id\030\001 \001(\003\")\n\024Delet" +
+      "eMessageRequest\022\021\n\tMessageId\030\001 \001(\003\"\'\n\025De" +
+      "leteMessageResponse\022\016\n\006Status\030\001 \001(\t\"(\n\026G" +
+      "etChatMessagesRequest\022\016\n\006ChatId\030\001 \001(\003\"5\n" +
+      "\027GetChatMessagesResponse\022\032\n\010Messages\030\001 \003" +
+      "(\0132\010.Message\"5\n\022EditMessageRequest\022\021\n\tMe" +
+      "ssageId\030\001 \001(\003\022\014\n\004Text\030\002 \001(\t\"%\n\023EditMessa" +
+      "geResponse\022\016\n\006Status\030\001 \001(\t\",\n\032GetUserLas" +
+      "tMessagesRequest\022\016\n\006UserId\030\001 \001(\003\"8\n\033GetU" +
+      "serLastMessagesResponse\022\031\n\007Message\030\001 \003(\013" +
+      "2\010.Message2\326\002\n\010Messages\0228\n\013PostMessage\022\023" +
+      ".PostMessageRequest\032\024.PostMessageRespons" +
+      "e\022>\n\rDeleteMessage\022\025.DeleteMessageReques" +
+      "t\032\026.DeleteMessageResponse\022D\n\017GetChatMess" +
+      "ages\022\027.GetChatMessagesRequest\032\030.GetChatM" +
+      "essagesResponse\0228\n\013EditMessage\022\023.EditMes" +
+      "sageRequest\032\024.EditMessageResponse\022P\n\023Get" +
+      "UserLastMessages\022\033.GetUserLastMessagesRe" +
+      "quest\032\034.GetUserLastMessagesResponseB\037\n\005p" +
+      "rotoB\rMessagesProtoZ\007.;protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6310,7 +6628,7 @@ public final class MessagesProto {
     internal_static_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Message_descriptor,
-        new java.lang.String[] { "Id", "UserId", "ChatId", "Text", "UserName", });
+        new java.lang.String[] { "Id", "UserId", "ChatId", "Text", "UserName", "TeamProjectName", });
     internal_static_PostMessageRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_PostMessageRequest_fieldAccessorTable = new
@@ -6359,17 +6677,17 @@ public final class MessagesProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_EditMessageResponse_descriptor,
         new java.lang.String[] { "Status", });
-    internal_static_GetChatLastMessageRequest_descriptor =
+    internal_static_GetUserLastMessagesRequest_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_GetChatLastMessageRequest_fieldAccessorTable = new
+    internal_static_GetUserLastMessagesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_GetChatLastMessageRequest_descriptor,
-        new java.lang.String[] { "ChatId", });
-    internal_static_GetChatLastMessageResponse_descriptor =
+        internal_static_GetUserLastMessagesRequest_descriptor,
+        new java.lang.String[] { "UserId", });
+    internal_static_GetUserLastMessagesResponse_descriptor =
       getDescriptor().getMessageTypes().get(10);
-    internal_static_GetChatLastMessageResponse_fieldAccessorTable = new
+    internal_static_GetUserLastMessagesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_GetChatLastMessageResponse_descriptor,
+        internal_static_GetUserLastMessagesResponse_descriptor,
         new java.lang.String[] { "Message", });
     descriptor.resolveAllFeaturesImmutable();
   }

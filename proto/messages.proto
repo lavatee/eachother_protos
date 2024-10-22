@@ -9,7 +9,7 @@ service Messages {
     rpc DeleteMessage(DeleteMessageRequest) returns (DeleteMessageResponse);
     rpc GetChatMessages(GetChatMessagesRequest) returns (GetChatMessagesResponse);
     rpc EditMessage(EditMessageRequest) returns (EditMessageResponse);
-    rpc GetChatLastMessage(GetChatLastMessageRequest) returns (GetChatLastMessageResponse);
+    rpc GetUserLastMessages(GetUserLastMessagesRequest) returns (GetUserLastMessagesResponse);
 }
 
 message Message {
@@ -18,6 +18,7 @@ message Message {
     int64 ChatId = 3;
     string Text = 4;
     string UserName = 5;
+    string TeamProjectName = 6;
 }
 
 message PostMessageRequest {
@@ -55,10 +56,10 @@ message EditMessageResponse {
     string Status = 1;
 }
 
-message GetChatLastMessageRequest {
-    int64 ChatId = 1;
+message GetUserLastMessagesRequest {
+    int64 UserId = 1;
 }
 
-message GetChatLastMessageResponse {
-    Message Message = 1;
+message GetUserLastMessagesResponse {
+    repeated Message Message = 1;
 }
