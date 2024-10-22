@@ -13,7 +13,7 @@ service Chats {
 message Chat {
     int64 Id = 1;
     int64 TeamId = 2;
-    repeated string Github = 3;
+    string Github = 3;
     string TeamProjectName = 4;
     int64 CreatorId = 5;
 }
