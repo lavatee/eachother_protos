@@ -7,8 +7,6 @@ option java_outer_classname = "ChatsProto";
 service Chats {
     rpc PostChat(PostChatRequest) returns (PostChatResponse);
     rpc GetOneChat(GetOneChatRequest) returns (GetOneChatResponse);
-    rpc LeaveChat(LeaveChatRequest) returns (LeaveChatResponse);
-    rpc JoinChat(JoinChatRequest) returns (JoinChatResponse);
     rpc DeleteChat(DeleteChatRequest) returns (DeleteChatResponse);
 }
 
@@ -44,24 +42,6 @@ message GetOneChatRequest {
 
 message GetOneChatResponse {
     Chat Chat = 1;
-}
-
-message LeaveChatRequest {
-    int64 UserId = 1;
-    int64 TeamId = 2;
-}
-
-message LeaveChatResponse {
-    string Status = 1;
-}
-
-message JoinChatRequest {
-    int64 UserId = 1;
-    int64 TeamId = 2;
-}
-
-message JoinChatResponse {
-    string Status = 1;
 }
 
 message DeleteChatRequest {
