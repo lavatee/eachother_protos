@@ -19,6 +19,7 @@ message Message {
     string Text = 4;
     string UserName = 5;
     string TeamProjectName = 6;
+    bool IsEdited = 7;
 }
 
 message PostMessageRequest {
@@ -32,7 +33,8 @@ message PostMessageResponse {
 }
 
 message DeleteMessageRequest {
-    int64 MessageId = 1;
+    int64 UserId = 1;
+    int64 MessageId = 2;
 }
 
 message DeleteMessageResponse {
@@ -48,8 +50,9 @@ message GetChatMessagesResponse {
 }
 
 message EditMessageRequest {
-    int64 MessageId = 1;
-    string Text = 2;
+    int64 UserId = 1;
+    int64 MessageId = 2;
+    string Text = 3;
 }
 
 message EditMessageResponse {

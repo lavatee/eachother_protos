@@ -82,6 +82,12 @@ public final class MessagesProto {
      */
     com.google.protobuf.ByteString
         getTeamProjectNameBytes();
+
+    /**
+     * <code>bool IsEdited = 7;</code>
+     * @return The isEdited.
+     */
+    boolean getIsEdited();
   }
   /**
    * Protobuf type {@code Message}
@@ -273,6 +279,17 @@ public final class MessagesProto {
       }
     }
 
+    public static final int ISEDITED_FIELD_NUMBER = 7;
+    private boolean isEdited_ = false;
+    /**
+     * <code>bool IsEdited = 7;</code>
+     * @return The isEdited.
+     */
+    @java.lang.Override
+    public boolean getIsEdited() {
+      return isEdited_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -305,6 +322,9 @@ public final class MessagesProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(teamProjectName_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 6, teamProjectName_);
       }
+      if (isEdited_ != false) {
+        output.writeBool(7, isEdited_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -335,6 +355,10 @@ public final class MessagesProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(teamProjectName_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(6, teamProjectName_);
       }
+      if (isEdited_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, isEdited_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -362,6 +386,8 @@ public final class MessagesProto {
           .equals(other.getUserName())) return false;
       if (!getTeamProjectName()
           .equals(other.getTeamProjectName())) return false;
+      if (getIsEdited()
+          != other.getIsEdited()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -388,6 +414,9 @@ public final class MessagesProto {
       hash = (53 * hash) + getUserName().hashCode();
       hash = (37 * hash) + TEAMPROJECTNAME_FIELD_NUMBER;
       hash = (53 * hash) + getTeamProjectName().hashCode();
+      hash = (37 * hash) + ISEDITED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsEdited());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -525,6 +554,7 @@ public final class MessagesProto {
         text_ = "";
         userName_ = "";
         teamProjectName_ = "";
+        isEdited_ = false;
         return this;
       }
 
@@ -576,6 +606,9 @@ public final class MessagesProto {
         if (((from_bitField0_ & 0x00000020) != 0)) {
           result.teamProjectName_ = teamProjectName_;
         }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.isEdited_ = isEdited_;
+        }
       }
 
       @java.lang.Override
@@ -613,6 +646,9 @@ public final class MessagesProto {
           teamProjectName_ = other.teamProjectName_;
           bitField0_ |= 0x00000020;
           onChanged();
+        }
+        if (other.getIsEdited() != false) {
+          setIsEdited(other.getIsEdited());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -670,6 +706,11 @@ public final class MessagesProto {
                 bitField0_ |= 0x00000020;
                 break;
               } // case 50
+              case 56: {
+                isEdited_ = input.readBool();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 56
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -995,6 +1036,38 @@ public final class MessagesProto {
         checkByteStringIsUtf8(value);
         teamProjectName_ = value;
         bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
+      private boolean isEdited_ ;
+      /**
+       * <code>bool IsEdited = 7;</code>
+       * @return The isEdited.
+       */
+      @java.lang.Override
+      public boolean getIsEdited() {
+        return isEdited_;
+      }
+      /**
+       * <code>bool IsEdited = 7;</code>
+       * @param value The isEdited to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsEdited(boolean value) {
+
+        isEdited_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool IsEdited = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsEdited() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        isEdited_ = false;
         onChanged();
         return this;
       }
@@ -2146,7 +2219,13 @@ public final class MessagesProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 MessageId = 1;</code>
+     * <code>int64 UserId = 1;</code>
+     * @return The userId.
+     */
+    long getUserId();
+
+    /**
+     * <code>int64 MessageId = 2;</code>
      * @return The messageId.
      */
     long getMessageId();
@@ -2188,10 +2267,21 @@ public final class MessagesProto {
               proto.MessagesProto.DeleteMessageRequest.class, proto.MessagesProto.DeleteMessageRequest.Builder.class);
     }
 
-    public static final int MESSAGEID_FIELD_NUMBER = 1;
+    public static final int USERID_FIELD_NUMBER = 1;
+    private long userId_ = 0L;
+    /**
+     * <code>int64 UserId = 1;</code>
+     * @return The userId.
+     */
+    @java.lang.Override
+    public long getUserId() {
+      return userId_;
+    }
+
+    public static final int MESSAGEID_FIELD_NUMBER = 2;
     private long messageId_ = 0L;
     /**
-     * <code>int64 MessageId = 1;</code>
+     * <code>int64 MessageId = 2;</code>
      * @return The messageId.
      */
     @java.lang.Override
@@ -2213,8 +2303,11 @@ public final class MessagesProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (userId_ != 0L) {
+        output.writeInt64(1, userId_);
+      }
       if (messageId_ != 0L) {
-        output.writeInt64(1, messageId_);
+        output.writeInt64(2, messageId_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2225,9 +2318,13 @@ public final class MessagesProto {
       if (size != -1) return size;
 
       size = 0;
+      if (userId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, userId_);
+      }
       if (messageId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, messageId_);
+          .computeInt64Size(2, messageId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -2244,6 +2341,8 @@ public final class MessagesProto {
       }
       proto.MessagesProto.DeleteMessageRequest other = (proto.MessagesProto.DeleteMessageRequest) obj;
 
+      if (getUserId()
+          != other.getUserId()) return false;
       if (getMessageId()
           != other.getMessageId()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -2257,6 +2356,9 @@ public final class MessagesProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUserId());
       hash = (37 * hash) + MESSAGEID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getMessageId());
@@ -2391,6 +2493,7 @@ public final class MessagesProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
+        userId_ = 0L;
         messageId_ = 0L;
         return this;
       }
@@ -2426,6 +2529,9 @@ public final class MessagesProto {
       private void buildPartial0(proto.MessagesProto.DeleteMessageRequest result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.userId_ = userId_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
           result.messageId_ = messageId_;
         }
       }
@@ -2442,6 +2548,9 @@ public final class MessagesProto {
 
       public Builder mergeFrom(proto.MessagesProto.DeleteMessageRequest other) {
         if (other == proto.MessagesProto.DeleteMessageRequest.getDefaultInstance()) return this;
+        if (other.getUserId() != 0L) {
+          setUserId(other.getUserId());
+        }
         if (other.getMessageId() != 0L) {
           setMessageId(other.getMessageId());
         }
@@ -2472,10 +2581,15 @@ public final class MessagesProto {
                 done = true;
                 break;
               case 8: {
-                messageId_ = input.readInt64();
+                userId_ = input.readInt64();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 8
+              case 16: {
+                messageId_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2493,9 +2607,41 @@ public final class MessagesProto {
       }
       private int bitField0_;
 
+      private long userId_ ;
+      /**
+       * <code>int64 UserId = 1;</code>
+       * @return The userId.
+       */
+      @java.lang.Override
+      public long getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>int64 UserId = 1;</code>
+       * @param value The userId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserId(long value) {
+
+        userId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 UserId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        userId_ = 0L;
+        onChanged();
+        return this;
+      }
+
       private long messageId_ ;
       /**
-       * <code>int64 MessageId = 1;</code>
+       * <code>int64 MessageId = 2;</code>
        * @return The messageId.
        */
       @java.lang.Override
@@ -2503,23 +2649,23 @@ public final class MessagesProto {
         return messageId_;
       }
       /**
-       * <code>int64 MessageId = 1;</code>
+       * <code>int64 MessageId = 2;</code>
        * @param value The messageId to set.
        * @return This builder for chaining.
        */
       public Builder setMessageId(long value) {
 
         messageId_ = value;
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 MessageId = 1;</code>
+       * <code>int64 MessageId = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearMessageId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         messageId_ = 0L;
         onChanged();
         return this;
@@ -4266,18 +4412,24 @@ public final class MessagesProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 MessageId = 1;</code>
+     * <code>int64 UserId = 1;</code>
+     * @return The userId.
+     */
+    long getUserId();
+
+    /**
+     * <code>int64 MessageId = 2;</code>
      * @return The messageId.
      */
     long getMessageId();
 
     /**
-     * <code>string Text = 2;</code>
+     * <code>string Text = 3;</code>
      * @return The text.
      */
     java.lang.String getText();
     /**
-     * <code>string Text = 2;</code>
+     * <code>string Text = 3;</code>
      * @return The bytes for text.
      */
     com.google.protobuf.ByteString
@@ -4321,10 +4473,21 @@ public final class MessagesProto {
               proto.MessagesProto.EditMessageRequest.class, proto.MessagesProto.EditMessageRequest.Builder.class);
     }
 
-    public static final int MESSAGEID_FIELD_NUMBER = 1;
+    public static final int USERID_FIELD_NUMBER = 1;
+    private long userId_ = 0L;
+    /**
+     * <code>int64 UserId = 1;</code>
+     * @return The userId.
+     */
+    @java.lang.Override
+    public long getUserId() {
+      return userId_;
+    }
+
+    public static final int MESSAGEID_FIELD_NUMBER = 2;
     private long messageId_ = 0L;
     /**
-     * <code>int64 MessageId = 1;</code>
+     * <code>int64 MessageId = 2;</code>
      * @return The messageId.
      */
     @java.lang.Override
@@ -4332,11 +4495,11 @@ public final class MessagesProto {
       return messageId_;
     }
 
-    public static final int TEXT_FIELD_NUMBER = 2;
+    public static final int TEXT_FIELD_NUMBER = 3;
     @SuppressWarnings("serial")
     private volatile java.lang.Object text_ = "";
     /**
-     * <code>string Text = 2;</code>
+     * <code>string Text = 3;</code>
      * @return The text.
      */
     @java.lang.Override
@@ -4353,7 +4516,7 @@ public final class MessagesProto {
       }
     }
     /**
-     * <code>string Text = 2;</code>
+     * <code>string Text = 3;</code>
      * @return The bytes for text.
      */
     @java.lang.Override
@@ -4385,11 +4548,14 @@ public final class MessagesProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (userId_ != 0L) {
+        output.writeInt64(1, userId_);
+      }
       if (messageId_ != 0L) {
-        output.writeInt64(1, messageId_);
+        output.writeInt64(2, messageId_);
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(text_)) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 2, text_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, text_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -4400,12 +4566,16 @@ public final class MessagesProto {
       if (size != -1) return size;
 
       size = 0;
+      if (userId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, userId_);
+      }
       if (messageId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, messageId_);
+          .computeInt64Size(2, messageId_);
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(text_)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, text_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, text_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -4422,6 +4592,8 @@ public final class MessagesProto {
       }
       proto.MessagesProto.EditMessageRequest other = (proto.MessagesProto.EditMessageRequest) obj;
 
+      if (getUserId()
+          != other.getUserId()) return false;
       if (getMessageId()
           != other.getMessageId()) return false;
       if (!getText()
@@ -4437,6 +4609,9 @@ public final class MessagesProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUserId());
       hash = (37 * hash) + MESSAGEID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getMessageId());
@@ -4573,6 +4748,7 @@ public final class MessagesProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
+        userId_ = 0L;
         messageId_ = 0L;
         text_ = "";
         return this;
@@ -4609,9 +4785,12 @@ public final class MessagesProto {
       private void buildPartial0(proto.MessagesProto.EditMessageRequest result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.messageId_ = messageId_;
+          result.userId_ = userId_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.messageId_ = messageId_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
           result.text_ = text_;
         }
       }
@@ -4628,12 +4807,15 @@ public final class MessagesProto {
 
       public Builder mergeFrom(proto.MessagesProto.EditMessageRequest other) {
         if (other == proto.MessagesProto.EditMessageRequest.getDefaultInstance()) return this;
+        if (other.getUserId() != 0L) {
+          setUserId(other.getUserId());
+        }
         if (other.getMessageId() != 0L) {
           setMessageId(other.getMessageId());
         }
         if (!other.getText().isEmpty()) {
           text_ = other.text_;
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -4663,15 +4845,20 @@ public final class MessagesProto {
                 done = true;
                 break;
               case 8: {
-                messageId_ = input.readInt64();
+                userId_ = input.readInt64();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 8
-              case 18: {
-                text_ = input.readStringRequireUtf8();
+              case 16: {
+                messageId_ = input.readInt64();
                 bitField0_ |= 0x00000002;
                 break;
-              } // case 18
+              } // case 16
+              case 26: {
+                text_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4689,9 +4876,41 @@ public final class MessagesProto {
       }
       private int bitField0_;
 
+      private long userId_ ;
+      /**
+       * <code>int64 UserId = 1;</code>
+       * @return The userId.
+       */
+      @java.lang.Override
+      public long getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>int64 UserId = 1;</code>
+       * @param value The userId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserId(long value) {
+
+        userId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 UserId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        userId_ = 0L;
+        onChanged();
+        return this;
+      }
+
       private long messageId_ ;
       /**
-       * <code>int64 MessageId = 1;</code>
+       * <code>int64 MessageId = 2;</code>
        * @return The messageId.
        */
       @java.lang.Override
@@ -4699,23 +4918,23 @@ public final class MessagesProto {
         return messageId_;
       }
       /**
-       * <code>int64 MessageId = 1;</code>
+       * <code>int64 MessageId = 2;</code>
        * @param value The messageId to set.
        * @return This builder for chaining.
        */
       public Builder setMessageId(long value) {
 
         messageId_ = value;
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 MessageId = 1;</code>
+       * <code>int64 MessageId = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearMessageId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         messageId_ = 0L;
         onChanged();
         return this;
@@ -4723,7 +4942,7 @@ public final class MessagesProto {
 
       private java.lang.Object text_ = "";
       /**
-       * <code>string Text = 2;</code>
+       * <code>string Text = 3;</code>
        * @return The text.
        */
       public java.lang.String getText() {
@@ -4739,7 +4958,7 @@ public final class MessagesProto {
         }
       }
       /**
-       * <code>string Text = 2;</code>
+       * <code>string Text = 3;</code>
        * @return The bytes for text.
        */
       public com.google.protobuf.ByteString
@@ -4756,7 +4975,7 @@ public final class MessagesProto {
         }
       }
       /**
-       * <code>string Text = 2;</code>
+       * <code>string Text = 3;</code>
        * @param value The text to set.
        * @return This builder for chaining.
        */
@@ -4764,22 +4983,22 @@ public final class MessagesProto {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         text_ = value;
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
       /**
-       * <code>string Text = 2;</code>
+       * <code>string Text = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearText() {
         text_ = getDefaultInstance().getText();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
       /**
-       * <code>string Text = 2;</code>
+       * <code>string Text = 3;</code>
        * @param value The bytes for text to set.
        * @return This builder for chaining.
        */
@@ -4788,7 +5007,7 @@ public final class MessagesProto {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
         text_ = value;
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -6593,31 +6812,33 @@ public final class MessagesProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016messages.proto\"n\n\007Message\022\n\n\002Id\030\001 \001(\003\022" +
-      "\016\n\006UserId\030\002 \001(\003\022\016\n\006ChatId\030\003 \001(\003\022\014\n\004Text\030" +
-      "\004 \001(\t\022\020\n\010UserName\030\005 \001(\t\022\027\n\017TeamProjectNa" +
-      "me\030\006 \001(\t\"B\n\022PostMessageRequest\022\016\n\006UserId" +
-      "\030\001 \001(\003\022\016\n\006ChatId\030\002 \001(\003\022\014\n\004Text\030\003 \001(\t\"!\n\023" +
-      "PostMessageResponse\022\n\n\002Id\030\001 \001(\003\")\n\024Delet" +
-      "eMessageRequest\022\021\n\tMessageId\030\001 \001(\003\"\'\n\025De" +
-      "leteMessageResponse\022\016\n\006Status\030\001 \001(\t\"(\n\026G" +
-      "etChatMessagesRequest\022\016\n\006ChatId\030\001 \001(\003\"5\n" +
-      "\027GetChatMessagesResponse\022\032\n\010Messages\030\001 \003" +
-      "(\0132\010.Message\"5\n\022EditMessageRequest\022\021\n\tMe" +
-      "ssageId\030\001 \001(\003\022\014\n\004Text\030\002 \001(\t\"%\n\023EditMessa" +
-      "geResponse\022\016\n\006Status\030\001 \001(\t\",\n\032GetUserLas" +
-      "tMessagesRequest\022\016\n\006UserId\030\001 \001(\003\"8\n\033GetU" +
-      "serLastMessagesResponse\022\031\n\007Message\030\001 \003(\013" +
-      "2\010.Message2\326\002\n\010Messages\0228\n\013PostMessage\022\023" +
-      ".PostMessageRequest\032\024.PostMessageRespons" +
-      "e\022>\n\rDeleteMessage\022\025.DeleteMessageReques" +
-      "t\032\026.DeleteMessageResponse\022D\n\017GetChatMess" +
-      "ages\022\027.GetChatMessagesRequest\032\030.GetChatM" +
-      "essagesResponse\0228\n\013EditMessage\022\023.EditMes" +
-      "sageRequest\032\024.EditMessageResponse\022P\n\023Get" +
-      "UserLastMessages\022\033.GetUserLastMessagesRe" +
-      "quest\032\034.GetUserLastMessagesResponseB\037\n\005p" +
-      "rotoB\rMessagesProtoZ\007.;protob\006proto3"
+      "\n\016messages.proto\"\200\001\n\007Message\022\n\n\002Id\030\001 \001(\003" +
+      "\022\016\n\006UserId\030\002 \001(\003\022\016\n\006ChatId\030\003 \001(\003\022\014\n\004Text" +
+      "\030\004 \001(\t\022\020\n\010UserName\030\005 \001(\t\022\027\n\017TeamProjectN" +
+      "ame\030\006 \001(\t\022\020\n\010IsEdited\030\007 \001(\010\"B\n\022PostMessa" +
+      "geRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006ChatId\030\002 \001(" +
+      "\003\022\014\n\004Text\030\003 \001(\t\"!\n\023PostMessageResponse\022\n" +
+      "\n\002Id\030\001 \001(\003\"9\n\024DeleteMessageRequest\022\016\n\006Us" +
+      "erId\030\001 \001(\003\022\021\n\tMessageId\030\002 \001(\003\"\'\n\025DeleteM" +
+      "essageResponse\022\016\n\006Status\030\001 \001(\t\"(\n\026GetCha" +
+      "tMessagesRequest\022\016\n\006ChatId\030\001 \001(\003\"5\n\027GetC" +
+      "hatMessagesResponse\022\032\n\010Messages\030\001 \003(\0132\010." +
+      "Message\"E\n\022EditMessageRequest\022\016\n\006UserId\030" +
+      "\001 \001(\003\022\021\n\tMessageId\030\002 \001(\003\022\014\n\004Text\030\003 \001(\t\"%" +
+      "\n\023EditMessageResponse\022\016\n\006Status\030\001 \001(\t\",\n" +
+      "\032GetUserLastMessagesRequest\022\016\n\006UserId\030\001 " +
+      "\001(\003\"8\n\033GetUserLastMessagesResponse\022\031\n\007Me" +
+      "ssage\030\001 \003(\0132\010.Message2\326\002\n\010Messages\0228\n\013Po" +
+      "stMessage\022\023.PostMessageRequest\032\024.PostMes" +
+      "sageResponse\022>\n\rDeleteMessage\022\025.DeleteMe" +
+      "ssageRequest\032\026.DeleteMessageResponse\022D\n\017" +
+      "GetChatMessages\022\027.GetChatMessagesRequest" +
+      "\032\030.GetChatMessagesResponse\0228\n\013EditMessag" +
+      "e\022\023.EditMessageRequest\032\024.EditMessageResp" +
+      "onse\022P\n\023GetUserLastMessages\022\033.GetUserLas" +
+      "tMessagesRequest\032\034.GetUserLastMessagesRe" +
+      "sponseB\037\n\005protoB\rMessagesProtoZ\007.;protob" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6628,7 +6849,7 @@ public final class MessagesProto {
     internal_static_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Message_descriptor,
-        new java.lang.String[] { "Id", "UserId", "ChatId", "Text", "UserName", "TeamProjectName", });
+        new java.lang.String[] { "Id", "UserId", "ChatId", "Text", "UserName", "TeamProjectName", "IsEdited", });
     internal_static_PostMessageRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_PostMessageRequest_fieldAccessorTable = new
@@ -6646,7 +6867,7 @@ public final class MessagesProto {
     internal_static_DeleteMessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_DeleteMessageRequest_descriptor,
-        new java.lang.String[] { "MessageId", });
+        new java.lang.String[] { "UserId", "MessageId", });
     internal_static_DeleteMessageResponse_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_DeleteMessageResponse_fieldAccessorTable = new
@@ -6670,7 +6891,7 @@ public final class MessagesProto {
     internal_static_EditMessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_EditMessageRequest_descriptor,
-        new java.lang.String[] { "MessageId", "Text", });
+        new java.lang.String[] { "UserId", "MessageId", "Text", });
     internal_static_EditMessageResponse_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_EditMessageResponse_fieldAccessorTable = new
