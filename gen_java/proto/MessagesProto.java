@@ -1150,6 +1150,23 @@ public final class MessagesProto {
      */
     com.google.protobuf.ByteString
         getTextBytes();
+
+    /**
+     * <code>repeated int64 ActiveUsers = 4;</code>
+     * @return A list containing the activeUsers.
+     */
+    java.util.List<java.lang.Long> getActiveUsersList();
+    /**
+     * <code>repeated int64 ActiveUsers = 4;</code>
+     * @return The count of activeUsers.
+     */
+    int getActiveUsersCount();
+    /**
+     * <code>repeated int64 ActiveUsers = 4;</code>
+     * @param index The index of the element to return.
+     * @return The activeUsers at the given index.
+     */
+    long getActiveUsers(int index);
   }
   /**
    * Protobuf type {@code PostMessageRequest}
@@ -1174,6 +1191,7 @@ public final class MessagesProto {
     }
     private PostMessageRequest() {
       text_ = "";
+      activeUsers_ = emptyLongList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -1250,6 +1268,36 @@ public final class MessagesProto {
       }
     }
 
+    public static final int ACTIVEUSERS_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.LongList activeUsers_ =
+        emptyLongList();
+    /**
+     * <code>repeated int64 ActiveUsers = 4;</code>
+     * @return A list containing the activeUsers.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Long>
+        getActiveUsersList() {
+      return activeUsers_;
+    }
+    /**
+     * <code>repeated int64 ActiveUsers = 4;</code>
+     * @return The count of activeUsers.
+     */
+    public int getActiveUsersCount() {
+      return activeUsers_.size();
+    }
+    /**
+     * <code>repeated int64 ActiveUsers = 4;</code>
+     * @param index The index of the element to return.
+     * @return The activeUsers at the given index.
+     */
+    public long getActiveUsers(int index) {
+      return activeUsers_.getLong(index);
+    }
+    private int activeUsersMemoizedSerializedSize = -1;
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1264,6 +1312,7 @@ public final class MessagesProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (userId_ != 0L) {
         output.writeInt64(1, userId_);
       }
@@ -1272,6 +1321,13 @@ public final class MessagesProto {
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(text_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 3, text_);
+      }
+      if (getActiveUsersList().size() > 0) {
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(activeUsersMemoizedSerializedSize);
+      }
+      for (int i = 0; i < activeUsers_.size(); i++) {
+        output.writeInt64NoTag(activeUsers_.getLong(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1292,6 +1348,20 @@ public final class MessagesProto {
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(text_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(3, text_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < activeUsers_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt64SizeNoTag(activeUsers_.getLong(i));
+        }
+        size += dataSize;
+        if (!getActiveUsersList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        activeUsersMemoizedSerializedSize = dataSize;
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -1314,6 +1384,8 @@ public final class MessagesProto {
           != other.getChatId()) return false;
       if (!getText()
           .equals(other.getText())) return false;
+      if (!getActiveUsersList()
+          .equals(other.getActiveUsersList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1333,6 +1405,10 @@ public final class MessagesProto {
           getChatId());
       hash = (37 * hash) + TEXT_FIELD_NUMBER;
       hash = (53 * hash) + getText().hashCode();
+      if (getActiveUsersCount() > 0) {
+        hash = (37 * hash) + ACTIVEUSERS_FIELD_NUMBER;
+        hash = (53 * hash) + getActiveUsersList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1467,6 +1543,7 @@ public final class MessagesProto {
         userId_ = 0L;
         chatId_ = 0L;
         text_ = "";
+        activeUsers_ = emptyLongList();
         return this;
       }
 
@@ -1509,6 +1586,10 @@ public final class MessagesProto {
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.text_ = text_;
         }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          activeUsers_.makeImmutable();
+          result.activeUsers_ = activeUsers_;
+        }
       }
 
       @java.lang.Override
@@ -1532,6 +1613,17 @@ public final class MessagesProto {
         if (!other.getText().isEmpty()) {
           text_ = other.text_;
           bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (!other.activeUsers_.isEmpty()) {
+          if (activeUsers_.isEmpty()) {
+            activeUsers_ = other.activeUsers_;
+            activeUsers_.makeImmutable();
+            bitField0_ |= 0x00000008;
+          } else {
+            ensureActiveUsersIsMutable();
+            activeUsers_.addAll(other.activeUsers_);
+          }
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -1575,6 +1667,22 @@ public final class MessagesProto {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 26
+              case 32: {
+                long v = input.readInt64();
+                ensureActiveUsersIsMutable();
+                activeUsers_.addLong(v);
+                break;
+              } // case 32
+              case 34: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureActiveUsersIsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  activeUsers_.addLong(input.readInt64());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 34
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1724,6 +1832,90 @@ public final class MessagesProto {
         checkByteStringIsUtf8(value);
         text_ = value;
         bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.LongList activeUsers_ = emptyLongList();
+      private void ensureActiveUsersIsMutable() {
+        if (!activeUsers_.isModifiable()) {
+          activeUsers_ = makeMutableCopy(activeUsers_);
+        }
+        bitField0_ |= 0x00000008;
+      }
+      /**
+       * <code>repeated int64 ActiveUsers = 4;</code>
+       * @return A list containing the activeUsers.
+       */
+      public java.util.List<java.lang.Long>
+          getActiveUsersList() {
+        activeUsers_.makeImmutable();
+        return activeUsers_;
+      }
+      /**
+       * <code>repeated int64 ActiveUsers = 4;</code>
+       * @return The count of activeUsers.
+       */
+      public int getActiveUsersCount() {
+        return activeUsers_.size();
+      }
+      /**
+       * <code>repeated int64 ActiveUsers = 4;</code>
+       * @param index The index of the element to return.
+       * @return The activeUsers at the given index.
+       */
+      public long getActiveUsers(int index) {
+        return activeUsers_.getLong(index);
+      }
+      /**
+       * <code>repeated int64 ActiveUsers = 4;</code>
+       * @param index The index to set the value at.
+       * @param value The activeUsers to set.
+       * @return This builder for chaining.
+       */
+      public Builder setActiveUsers(
+          int index, long value) {
+
+        ensureActiveUsersIsMutable();
+        activeUsers_.setLong(index, value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 ActiveUsers = 4;</code>
+       * @param value The activeUsers to add.
+       * @return This builder for chaining.
+       */
+      public Builder addActiveUsers(long value) {
+
+        ensureActiveUsersIsMutable();
+        activeUsers_.addLong(value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 ActiveUsers = 4;</code>
+       * @param values The activeUsers to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllActiveUsers(
+          java.lang.Iterable<? extends java.lang.Long> values) {
+        ensureActiveUsersIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, activeUsers_);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 ActiveUsers = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearActiveUsers() {
+        activeUsers_ = emptyLongList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
@@ -6815,30 +7007,30 @@ public final class MessagesProto {
       "\n\016messages.proto\"\200\001\n\007Message\022\n\n\002Id\030\001 \001(\003" +
       "\022\016\n\006UserId\030\002 \001(\003\022\016\n\006ChatId\030\003 \001(\003\022\014\n\004Text" +
       "\030\004 \001(\t\022\020\n\010UserName\030\005 \001(\t\022\027\n\017TeamProjectN" +
-      "ame\030\006 \001(\t\022\020\n\010IsEdited\030\007 \001(\010\"B\n\022PostMessa" +
+      "ame\030\006 \001(\t\022\020\n\010IsEdited\030\007 \001(\010\"W\n\022PostMessa" +
       "geRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006ChatId\030\002 \001(" +
-      "\003\022\014\n\004Text\030\003 \001(\t\"!\n\023PostMessageResponse\022\n" +
-      "\n\002Id\030\001 \001(\003\"9\n\024DeleteMessageRequest\022\016\n\006Us" +
-      "erId\030\001 \001(\003\022\021\n\tMessageId\030\002 \001(\003\"\'\n\025DeleteM" +
-      "essageResponse\022\016\n\006Status\030\001 \001(\t\"(\n\026GetCha" +
-      "tMessagesRequest\022\016\n\006ChatId\030\001 \001(\003\"5\n\027GetC" +
-      "hatMessagesResponse\022\032\n\010Messages\030\001 \003(\0132\010." +
-      "Message\"E\n\022EditMessageRequest\022\016\n\006UserId\030" +
-      "\001 \001(\003\022\021\n\tMessageId\030\002 \001(\003\022\014\n\004Text\030\003 \001(\t\"%" +
-      "\n\023EditMessageResponse\022\016\n\006Status\030\001 \001(\t\",\n" +
-      "\032GetUserLastMessagesRequest\022\016\n\006UserId\030\001 " +
-      "\001(\003\"8\n\033GetUserLastMessagesResponse\022\031\n\007Me" +
-      "ssage\030\001 \003(\0132\010.Message2\326\002\n\010Messages\0228\n\013Po" +
-      "stMessage\022\023.PostMessageRequest\032\024.PostMes" +
-      "sageResponse\022>\n\rDeleteMessage\022\025.DeleteMe" +
-      "ssageRequest\032\026.DeleteMessageResponse\022D\n\017" +
-      "GetChatMessages\022\027.GetChatMessagesRequest" +
-      "\032\030.GetChatMessagesResponse\0228\n\013EditMessag" +
-      "e\022\023.EditMessageRequest\032\024.EditMessageResp" +
-      "onse\022P\n\023GetUserLastMessages\022\033.GetUserLas" +
-      "tMessagesRequest\032\034.GetUserLastMessagesRe" +
-      "sponseB\037\n\005protoB\rMessagesProtoZ\007.;protob" +
-      "\006proto3"
+      "\003\022\014\n\004Text\030\003 \001(\t\022\023\n\013ActiveUsers\030\004 \003(\003\"!\n\023" +
+      "PostMessageResponse\022\n\n\002Id\030\001 \001(\003\"9\n\024Delet" +
+      "eMessageRequest\022\016\n\006UserId\030\001 \001(\003\022\021\n\tMessa" +
+      "geId\030\002 \001(\003\"\'\n\025DeleteMessageResponse\022\016\n\006S" +
+      "tatus\030\001 \001(\t\"(\n\026GetChatMessagesRequest\022\016\n" +
+      "\006ChatId\030\001 \001(\003\"5\n\027GetChatMessagesResponse" +
+      "\022\032\n\010Messages\030\001 \003(\0132\010.Message\"E\n\022EditMess" +
+      "ageRequest\022\016\n\006UserId\030\001 \001(\003\022\021\n\tMessageId\030" +
+      "\002 \001(\003\022\014\n\004Text\030\003 \001(\t\"%\n\023EditMessageRespon" +
+      "se\022\016\n\006Status\030\001 \001(\t\",\n\032GetUserLastMessage" +
+      "sRequest\022\016\n\006UserId\030\001 \001(\003\"8\n\033GetUserLastM" +
+      "essagesResponse\022\031\n\007Message\030\001 \003(\0132\010.Messa" +
+      "ge2\326\002\n\010Messages\0228\n\013PostMessage\022\023.PostMes" +
+      "sageRequest\032\024.PostMessageResponse\022>\n\rDel" +
+      "eteMessage\022\025.DeleteMessageRequest\032\026.Dele" +
+      "teMessageResponse\022D\n\017GetChatMessages\022\027.G" +
+      "etChatMessagesRequest\032\030.GetChatMessagesR" +
+      "esponse\0228\n\013EditMessage\022\023.EditMessageRequ" +
+      "est\032\024.EditMessageResponse\022P\n\023GetUserLast" +
+      "Messages\022\033.GetUserLastMessagesRequest\032\034." +
+      "GetUserLastMessagesResponseB\037\n\005protoB\rMe" +
+      "ssagesProtoZ\007.;protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6855,7 +7047,7 @@ public final class MessagesProto {
     internal_static_PostMessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_PostMessageRequest_descriptor,
-        new java.lang.String[] { "UserId", "ChatId", "Text", });
+        new java.lang.String[] { "UserId", "ChatId", "Text", "ActiveUsers", });
     internal_static_PostMessageResponse_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_PostMessageResponse_fieldAccessorTable = new
