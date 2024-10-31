@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option go_package = ".;proto";
+option java_package = "proto";
+option java_outer_classname = "ChatsProto";
+
+service Chats {
+    rpc PostChat(PostChatRequest) returns (PostChatResponse);
+    rpc GetOneChat(GetOneChatRequest) returns (GetOneChatResponse);
+    rpc DeleteChat(DeleteChatRequest) returns (DeleteChatResponse);
+}
+
+message Chat {
+    int64 Id = 1;
+    int64 TeamId = 2;
+    string Github = 3;
+    string TeamProjectName = 4;
+    int64 CreatorId = 5;
+}
+
+message PostChatRequest {
+    int64 TeamId = 1;
+    string Github = 2;
+    int64 CreatorId = 3;
+}
+
+message PostChatResponse {
+    int64 Id = 1;
+}
+
+message GetOneChatRequest {
+    int64 ChatId = 1;
+}
+
+message GetOneChatResponse {
+    Chat Chat = 1;
+}
+
+message DeleteChatRequest {
+    int64 ChatId = 1;
+}
+
+message DeleteChatResponse {
+    string Status = 1;
+}
