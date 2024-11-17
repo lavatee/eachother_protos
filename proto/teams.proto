@@ -99,6 +99,7 @@ message GetUserResponse {
     string RoleMainTechnology = 7;
     string UserName = 8;
     string UserTag = 9;
+    string UserEmail = 10;
 }
 
 message GetTeamUsersRequest {
