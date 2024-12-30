@@ -8,6 +8,7 @@ service Chats {
     rpc PostChat(PostChatRequest) returns (PostChatResponse);
     rpc GetOneChat(GetOneChatRequest) returns (GetOneChatResponse);
     rpc DeleteChat(DeleteChatRequest) returns (DeleteChatResponse);
+    rpc PostTask(PostTaskRequest) returns (PostTaskResponse);
 }
 
 message Chat {
@@ -42,4 +43,17 @@ message DeleteChatRequest {
 
 message DeleteChatResponse {
     string Status = 1;
+}
+
+message PostTaskRequest {
+    string Text = 1;
+    int64 UserId = 2;
+    int64 CreatorId = 3;
+    string Deadline = 4;
+    int64 TeamId = 5;
+}
+
+message PostTaskResponse {
+    int64 Id = 1;
+    string CreatedAt = 2;
 }
