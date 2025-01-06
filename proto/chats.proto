@@ -9,6 +9,17 @@ service Chats {
     rpc GetOneChat(GetOneChatRequest) returns (GetOneChatResponse);
     rpc DeleteChat(DeleteChatRequest) returns (DeleteChatResponse);
     rpc PostTask(PostTaskRequest) returns (PostTaskResponse);
+	rpc GetUserCurrentTasks(GetUserCurrentTasksRequest) returns (GetUserCurrentTasksResponse);
+	rpc GetUserCurrentTasksInTeam(GetUserCurrentTasksInTeamRequest) returns (GetUserCurrentTasksInTeamResponse);
+	rpc GetUserCompletedTasks(GetUserCompletedTasksRequest) returns (GetUserCompletedTasksResponse);
+	rpc GetUserFailedTasks(GetUserFailedTasksRequest) returns (GetUserFailedTasksResponse);
+	rpc GetTasksUserCreated(GetTasksUserCreatedRequest) returns (GetTasksUserCreatedResponse);
+	rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse);
+	rpc DeleteTeamTasks(DeleteTeamTasksRequest) returns (DeleteTeamTasksResponse);
+	rpc MarkTaskAsCompleted(MarkTaskAsCompletedRequest) returns (MarkTaskAsCompletedResponse);
+	rpc CompleteTask(CompleteTaskRequest) returns (CompleteTaskResponse);
+	rpc GetUserProductivityInTeam(GetUserProductivityInTeamRequest) returns (GetUserProductivityInTeamResponse);
+	rpc MarkTaskAsNotCompleted(MarkTaskAsNotCompletedRequest) returns (MarkTaskAsNotCompletedResponse);
 }
 
 message Chat {
@@ -45,6 +56,22 @@ message DeleteChatResponse {
     string Status = 1;
 }
 
+message Task {
+    int64 Id = 1;
+	string Text = 2;
+	int64 CreatorId = 3;
+	int64 UserId = 4;
+	string CreatedAt = 5;
+	string Deadline = 6;
+	string Status = 7;
+	string TeamProjectName = 8;
+	int64 TeamId = 9;
+	string CreatorRoleName = 10;
+	string CreatorUserName = 11;
+	string UserRoleName = 12;
+	string UserUserName = 13;
+}
+
 message PostTaskRequest {
     string Text = 1;
     int64 UserId = 2;
@@ -56,4 +83,98 @@ message PostTaskRequest {
 message PostTaskResponse {
     int64 Id = 1;
     string CreatedAt = 2;
+}
+
+message GetUserCurrentTasksRequest {
+    int64 UserId = 1;
+}
+
+message GetUserCurrentTasksResponse {
+    repeated Task Tasks = 1;
+}
+
+message GetUserFailedTasksRequest {
+    int64 UserId = 1;
+}
+
+message GetUserFailedTasksResponse {
+    repeated Task Tasks = 1;
+}
+
+message GetUserCompletedTasksRequest {
+    int64 UserId = 1;
+}
+
+message GetUserCompletedTasksResponse {
+    repeated Task Tasks = 1;
+}
+
+message GetUserCurrentTasksInTeamRequest {
+    int64 UserId = 1;
+    int64 TeamId = 2;
+}
+
+message GetUserCurrentTasksInTeamResponse {
+    repeated Task Tasks = 1;
+}
+
+message GetUserProductivityInTeamRequest {
+    int64 UserId = 1;
+    int64 TeamId = 2;
+}
+
+message GetUserProductivityInTeamResponse {
+    float Productivity = 1;
+}
+
+message GetTasksUserCreatedRequest {
+    int64 CreatorId = 1;
+}
+
+message GetTasksUserCreatedResponse {
+    repeated Task Tasks = 1;
+}
+
+message DeleteTaskRequest {
+    int64 TaskId = 1;
+    int64 CreatorId = 2;
+}
+
+message DeleteTaskResponse {
+    string Status = 1;
+}
+
+message DeleteTeamTasksRequest {
+    int64 TeamId = 1;
+}
+
+message DeleteTeamTasksResponse {
+    string Status = 1;
+}
+
+message CompleteTaskRequest {
+    int64 TaskId = 1;
+    int64 CreatorId = 2;
+}
+
+message CompleteTaskResponse {
+    string Status = 1;
+}
+
+message MarkTaskAsCompletedRequest {
+    int64 TaskId = 1;
+    int64 UserId = 2;
+}
+
+message MarkTaskAsCompletedResponse {
+    string Status = 1;
+}
+
+message MarkTaskAsNotCompletedRequest {
+    int64 TaskId = 1;
+    int64 CreatorId = 2;
+}
+
+message MarkTaskAsNotCompletedResponse {
+    string Status = 1;
 }

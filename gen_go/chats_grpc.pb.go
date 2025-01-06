@@ -19,10 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Chats_PostChat_FullMethodName   = "/Chats/PostChat"
-	Chats_GetOneChat_FullMethodName = "/Chats/GetOneChat"
-	Chats_DeleteChat_FullMethodName = "/Chats/DeleteChat"
-	Chats_PostTask_FullMethodName   = "/Chats/PostTask"
+	Chats_PostChat_FullMethodName                  = "/Chats/PostChat"
+	Chats_GetOneChat_FullMethodName                = "/Chats/GetOneChat"
+	Chats_DeleteChat_FullMethodName                = "/Chats/DeleteChat"
+	Chats_PostTask_FullMethodName                  = "/Chats/PostTask"
+	Chats_GetUserCurrentTasks_FullMethodName       = "/Chats/GetUserCurrentTasks"
+	Chats_GetUserCurrentTasksInTeam_FullMethodName = "/Chats/GetUserCurrentTasksInTeam"
+	Chats_GetUserCompletedTasks_FullMethodName     = "/Chats/GetUserCompletedTasks"
+	Chats_GetUserFailedTasks_FullMethodName        = "/Chats/GetUserFailedTasks"
+	Chats_GetTasksUserCreated_FullMethodName       = "/Chats/GetTasksUserCreated"
+	Chats_DeleteTask_FullMethodName                = "/Chats/DeleteTask"
+	Chats_DeleteTeamTasks_FullMethodName           = "/Chats/DeleteTeamTasks"
+	Chats_MarkTaskAsCompleted_FullMethodName       = "/Chats/MarkTaskAsCompleted"
+	Chats_CompleteTask_FullMethodName              = "/Chats/CompleteTask"
+	Chats_GetUserProductivityInTeam_FullMethodName = "/Chats/GetUserProductivityInTeam"
+	Chats_MarkTaskAsNotCompleted_FullMethodName    = "/Chats/MarkTaskAsNotCompleted"
 )
 
 // ChatsClient is the client API for Chats service.
@@ -33,6 +44,17 @@ type ChatsClient interface {
 	GetOneChat(ctx context.Context, in *GetOneChatRequest, opts ...grpc.CallOption) (*GetOneChatResponse, error)
 	DeleteChat(ctx context.Context, in *DeleteChatRequest, opts ...grpc.CallOption) (*DeleteChatResponse, error)
 	PostTask(ctx context.Context, in *PostTaskRequest, opts ...grpc.CallOption) (*PostTaskResponse, error)
+	GetUserCurrentTasks(ctx context.Context, in *GetUserCurrentTasksRequest, opts ...grpc.CallOption) (*GetUserCurrentTasksResponse, error)
+	GetUserCurrentTasksInTeam(ctx context.Context, in *GetUserCurrentTasksInTeamRequest, opts ...grpc.CallOption) (*GetUserCurrentTasksInTeamResponse, error)
+	GetUserCompletedTasks(ctx context.Context, in *GetUserCompletedTasksRequest, opts ...grpc.CallOption) (*GetUserCompletedTasksResponse, error)
+	GetUserFailedTasks(ctx context.Context, in *GetUserFailedTasksRequest, opts ...grpc.CallOption) (*GetUserFailedTasksResponse, error)
+	GetTasksUserCreated(ctx context.Context, in *GetTasksUserCreatedRequest, opts ...grpc.CallOption) (*GetTasksUserCreatedResponse, error)
+	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*DeleteTaskResponse, error)
+	DeleteTeamTasks(ctx context.Context, in *DeleteTeamTasksRequest, opts ...grpc.CallOption) (*DeleteTeamTasksResponse, error)
+	MarkTaskAsCompleted(ctx context.Context, in *MarkTaskAsCompletedRequest, opts ...grpc.CallOption) (*MarkTaskAsCompletedResponse, error)
+	CompleteTask(ctx context.Context, in *CompleteTaskRequest, opts ...grpc.CallOption) (*CompleteTaskResponse, error)
+	GetUserProductivityInTeam(ctx context.Context, in *GetUserProductivityInTeamRequest, opts ...grpc.CallOption) (*GetUserProductivityInTeamResponse, error)
+	MarkTaskAsNotCompleted(ctx context.Context, in *MarkTaskAsNotCompletedRequest, opts ...grpc.CallOption) (*MarkTaskAsNotCompletedResponse, error)
 }
 
 type chatsClient struct {
@@ -83,6 +105,116 @@ func (c *chatsClient) PostTask(ctx context.Context, in *PostTaskRequest, opts ..
 	return out, nil
 }
 
+func (c *chatsClient) GetUserCurrentTasks(ctx context.Context, in *GetUserCurrentTasksRequest, opts ...grpc.CallOption) (*GetUserCurrentTasksResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserCurrentTasksResponse)
+	err := c.cc.Invoke(ctx, Chats_GetUserCurrentTasks_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chatsClient) GetUserCurrentTasksInTeam(ctx context.Context, in *GetUserCurrentTasksInTeamRequest, opts ...grpc.CallOption) (*GetUserCurrentTasksInTeamResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserCurrentTasksInTeamResponse)
+	err := c.cc.Invoke(ctx, Chats_GetUserCurrentTasksInTeam_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chatsClient) GetUserCompletedTasks(ctx context.Context, in *GetUserCompletedTasksRequest, opts ...grpc.CallOption) (*GetUserCompletedTasksResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserCompletedTasksResponse)
+	err := c.cc.Invoke(ctx, Chats_GetUserCompletedTasks_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chatsClient) GetUserFailedTasks(ctx context.Context, in *GetUserFailedTasksRequest, opts ...grpc.CallOption) (*GetUserFailedTasksResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserFailedTasksResponse)
+	err := c.cc.Invoke(ctx, Chats_GetUserFailedTasks_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chatsClient) GetTasksUserCreated(ctx context.Context, in *GetTasksUserCreatedRequest, opts ...grpc.CallOption) (*GetTasksUserCreatedResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetTasksUserCreatedResponse)
+	err := c.cc.Invoke(ctx, Chats_GetTasksUserCreated_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chatsClient) DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*DeleteTaskResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteTaskResponse)
+	err := c.cc.Invoke(ctx, Chats_DeleteTask_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chatsClient) DeleteTeamTasks(ctx context.Context, in *DeleteTeamTasksRequest, opts ...grpc.CallOption) (*DeleteTeamTasksResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteTeamTasksResponse)
+	err := c.cc.Invoke(ctx, Chats_DeleteTeamTasks_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chatsClient) MarkTaskAsCompleted(ctx context.Context, in *MarkTaskAsCompletedRequest, opts ...grpc.CallOption) (*MarkTaskAsCompletedResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MarkTaskAsCompletedResponse)
+	err := c.cc.Invoke(ctx, Chats_MarkTaskAsCompleted_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chatsClient) CompleteTask(ctx context.Context, in *CompleteTaskRequest, opts ...grpc.CallOption) (*CompleteTaskResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CompleteTaskResponse)
+	err := c.cc.Invoke(ctx, Chats_CompleteTask_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chatsClient) GetUserProductivityInTeam(ctx context.Context, in *GetUserProductivityInTeamRequest, opts ...grpc.CallOption) (*GetUserProductivityInTeamResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserProductivityInTeamResponse)
+	err := c.cc.Invoke(ctx, Chats_GetUserProductivityInTeam_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *chatsClient) MarkTaskAsNotCompleted(ctx context.Context, in *MarkTaskAsNotCompletedRequest, opts ...grpc.CallOption) (*MarkTaskAsNotCompletedResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MarkTaskAsNotCompletedResponse)
+	err := c.cc.Invoke(ctx, Chats_MarkTaskAsNotCompleted_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ChatsServer is the server API for Chats service.
 // All implementations must embed UnimplementedChatsServer
 // for forward compatibility.
@@ -91,6 +223,17 @@ type ChatsServer interface {
 	GetOneChat(context.Context, *GetOneChatRequest) (*GetOneChatResponse, error)
 	DeleteChat(context.Context, *DeleteChatRequest) (*DeleteChatResponse, error)
 	PostTask(context.Context, *PostTaskRequest) (*PostTaskResponse, error)
+	GetUserCurrentTasks(context.Context, *GetUserCurrentTasksRequest) (*GetUserCurrentTasksResponse, error)
+	GetUserCurrentTasksInTeam(context.Context, *GetUserCurrentTasksInTeamRequest) (*GetUserCurrentTasksInTeamResponse, error)
+	GetUserCompletedTasks(context.Context, *GetUserCompletedTasksRequest) (*GetUserCompletedTasksResponse, error)
+	GetUserFailedTasks(context.Context, *GetUserFailedTasksRequest) (*GetUserFailedTasksResponse, error)
+	GetTasksUserCreated(context.Context, *GetTasksUserCreatedRequest) (*GetTasksUserCreatedResponse, error)
+	DeleteTask(context.Context, *DeleteTaskRequest) (*DeleteTaskResponse, error)
+	DeleteTeamTasks(context.Context, *DeleteTeamTasksRequest) (*DeleteTeamTasksResponse, error)
+	MarkTaskAsCompleted(context.Context, *MarkTaskAsCompletedRequest) (*MarkTaskAsCompletedResponse, error)
+	CompleteTask(context.Context, *CompleteTaskRequest) (*CompleteTaskResponse, error)
+	GetUserProductivityInTeam(context.Context, *GetUserProductivityInTeamRequest) (*GetUserProductivityInTeamResponse, error)
+	MarkTaskAsNotCompleted(context.Context, *MarkTaskAsNotCompletedRequest) (*MarkTaskAsNotCompletedResponse, error)
 	mustEmbedUnimplementedChatsServer()
 }
 
@@ -112,6 +255,39 @@ func (UnimplementedChatsServer) DeleteChat(context.Context, *DeleteChatRequest) 
 }
 func (UnimplementedChatsServer) PostTask(context.Context, *PostTaskRequest) (*PostTaskResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PostTask not implemented")
+}
+func (UnimplementedChatsServer) GetUserCurrentTasks(context.Context, *GetUserCurrentTasksRequest) (*GetUserCurrentTasksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserCurrentTasks not implemented")
+}
+func (UnimplementedChatsServer) GetUserCurrentTasksInTeam(context.Context, *GetUserCurrentTasksInTeamRequest) (*GetUserCurrentTasksInTeamResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserCurrentTasksInTeam not implemented")
+}
+func (UnimplementedChatsServer) GetUserCompletedTasks(context.Context, *GetUserCompletedTasksRequest) (*GetUserCompletedTasksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserCompletedTasks not implemented")
+}
+func (UnimplementedChatsServer) GetUserFailedTasks(context.Context, *GetUserFailedTasksRequest) (*GetUserFailedTasksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserFailedTasks not implemented")
+}
+func (UnimplementedChatsServer) GetTasksUserCreated(context.Context, *GetTasksUserCreatedRequest) (*GetTasksUserCreatedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTasksUserCreated not implemented")
+}
+func (UnimplementedChatsServer) DeleteTask(context.Context, *DeleteTaskRequest) (*DeleteTaskResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTask not implemented")
+}
+func (UnimplementedChatsServer) DeleteTeamTasks(context.Context, *DeleteTeamTasksRequest) (*DeleteTeamTasksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTeamTasks not implemented")
+}
+func (UnimplementedChatsServer) MarkTaskAsCompleted(context.Context, *MarkTaskAsCompletedRequest) (*MarkTaskAsCompletedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MarkTaskAsCompleted not implemented")
+}
+func (UnimplementedChatsServer) CompleteTask(context.Context, *CompleteTaskRequest) (*CompleteTaskResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompleteTask not implemented")
+}
+func (UnimplementedChatsServer) GetUserProductivityInTeam(context.Context, *GetUserProductivityInTeamRequest) (*GetUserProductivityInTeamResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserProductivityInTeam not implemented")
+}
+func (UnimplementedChatsServer) MarkTaskAsNotCompleted(context.Context, *MarkTaskAsNotCompletedRequest) (*MarkTaskAsNotCompletedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MarkTaskAsNotCompleted not implemented")
 }
 func (UnimplementedChatsServer) mustEmbedUnimplementedChatsServer() {}
 func (UnimplementedChatsServer) testEmbeddedByValue()               {}
@@ -206,6 +382,204 @@ func _Chats_PostTask_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Chats_GetUserCurrentTasks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserCurrentTasksRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).GetUserCurrentTasks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_GetUserCurrentTasks_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).GetUserCurrentTasks(ctx, req.(*GetUserCurrentTasksRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Chats_GetUserCurrentTasksInTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserCurrentTasksInTeamRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).GetUserCurrentTasksInTeam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_GetUserCurrentTasksInTeam_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).GetUserCurrentTasksInTeam(ctx, req.(*GetUserCurrentTasksInTeamRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Chats_GetUserCompletedTasks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserCompletedTasksRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).GetUserCompletedTasks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_GetUserCompletedTasks_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).GetUserCompletedTasks(ctx, req.(*GetUserCompletedTasksRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Chats_GetUserFailedTasks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserFailedTasksRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).GetUserFailedTasks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_GetUserFailedTasks_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).GetUserFailedTasks(ctx, req.(*GetUserFailedTasksRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Chats_GetTasksUserCreated_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTasksUserCreatedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).GetTasksUserCreated(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_GetTasksUserCreated_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).GetTasksUserCreated(ctx, req.(*GetTasksUserCreatedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Chats_DeleteTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteTaskRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).DeleteTask(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_DeleteTask_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).DeleteTask(ctx, req.(*DeleteTaskRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Chats_DeleteTeamTasks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteTeamTasksRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).DeleteTeamTasks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_DeleteTeamTasks_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).DeleteTeamTasks(ctx, req.(*DeleteTeamTasksRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Chats_MarkTaskAsCompleted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MarkTaskAsCompletedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).MarkTaskAsCompleted(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_MarkTaskAsCompleted_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).MarkTaskAsCompleted(ctx, req.(*MarkTaskAsCompletedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Chats_CompleteTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompleteTaskRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).CompleteTask(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_CompleteTask_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).CompleteTask(ctx, req.(*CompleteTaskRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Chats_GetUserProductivityInTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserProductivityInTeamRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).GetUserProductivityInTeam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_GetUserProductivityInTeam_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).GetUserProductivityInTeam(ctx, req.(*GetUserProductivityInTeamRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Chats_MarkTaskAsNotCompleted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MarkTaskAsNotCompletedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatsServer).MarkTaskAsNotCompleted(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Chats_MarkTaskAsNotCompleted_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatsServer).MarkTaskAsNotCompleted(ctx, req.(*MarkTaskAsNotCompletedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Chats_ServiceDesc is the grpc.ServiceDesc for Chats service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,6 +602,50 @@ var Chats_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PostTask",
 			Handler:    _Chats_PostTask_Handler,
+		},
+		{
+			MethodName: "GetUserCurrentTasks",
+			Handler:    _Chats_GetUserCurrentTasks_Handler,
+		},
+		{
+			MethodName: "GetUserCurrentTasksInTeam",
+			Handler:    _Chats_GetUserCurrentTasksInTeam_Handler,
+		},
+		{
+			MethodName: "GetUserCompletedTasks",
+			Handler:    _Chats_GetUserCompletedTasks_Handler,
+		},
+		{
+			MethodName: "GetUserFailedTasks",
+			Handler:    _Chats_GetUserFailedTasks_Handler,
+		},
+		{
+			MethodName: "GetTasksUserCreated",
+			Handler:    _Chats_GetTasksUserCreated_Handler,
+		},
+		{
+			MethodName: "DeleteTask",
+			Handler:    _Chats_DeleteTask_Handler,
+		},
+		{
+			MethodName: "DeleteTeamTasks",
+			Handler:    _Chats_DeleteTeamTasks_Handler,
+		},
+		{
+			MethodName: "MarkTaskAsCompleted",
+			Handler:    _Chats_MarkTaskAsCompleted_Handler,
+		},
+		{
+			MethodName: "CompleteTask",
+			Handler:    _Chats_CompleteTask_Handler,
+		},
+		{
+			MethodName: "GetUserProductivityInTeam",
+			Handler:    _Chats_GetUserProductivityInTeam_Handler,
+		},
+		{
+			MethodName: "MarkTaskAsNotCompleted",
+			Handler:    _Chats_MarkTaskAsNotCompleted_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
