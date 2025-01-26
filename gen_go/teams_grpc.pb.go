@@ -32,6 +32,7 @@ const (
 	Teams_GetCreatorRequests_FullMethodName = "/Teams/GetCreatorRequests"
 	Teams_PostRequest_FullMethodName        = "/Teams/PostRequest"
 	Teams_RejectRequest_FullMethodName      = "/Teams/RejectRequest"
+	Teams_GetUserExps_FullMethodName        = "/Teams/GetUserExps"
 )
 
 // TeamsClient is the client API for Teams service.
@@ -51,6 +52,7 @@ type TeamsClient interface {
 	GetCreatorRequests(ctx context.Context, in *GetCreatorRequestsRequest, opts ...grpc.CallOption) (*GetCreatorRequestsResponse, error)
 	PostRequest(ctx context.Context, in *PostRequestRequest, opts ...grpc.CallOption) (*PostRequestResponse, error)
 	RejectRequest(ctx context.Context, in *RejectRequestRequest, opts ...grpc.CallOption) (*RejectRequestResponse, error)
+	GetUserExps(ctx context.Context, in *GetUserExpsRequest, opts ...grpc.CallOption) (*GetUserExpsResponse, error)
 }
 
 type teamsClient struct {
@@ -191,6 +193,16 @@ func (c *teamsClient) RejectRequest(ctx context.Context, in *RejectRequestReques
 	return out, nil
 }
 
+func (c *teamsClient) GetUserExps(ctx context.Context, in *GetUserExpsRequest, opts ...grpc.CallOption) (*GetUserExpsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserExpsResponse)
+	err := c.cc.Invoke(ctx, Teams_GetUserExps_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TeamsServer is the server API for Teams service.
 // All implementations must embed UnimplementedTeamsServer
 // for forward compatibility.
@@ -208,6 +220,7 @@ type TeamsServer interface {
 	GetCreatorRequests(context.Context, *GetCreatorRequestsRequest) (*GetCreatorRequestsResponse, error)
 	PostRequest(context.Context, *PostRequestRequest) (*PostRequestResponse, error)
 	RejectRequest(context.Context, *RejectRequestRequest) (*RejectRequestResponse, error)
+	GetUserExps(context.Context, *GetUserExpsRequest) (*GetUserExpsResponse, error)
 	mustEmbedUnimplementedTeamsServer()
 }
 
@@ -256,6 +269,9 @@ func (UnimplementedTeamsServer) PostRequest(context.Context, *PostRequestRequest
 }
 func (UnimplementedTeamsServer) RejectRequest(context.Context, *RejectRequestRequest) (*RejectRequestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RejectRequest not implemented")
+}
+func (UnimplementedTeamsServer) GetUserExps(context.Context, *GetUserExpsRequest) (*GetUserExpsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserExps not implemented")
 }
 func (UnimplementedTeamsServer) mustEmbedUnimplementedTeamsServer() {}
 func (UnimplementedTeamsServer) testEmbeddedByValue()               {}
@@ -512,6 +528,24 @@ func _Teams_RejectRequest_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Teams_GetUserExps_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserExpsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TeamsServer).GetUserExps(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Teams_GetUserExps_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TeamsServer).GetUserExps(ctx, req.(*GetUserExpsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Teams_ServiceDesc is the grpc.ServiceDesc for Teams service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -570,6 +604,10 @@ var Teams_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RejectRequest",
 			Handler:    _Teams_RejectRequest_Handler,
+		},
+		{
+			MethodName: "GetUserExps",
+			Handler:    _Teams_GetUserExps_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

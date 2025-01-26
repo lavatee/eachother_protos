@@ -18,6 +18,7 @@ service Teams {
     rpc GetCreatorRequests(GetCreatorRequestsRequest) returns (GetCreatorRequestsResponse);
     rpc PostRequest(PostRequestRequest) returns (PostRequestResponse);
     rpc RejectRequest(RejectRequestRequest) returns (RejectRequestResponse);
+    rpc GetUserExps(GetUserExpsRequest) returns (GetUserExpsResponse);
 } 
 
 message Team {
@@ -181,3 +182,20 @@ message GetUserTeamsResponse {
     repeated Team Teams = 1;
 }
 
+message Exp {
+    int64 Id = 1;
+    int64 UserId = 2;
+    string TeamProjectName = 3;
+    int64 CompletedTasksAmount = 4;
+    int64 FailedTasksAmount = 5;
+    string Role = 6;
+    string MainTechnology = 7;
+}
+
+message GetUserExpsRequest {
+    int64 UserId = 1;
+}
+
+message GetUserExpsResponse {
+    repeated Exp Exps = 1;
+}
