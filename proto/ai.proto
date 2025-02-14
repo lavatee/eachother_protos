@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = ".;proto";
+option java_package = "proto";
+option java_outer_classname = "AIProto";
+
+service AI {
+    rpc MakeInterview(MakeInterviewRequest) returns (MakeInterviewResponse);
+    rpc NextInterviewQuestion(NextInterviewQuestionRequest) returns (NextInterviewQuestionResponse);
+    rpc GetUserCurrentInterviews(GetUserCurrentInterviewsRequest) returns (GetUserCurrentInterviewsResponse);
+    
+}

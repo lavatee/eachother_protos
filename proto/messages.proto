@@ -10,6 +10,7 @@ service Messages {
     rpc GetChatMessages(GetChatMessagesRequest) returns (GetChatMessagesResponse);
     rpc EditMessage(EditMessageRequest) returns (EditMessageResponse);
     rpc GetUserLastMessages(GetUserLastMessagesRequest) returns (GetUserLastMessagesResponse);
+    rpc GetChatPinnedMessages(GetChatPinnedMessagesRequest) returns (GetChatPinnedMessagesResponse);
 }
 
 message Message {
@@ -20,6 +21,8 @@ message Message {
     string UserName = 5;
     string TeamProjectName = 6;
     bool IsEdited = 7;
+    string SentAt = 8;
+    bool IsPinned = 9;
 }
 
 message PostMessageRequest {
@@ -66,4 +69,12 @@ message GetUserLastMessagesRequest {
 
 message GetUserLastMessagesResponse {
     repeated Message Message = 1;
+}
+
+message GetChatPinnedMessagesRequest {
+    int64 ChatId = 1;
+}
+
+message GetChatPinnedMessagesResponse {
+    repeated Message Messages = 1;
 }

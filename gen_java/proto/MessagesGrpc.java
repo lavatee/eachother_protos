@@ -170,6 +170,37 @@ public final class MessagesGrpc {
     return getGetUserLastMessagesMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<proto.MessagesProto.GetChatPinnedMessagesRequest,
+      proto.MessagesProto.GetChatPinnedMessagesResponse> getGetChatPinnedMessagesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetChatPinnedMessages",
+      requestType = proto.MessagesProto.GetChatPinnedMessagesRequest.class,
+      responseType = proto.MessagesProto.GetChatPinnedMessagesResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<proto.MessagesProto.GetChatPinnedMessagesRequest,
+      proto.MessagesProto.GetChatPinnedMessagesResponse> getGetChatPinnedMessagesMethod() {
+    io.grpc.MethodDescriptor<proto.MessagesProto.GetChatPinnedMessagesRequest, proto.MessagesProto.GetChatPinnedMessagesResponse> getGetChatPinnedMessagesMethod;
+    if ((getGetChatPinnedMessagesMethod = MessagesGrpc.getGetChatPinnedMessagesMethod) == null) {
+      synchronized (MessagesGrpc.class) {
+        if ((getGetChatPinnedMessagesMethod = MessagesGrpc.getGetChatPinnedMessagesMethod) == null) {
+          MessagesGrpc.getGetChatPinnedMessagesMethod = getGetChatPinnedMessagesMethod =
+              io.grpc.MethodDescriptor.<proto.MessagesProto.GetChatPinnedMessagesRequest, proto.MessagesProto.GetChatPinnedMessagesResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetChatPinnedMessages"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.MessagesProto.GetChatPinnedMessagesRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  proto.MessagesProto.GetChatPinnedMessagesResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new MessagesMethodDescriptorSupplier("GetChatPinnedMessages"))
+              .build();
+        }
+      }
+    }
+    return getGetChatPinnedMessagesMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -252,6 +283,13 @@ public final class MessagesGrpc {
         io.grpc.stub.StreamObserver<proto.MessagesProto.GetUserLastMessagesResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetUserLastMessagesMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void getChatPinnedMessages(proto.MessagesProto.GetChatPinnedMessagesRequest request,
+        io.grpc.stub.StreamObserver<proto.MessagesProto.GetChatPinnedMessagesResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetChatPinnedMessagesMethod(), responseObserver);
+    }
   }
 
   /**
@@ -320,6 +358,14 @@ public final class MessagesGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetUserLastMessagesMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getChatPinnedMessages(proto.MessagesProto.GetChatPinnedMessagesRequest request,
+        io.grpc.stub.StreamObserver<proto.MessagesProto.GetChatPinnedMessagesResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetChatPinnedMessagesMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -371,6 +417,13 @@ public final class MessagesGrpc {
     public proto.MessagesProto.GetUserLastMessagesResponse getUserLastMessages(proto.MessagesProto.GetUserLastMessagesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetUserLastMessagesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public proto.MessagesProto.GetChatPinnedMessagesResponse getChatPinnedMessages(proto.MessagesProto.GetChatPinnedMessagesRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetChatPinnedMessagesMethod(), getCallOptions(), request);
     }
   }
 
@@ -429,6 +482,14 @@ public final class MessagesGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetUserLastMessagesMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<proto.MessagesProto.GetChatPinnedMessagesResponse> getChatPinnedMessages(
+        proto.MessagesProto.GetChatPinnedMessagesRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetChatPinnedMessagesMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_POST_MESSAGE = 0;
@@ -436,6 +497,7 @@ public final class MessagesGrpc {
   private static final int METHODID_GET_CHAT_MESSAGES = 2;
   private static final int METHODID_EDIT_MESSAGE = 3;
   private static final int METHODID_GET_USER_LAST_MESSAGES = 4;
+  private static final int METHODID_GET_CHAT_PINNED_MESSAGES = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -473,6 +535,10 @@ public final class MessagesGrpc {
         case METHODID_GET_USER_LAST_MESSAGES:
           serviceImpl.getUserLastMessages((proto.MessagesProto.GetUserLastMessagesRequest) request,
               (io.grpc.stub.StreamObserver<proto.MessagesProto.GetUserLastMessagesResponse>) responseObserver);
+          break;
+        case METHODID_GET_CHAT_PINNED_MESSAGES:
+          serviceImpl.getChatPinnedMessages((proto.MessagesProto.GetChatPinnedMessagesRequest) request,
+              (io.grpc.stub.StreamObserver<proto.MessagesProto.GetChatPinnedMessagesResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -527,6 +593,13 @@ public final class MessagesGrpc {
               proto.MessagesProto.GetUserLastMessagesRequest,
               proto.MessagesProto.GetUserLastMessagesResponse>(
                 service, METHODID_GET_USER_LAST_MESSAGES)))
+        .addMethod(
+          getGetChatPinnedMessagesMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              proto.MessagesProto.GetChatPinnedMessagesRequest,
+              proto.MessagesProto.GetChatPinnedMessagesResponse>(
+                service, METHODID_GET_CHAT_PINNED_MESSAGES)))
         .build();
   }
 
@@ -580,6 +653,7 @@ public final class MessagesGrpc {
               .addMethod(getGetChatMessagesMethod())
               .addMethod(getEditMessageMethod())
               .addMethod(getGetUserLastMessagesMethod())
+              .addMethod(getGetChatPinnedMessagesMethod())
               .build();
         }
       }

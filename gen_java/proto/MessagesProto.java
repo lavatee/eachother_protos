@@ -88,6 +88,24 @@ public final class MessagesProto {
      * @return The isEdited.
      */
     boolean getIsEdited();
+
+    /**
+     * <code>string SentAt = 8;</code>
+     * @return The sentAt.
+     */
+    java.lang.String getSentAt();
+    /**
+     * <code>string SentAt = 8;</code>
+     * @return The bytes for sentAt.
+     */
+    com.google.protobuf.ByteString
+        getSentAtBytes();
+
+    /**
+     * <code>bool IsPinned = 9;</code>
+     * @return The isPinned.
+     */
+    boolean getIsPinned();
   }
   /**
    * Protobuf type {@code Message}
@@ -114,6 +132,7 @@ public final class MessagesProto {
       text_ = "";
       userName_ = "";
       teamProjectName_ = "";
+      sentAt_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -290,6 +309,56 @@ public final class MessagesProto {
       return isEdited_;
     }
 
+    public static final int SENTAT_FIELD_NUMBER = 8;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sentAt_ = "";
+    /**
+     * <code>string SentAt = 8;</code>
+     * @return The sentAt.
+     */
+    @java.lang.Override
+    public java.lang.String getSentAt() {
+      java.lang.Object ref = sentAt_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sentAt_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string SentAt = 8;</code>
+     * @return The bytes for sentAt.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSentAtBytes() {
+      java.lang.Object ref = sentAt_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sentAt_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ISPINNED_FIELD_NUMBER = 9;
+    private boolean isPinned_ = false;
+    /**
+     * <code>bool IsPinned = 9;</code>
+     * @return The isPinned.
+     */
+    @java.lang.Override
+    public boolean getIsPinned() {
+      return isPinned_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -325,6 +394,12 @@ public final class MessagesProto {
       if (isEdited_ != false) {
         output.writeBool(7, isEdited_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(sentAt_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 8, sentAt_);
+      }
+      if (isPinned_ != false) {
+        output.writeBool(9, isPinned_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -359,6 +434,13 @@ public final class MessagesProto {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(7, isEdited_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(sentAt_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(8, sentAt_);
+      }
+      if (isPinned_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(9, isPinned_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -388,6 +470,10 @@ public final class MessagesProto {
           .equals(other.getTeamProjectName())) return false;
       if (getIsEdited()
           != other.getIsEdited()) return false;
+      if (!getSentAt()
+          .equals(other.getSentAt())) return false;
+      if (getIsPinned()
+          != other.getIsPinned()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -417,6 +503,11 @@ public final class MessagesProto {
       hash = (37 * hash) + ISEDITED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsEdited());
+      hash = (37 * hash) + SENTAT_FIELD_NUMBER;
+      hash = (53 * hash) + getSentAt().hashCode();
+      hash = (37 * hash) + ISPINNED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsPinned());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -555,6 +646,8 @@ public final class MessagesProto {
         userName_ = "";
         teamProjectName_ = "";
         isEdited_ = false;
+        sentAt_ = "";
+        isPinned_ = false;
         return this;
       }
 
@@ -609,6 +702,12 @@ public final class MessagesProto {
         if (((from_bitField0_ & 0x00000040) != 0)) {
           result.isEdited_ = isEdited_;
         }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.sentAt_ = sentAt_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.isPinned_ = isPinned_;
+        }
       }
 
       @java.lang.Override
@@ -649,6 +748,14 @@ public final class MessagesProto {
         }
         if (other.getIsEdited() != false) {
           setIsEdited(other.getIsEdited());
+        }
+        if (!other.getSentAt().isEmpty()) {
+          sentAt_ = other.sentAt_;
+          bitField0_ |= 0x00000080;
+          onChanged();
+        }
+        if (other.getIsPinned() != false) {
+          setIsPinned(other.getIsPinned());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -711,6 +818,16 @@ public final class MessagesProto {
                 bitField0_ |= 0x00000040;
                 break;
               } // case 56
+              case 66: {
+                sentAt_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 66
+              case 72: {
+                isPinned_ = input.readBool();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 72
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1068,6 +1185,110 @@ public final class MessagesProto {
       public Builder clearIsEdited() {
         bitField0_ = (bitField0_ & ~0x00000040);
         isEdited_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sentAt_ = "";
+      /**
+       * <code>string SentAt = 8;</code>
+       * @return The sentAt.
+       */
+      public java.lang.String getSentAt() {
+        java.lang.Object ref = sentAt_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sentAt_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string SentAt = 8;</code>
+       * @return The bytes for sentAt.
+       */
+      public com.google.protobuf.ByteString
+          getSentAtBytes() {
+        java.lang.Object ref = sentAt_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sentAt_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string SentAt = 8;</code>
+       * @param value The sentAt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSentAt(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        sentAt_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string SentAt = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSentAt() {
+        sentAt_ = getDefaultInstance().getSentAt();
+        bitField0_ = (bitField0_ & ~0x00000080);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string SentAt = 8;</code>
+       * @param value The bytes for sentAt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSentAtBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        sentAt_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+
+      private boolean isPinned_ ;
+      /**
+       * <code>bool IsPinned = 9;</code>
+       * @return The isPinned.
+       */
+      @java.lang.Override
+      public boolean getIsPinned() {
+        return isPinned_;
+      }
+      /**
+       * <code>bool IsPinned = 9;</code>
+       * @param value The isPinned to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsPinned(boolean value) {
+
+        isPinned_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool IsPinned = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsPinned() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        isPinned_ = false;
         onChanged();
         return this;
       }
@@ -6940,6 +7161,1181 @@ public final class MessagesProto {
 
   }
 
+  public interface GetChatPinnedMessagesRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetChatPinnedMessagesRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int64 ChatId = 1;</code>
+     * @return The chatId.
+     */
+    long getChatId();
+  }
+  /**
+   * Protobuf type {@code GetChatPinnedMessagesRequest}
+   */
+  public static final class GetChatPinnedMessagesRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:GetChatPinnedMessagesRequest)
+      GetChatPinnedMessagesRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        GetChatPinnedMessagesRequest.class.getName());
+    }
+    // Use GetChatPinnedMessagesRequest.newBuilder() to construct.
+    private GetChatPinnedMessagesRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private GetChatPinnedMessagesRequest() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.MessagesProto.internal_static_GetChatPinnedMessagesRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.MessagesProto.internal_static_GetChatPinnedMessagesRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.MessagesProto.GetChatPinnedMessagesRequest.class, proto.MessagesProto.GetChatPinnedMessagesRequest.Builder.class);
+    }
+
+    public static final int CHATID_FIELD_NUMBER = 1;
+    private long chatId_ = 0L;
+    /**
+     * <code>int64 ChatId = 1;</code>
+     * @return The chatId.
+     */
+    @java.lang.Override
+    public long getChatId() {
+      return chatId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (chatId_ != 0L) {
+        output.writeInt64(1, chatId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (chatId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, chatId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.MessagesProto.GetChatPinnedMessagesRequest)) {
+        return super.equals(obj);
+      }
+      proto.MessagesProto.GetChatPinnedMessagesRequest other = (proto.MessagesProto.GetChatPinnedMessagesRequest) obj;
+
+      if (getChatId()
+          != other.getChatId()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CHATID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getChatId());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.MessagesProto.GetChatPinnedMessagesRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GetChatPinnedMessagesRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GetChatPinnedMessagesRequest)
+        proto.MessagesProto.GetChatPinnedMessagesRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.MessagesProto.internal_static_GetChatPinnedMessagesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.MessagesProto.internal_static_GetChatPinnedMessagesRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.MessagesProto.GetChatPinnedMessagesRequest.class, proto.MessagesProto.GetChatPinnedMessagesRequest.Builder.class);
+      }
+
+      // Construct using proto.MessagesProto.GetChatPinnedMessagesRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        chatId_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.MessagesProto.internal_static_GetChatPinnedMessagesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.MessagesProto.GetChatPinnedMessagesRequest getDefaultInstanceForType() {
+        return proto.MessagesProto.GetChatPinnedMessagesRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.MessagesProto.GetChatPinnedMessagesRequest build() {
+        proto.MessagesProto.GetChatPinnedMessagesRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.MessagesProto.GetChatPinnedMessagesRequest buildPartial() {
+        proto.MessagesProto.GetChatPinnedMessagesRequest result = new proto.MessagesProto.GetChatPinnedMessagesRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(proto.MessagesProto.GetChatPinnedMessagesRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.chatId_ = chatId_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.MessagesProto.GetChatPinnedMessagesRequest) {
+          return mergeFrom((proto.MessagesProto.GetChatPinnedMessagesRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.MessagesProto.GetChatPinnedMessagesRequest other) {
+        if (other == proto.MessagesProto.GetChatPinnedMessagesRequest.getDefaultInstance()) return this;
+        if (other.getChatId() != 0L) {
+          setChatId(other.getChatId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                chatId_ = input.readInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private long chatId_ ;
+      /**
+       * <code>int64 ChatId = 1;</code>
+       * @return The chatId.
+       */
+      @java.lang.Override
+      public long getChatId() {
+        return chatId_;
+      }
+      /**
+       * <code>int64 ChatId = 1;</code>
+       * @param value The chatId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChatId(long value) {
+
+        chatId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 ChatId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearChatId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        chatId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:GetChatPinnedMessagesRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:GetChatPinnedMessagesRequest)
+    private static final proto.MessagesProto.GetChatPinnedMessagesRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.MessagesProto.GetChatPinnedMessagesRequest();
+    }
+
+    public static proto.MessagesProto.GetChatPinnedMessagesRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetChatPinnedMessagesRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetChatPinnedMessagesRequest>() {
+      @java.lang.Override
+      public GetChatPinnedMessagesRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetChatPinnedMessagesRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetChatPinnedMessagesRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.MessagesProto.GetChatPinnedMessagesRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GetChatPinnedMessagesResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetChatPinnedMessagesResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .Message Messages = 1;</code>
+     */
+    java.util.List<proto.MessagesProto.Message> 
+        getMessagesList();
+    /**
+     * <code>repeated .Message Messages = 1;</code>
+     */
+    proto.MessagesProto.Message getMessages(int index);
+    /**
+     * <code>repeated .Message Messages = 1;</code>
+     */
+    int getMessagesCount();
+    /**
+     * <code>repeated .Message Messages = 1;</code>
+     */
+    java.util.List<? extends proto.MessagesProto.MessageOrBuilder> 
+        getMessagesOrBuilderList();
+    /**
+     * <code>repeated .Message Messages = 1;</code>
+     */
+    proto.MessagesProto.MessageOrBuilder getMessagesOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code GetChatPinnedMessagesResponse}
+   */
+  public static final class GetChatPinnedMessagesResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:GetChatPinnedMessagesResponse)
+      GetChatPinnedMessagesResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        GetChatPinnedMessagesResponse.class.getName());
+    }
+    // Use GetChatPinnedMessagesResponse.newBuilder() to construct.
+    private GetChatPinnedMessagesResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private GetChatPinnedMessagesResponse() {
+      messages_ = java.util.Collections.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return proto.MessagesProto.internal_static_GetChatPinnedMessagesResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return proto.MessagesProto.internal_static_GetChatPinnedMessagesResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              proto.MessagesProto.GetChatPinnedMessagesResponse.class, proto.MessagesProto.GetChatPinnedMessagesResponse.Builder.class);
+    }
+
+    public static final int MESSAGES_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private java.util.List<proto.MessagesProto.Message> messages_;
+    /**
+     * <code>repeated .Message Messages = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<proto.MessagesProto.Message> getMessagesList() {
+      return messages_;
+    }
+    /**
+     * <code>repeated .Message Messages = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends proto.MessagesProto.MessageOrBuilder> 
+        getMessagesOrBuilderList() {
+      return messages_;
+    }
+    /**
+     * <code>repeated .Message Messages = 1;</code>
+     */
+    @java.lang.Override
+    public int getMessagesCount() {
+      return messages_.size();
+    }
+    /**
+     * <code>repeated .Message Messages = 1;</code>
+     */
+    @java.lang.Override
+    public proto.MessagesProto.Message getMessages(int index) {
+      return messages_.get(index);
+    }
+    /**
+     * <code>repeated .Message Messages = 1;</code>
+     */
+    @java.lang.Override
+    public proto.MessagesProto.MessageOrBuilder getMessagesOrBuilder(
+        int index) {
+      return messages_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < messages_.size(); i++) {
+        output.writeMessage(1, messages_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < messages_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, messages_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof proto.MessagesProto.GetChatPinnedMessagesResponse)) {
+        return super.equals(obj);
+      }
+      proto.MessagesProto.GetChatPinnedMessagesResponse other = (proto.MessagesProto.GetChatPinnedMessagesResponse) obj;
+
+      if (!getMessagesList()
+          .equals(other.getMessagesList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getMessagesCount() > 0) {
+        hash = (37 * hash) + MESSAGES_FIELD_NUMBER;
+        hash = (53 * hash) + getMessagesList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(proto.MessagesProto.GetChatPinnedMessagesResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GetChatPinnedMessagesResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GetChatPinnedMessagesResponse)
+        proto.MessagesProto.GetChatPinnedMessagesResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto.MessagesProto.internal_static_GetChatPinnedMessagesResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto.MessagesProto.internal_static_GetChatPinnedMessagesResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto.MessagesProto.GetChatPinnedMessagesResponse.class, proto.MessagesProto.GetChatPinnedMessagesResponse.Builder.class);
+      }
+
+      // Construct using proto.MessagesProto.GetChatPinnedMessagesResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (messagesBuilder_ == null) {
+          messages_ = java.util.Collections.emptyList();
+        } else {
+          messages_ = null;
+          messagesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return proto.MessagesProto.internal_static_GetChatPinnedMessagesResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public proto.MessagesProto.GetChatPinnedMessagesResponse getDefaultInstanceForType() {
+        return proto.MessagesProto.GetChatPinnedMessagesResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public proto.MessagesProto.GetChatPinnedMessagesResponse build() {
+        proto.MessagesProto.GetChatPinnedMessagesResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public proto.MessagesProto.GetChatPinnedMessagesResponse buildPartial() {
+        proto.MessagesProto.GetChatPinnedMessagesResponse result = new proto.MessagesProto.GetChatPinnedMessagesResponse(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(proto.MessagesProto.GetChatPinnedMessagesResponse result) {
+        if (messagesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            messages_ = java.util.Collections.unmodifiableList(messages_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.messages_ = messages_;
+        } else {
+          result.messages_ = messagesBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(proto.MessagesProto.GetChatPinnedMessagesResponse result) {
+        int from_bitField0_ = bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof proto.MessagesProto.GetChatPinnedMessagesResponse) {
+          return mergeFrom((proto.MessagesProto.GetChatPinnedMessagesResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(proto.MessagesProto.GetChatPinnedMessagesResponse other) {
+        if (other == proto.MessagesProto.GetChatPinnedMessagesResponse.getDefaultInstance()) return this;
+        if (messagesBuilder_ == null) {
+          if (!other.messages_.isEmpty()) {
+            if (messages_.isEmpty()) {
+              messages_ = other.messages_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureMessagesIsMutable();
+              messages_.addAll(other.messages_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.messages_.isEmpty()) {
+            if (messagesBuilder_.isEmpty()) {
+              messagesBuilder_.dispose();
+              messagesBuilder_ = null;
+              messages_ = other.messages_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              messagesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMessagesFieldBuilder() : null;
+            } else {
+              messagesBuilder_.addAllMessages(other.messages_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                proto.MessagesProto.Message m =
+                    input.readMessage(
+                        proto.MessagesProto.Message.parser(),
+                        extensionRegistry);
+                if (messagesBuilder_ == null) {
+                  ensureMessagesIsMutable();
+                  messages_.add(m);
+                } else {
+                  messagesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<proto.MessagesProto.Message> messages_ =
+        java.util.Collections.emptyList();
+      private void ensureMessagesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          messages_ = new java.util.ArrayList<proto.MessagesProto.Message>(messages_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          proto.MessagesProto.Message, proto.MessagesProto.Message.Builder, proto.MessagesProto.MessageOrBuilder> messagesBuilder_;
+
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public java.util.List<proto.MessagesProto.Message> getMessagesList() {
+        if (messagesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(messages_);
+        } else {
+          return messagesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public int getMessagesCount() {
+        if (messagesBuilder_ == null) {
+          return messages_.size();
+        } else {
+          return messagesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public proto.MessagesProto.Message getMessages(int index) {
+        if (messagesBuilder_ == null) {
+          return messages_.get(index);
+        } else {
+          return messagesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public Builder setMessages(
+          int index, proto.MessagesProto.Message value) {
+        if (messagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessagesIsMutable();
+          messages_.set(index, value);
+          onChanged();
+        } else {
+          messagesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public Builder setMessages(
+          int index, proto.MessagesProto.Message.Builder builderForValue) {
+        if (messagesBuilder_ == null) {
+          ensureMessagesIsMutable();
+          messages_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          messagesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public Builder addMessages(proto.MessagesProto.Message value) {
+        if (messagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessagesIsMutable();
+          messages_.add(value);
+          onChanged();
+        } else {
+          messagesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public Builder addMessages(
+          int index, proto.MessagesProto.Message value) {
+        if (messagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMessagesIsMutable();
+          messages_.add(index, value);
+          onChanged();
+        } else {
+          messagesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public Builder addMessages(
+          proto.MessagesProto.Message.Builder builderForValue) {
+        if (messagesBuilder_ == null) {
+          ensureMessagesIsMutable();
+          messages_.add(builderForValue.build());
+          onChanged();
+        } else {
+          messagesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public Builder addMessages(
+          int index, proto.MessagesProto.Message.Builder builderForValue) {
+        if (messagesBuilder_ == null) {
+          ensureMessagesIsMutable();
+          messages_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          messagesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public Builder addAllMessages(
+          java.lang.Iterable<? extends proto.MessagesProto.Message> values) {
+        if (messagesBuilder_ == null) {
+          ensureMessagesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, messages_);
+          onChanged();
+        } else {
+          messagesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public Builder clearMessages() {
+        if (messagesBuilder_ == null) {
+          messages_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          messagesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public Builder removeMessages(int index) {
+        if (messagesBuilder_ == null) {
+          ensureMessagesIsMutable();
+          messages_.remove(index);
+          onChanged();
+        } else {
+          messagesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public proto.MessagesProto.Message.Builder getMessagesBuilder(
+          int index) {
+        return getMessagesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public proto.MessagesProto.MessageOrBuilder getMessagesOrBuilder(
+          int index) {
+        if (messagesBuilder_ == null) {
+          return messages_.get(index);  } else {
+          return messagesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public java.util.List<? extends proto.MessagesProto.MessageOrBuilder> 
+           getMessagesOrBuilderList() {
+        if (messagesBuilder_ != null) {
+          return messagesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(messages_);
+        }
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public proto.MessagesProto.Message.Builder addMessagesBuilder() {
+        return getMessagesFieldBuilder().addBuilder(
+            proto.MessagesProto.Message.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public proto.MessagesProto.Message.Builder addMessagesBuilder(
+          int index) {
+        return getMessagesFieldBuilder().addBuilder(
+            index, proto.MessagesProto.Message.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Message Messages = 1;</code>
+       */
+      public java.util.List<proto.MessagesProto.Message.Builder> 
+           getMessagesBuilderList() {
+        return getMessagesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          proto.MessagesProto.Message, proto.MessagesProto.Message.Builder, proto.MessagesProto.MessageOrBuilder> 
+          getMessagesFieldBuilder() {
+        if (messagesBuilder_ == null) {
+          messagesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              proto.MessagesProto.Message, proto.MessagesProto.Message.Builder, proto.MessagesProto.MessageOrBuilder>(
+                  messages_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          messages_ = null;
+        }
+        return messagesBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:GetChatPinnedMessagesResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:GetChatPinnedMessagesResponse)
+    private static final proto.MessagesProto.GetChatPinnedMessagesResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new proto.MessagesProto.GetChatPinnedMessagesResponse();
+    }
+
+    public static proto.MessagesProto.GetChatPinnedMessagesResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetChatPinnedMessagesResponse>
+        PARSER = new com.google.protobuf.AbstractParser<GetChatPinnedMessagesResponse>() {
+      @java.lang.Override
+      public GetChatPinnedMessagesResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetChatPinnedMessagesResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetChatPinnedMessagesResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public proto.MessagesProto.GetChatPinnedMessagesResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_descriptor;
   private static final 
@@ -6995,6 +8391,16 @@ public final class MessagesProto {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_GetUserLastMessagesResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetChatPinnedMessagesRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_GetChatPinnedMessagesRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetChatPinnedMessagesResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_GetChatPinnedMessagesResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7004,33 +8410,39 @@ public final class MessagesProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016messages.proto\"\200\001\n\007Message\022\n\n\002Id\030\001 \001(\003" +
+      "\n\016messages.proto\"\242\001\n\007Message\022\n\n\002Id\030\001 \001(\003" +
       "\022\016\n\006UserId\030\002 \001(\003\022\016\n\006ChatId\030\003 \001(\003\022\014\n\004Text" +
       "\030\004 \001(\t\022\020\n\010UserName\030\005 \001(\t\022\027\n\017TeamProjectN" +
-      "ame\030\006 \001(\t\022\020\n\010IsEdited\030\007 \001(\010\"W\n\022PostMessa" +
-      "geRequest\022\016\n\006UserId\030\001 \001(\003\022\016\n\006ChatId\030\002 \001(" +
-      "\003\022\014\n\004Text\030\003 \001(\t\022\023\n\013ActiveUsers\030\004 \003(\003\"!\n\023" +
-      "PostMessageResponse\022\n\n\002Id\030\001 \001(\003\"9\n\024Delet" +
-      "eMessageRequest\022\016\n\006UserId\030\001 \001(\003\022\021\n\tMessa" +
-      "geId\030\002 \001(\003\"\'\n\025DeleteMessageResponse\022\016\n\006S" +
-      "tatus\030\001 \001(\t\"(\n\026GetChatMessagesRequest\022\016\n" +
-      "\006ChatId\030\001 \001(\003\"5\n\027GetChatMessagesResponse" +
-      "\022\032\n\010Messages\030\001 \003(\0132\010.Message\"E\n\022EditMess" +
-      "ageRequest\022\016\n\006UserId\030\001 \001(\003\022\021\n\tMessageId\030" +
-      "\002 \001(\003\022\014\n\004Text\030\003 \001(\t\"%\n\023EditMessageRespon" +
-      "se\022\016\n\006Status\030\001 \001(\t\",\n\032GetUserLastMessage" +
-      "sRequest\022\016\n\006UserId\030\001 \001(\003\"8\n\033GetUserLastM" +
-      "essagesResponse\022\031\n\007Message\030\001 \003(\0132\010.Messa" +
-      "ge2\326\002\n\010Messages\0228\n\013PostMessage\022\023.PostMes" +
-      "sageRequest\032\024.PostMessageResponse\022>\n\rDel" +
-      "eteMessage\022\025.DeleteMessageRequest\032\026.Dele" +
-      "teMessageResponse\022D\n\017GetChatMessages\022\027.G" +
-      "etChatMessagesRequest\032\030.GetChatMessagesR" +
-      "esponse\0228\n\013EditMessage\022\023.EditMessageRequ" +
-      "est\032\024.EditMessageResponse\022P\n\023GetUserLast" +
-      "Messages\022\033.GetUserLastMessagesRequest\032\034." +
-      "GetUserLastMessagesResponseB\037\n\005protoB\rMe" +
-      "ssagesProtoZ\007.;protob\006proto3"
+      "ame\030\006 \001(\t\022\020\n\010IsEdited\030\007 \001(\010\022\016\n\006SentAt\030\010 " +
+      "\001(\t\022\020\n\010IsPinned\030\t \001(\010\"W\n\022PostMessageRequ" +
+      "est\022\016\n\006UserId\030\001 \001(\003\022\016\n\006ChatId\030\002 \001(\003\022\014\n\004T" +
+      "ext\030\003 \001(\t\022\023\n\013ActiveUsers\030\004 \003(\003\"!\n\023PostMe" +
+      "ssageResponse\022\n\n\002Id\030\001 \001(\003\"9\n\024DeleteMessa" +
+      "geRequest\022\016\n\006UserId\030\001 \001(\003\022\021\n\tMessageId\030\002" +
+      " \001(\003\"\'\n\025DeleteMessageResponse\022\016\n\006Status\030" +
+      "\001 \001(\t\"(\n\026GetChatMessagesRequest\022\016\n\006ChatI" +
+      "d\030\001 \001(\003\"5\n\027GetChatMessagesResponse\022\032\n\010Me" +
+      "ssages\030\001 \003(\0132\010.Message\"E\n\022EditMessageReq" +
+      "uest\022\016\n\006UserId\030\001 \001(\003\022\021\n\tMessageId\030\002 \001(\003\022" +
+      "\014\n\004Text\030\003 \001(\t\"%\n\023EditMessageResponse\022\016\n\006" +
+      "Status\030\001 \001(\t\",\n\032GetUserLastMessagesReque" +
+      "st\022\016\n\006UserId\030\001 \001(\003\"8\n\033GetUserLastMessage" +
+      "sResponse\022\031\n\007Message\030\001 \003(\0132\010.Message\".\n\034" +
+      "GetChatPinnedMessagesRequest\022\016\n\006ChatId\030\001" +
+      " \001(\003\";\n\035GetChatPinnedMessagesResponse\022\032\n" +
+      "\010Messages\030\001 \003(\0132\010.Message2\256\003\n\010Messages\0228" +
+      "\n\013PostMessage\022\023.PostMessageRequest\032\024.Pos" +
+      "tMessageResponse\022>\n\rDeleteMessage\022\025.Dele" +
+      "teMessageRequest\032\026.DeleteMessageResponse" +
+      "\022D\n\017GetChatMessages\022\027.GetChatMessagesReq" +
+      "uest\032\030.GetChatMessagesResponse\0228\n\013EditMe" +
+      "ssage\022\023.EditMessageRequest\032\024.EditMessage" +
+      "Response\022P\n\023GetUserLastMessages\022\033.GetUse" +
+      "rLastMessagesRequest\032\034.GetUserLastMessag" +
+      "esResponse\022V\n\025GetChatPinnedMessages\022\035.Ge" +
+      "tChatPinnedMessagesRequest\032\036.GetChatPinn" +
+      "edMessagesResponseB\037\n\005protoB\rMessagesPro" +
+      "toZ\007.;protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7041,7 +8453,7 @@ public final class MessagesProto {
     internal_static_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Message_descriptor,
-        new java.lang.String[] { "Id", "UserId", "ChatId", "Text", "UserName", "TeamProjectName", "IsEdited", });
+        new java.lang.String[] { "Id", "UserId", "ChatId", "Text", "UserName", "TeamProjectName", "IsEdited", "SentAt", "IsPinned", });
     internal_static_PostMessageRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_PostMessageRequest_fieldAccessorTable = new
@@ -7102,6 +8514,18 @@ public final class MessagesProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetUserLastMessagesResponse_descriptor,
         new java.lang.String[] { "Message", });
+    internal_static_GetChatPinnedMessagesRequest_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_GetChatPinnedMessagesRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_GetChatPinnedMessagesRequest_descriptor,
+        new java.lang.String[] { "ChatId", });
+    internal_static_GetChatPinnedMessagesResponse_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_GetChatPinnedMessagesResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_GetChatPinnedMessagesResponse_descriptor,
+        new java.lang.String[] { "Messages", });
     descriptor.resolveAllFeaturesImmutable();
   }
 
