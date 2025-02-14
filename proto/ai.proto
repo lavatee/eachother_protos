@@ -7,6 +7,96 @@ option java_outer_classname = "AIProto";
 service AI {
     rpc MakeInterview(MakeInterviewRequest) returns (MakeInterviewResponse);
     rpc NextInterviewQuestion(NextInterviewQuestionRequest) returns (NextInterviewQuestionResponse);
+    rpc GetCurrentInterviewQuestion(GetCurrentInterviewQuestionRequest) returns (GetCurrentInterviewQuestionResponse);
     rpc GetUserCurrentInterviews(GetUserCurrentInterviewsRequest) returns (GetUserCurrentInterviewsResponse);
-    
+    rpc CompleteInterview(CompleteInterviewRequest) returns (CompleteInterviewResponse);
+    rpc MakeRoles(MakeRolesRequest) returns (MakeRolesResponse);
+}
+
+message Answer {
+    int32 Index = 1;
+    string Text = 2;
+}
+
+message Question {
+    int64 Id = 1;
+    string Text = 2;
+    repeated Answer Answers = 3;
+    string TeamProjectName = 4;
+    string Role = 5;
+    string MainTechnology = 6;
+}
+
+message MakeInterviewRequest {
+    int64 UserId = 1;
+    int64 TeamId = 2;
+}
+
+message MakeInterviewResponse {
+    int64 Id = 1;
+}
+
+message NextInterviewQuestionRequest {
+    int64 InterviewId = 1;
+    int32 AnswerIndex = 2;
+    int64 UserId = 3;
+}
+
+message NextInterviewQuestionResponse {
+    Question Question = 1;
+}
+
+message GetCurrentInterviewQuestionRequest {
+    int64 InterviewId = 1;
+    int64 UserId = 2;
+}
+
+message GetCurrentInterviewQuestionResponse {
+    Question Question = 1;
+}
+
+message Interview {
+    int64 Id = 1;
+    string TeamProjectName = 2;
+    string Role = 3;
+    string MainTechnology = 4;
+}
+
+message GetUserCurrentInterviewsRequest {
+    int64 UserId = 1;
+}
+
+message GetUserCurrentInterviewsResponse {
+    repeated Interview Interviews = 1;
+}
+
+message CompleteInterviewRequest {
+    int64 UserId = 1;
+    int64 InterviewId = 2;
+    string CodeSolving = 3;
+}
+
+message Result {
+    int32 QuestionIndex = 1;
+    bool IsCorrect = 2;
+}
+
+message CompleteInterviewResponse {
+    repeated Result Results = 1;
+    int32 CodeTaskReview = 2;
+}
+
+message MakeRolesRequest {
+    string Idea = 1;
+    string Description = 2;
+}
+
+message AIRole {
+    string Role = 1;
+    string MainTechnology = 2;
+    string NiceToHave = 3;
+}
+
+message MakeRolesResponse {
+    repeated AIRole Roles = 1;
 }
