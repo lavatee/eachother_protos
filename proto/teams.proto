@@ -223,7 +223,7 @@ message GetRefInfoResponse {
     string RoleName = 2;
     string MainTechnology = 3;
     string TeamProjectName = 4;
-    int64 UserName = 6;
+    string UserName = 6;
 }
 
 message JoinTeamByRefRequest {
