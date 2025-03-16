@@ -33,6 +33,9 @@ const (
 	Teams_PostRequest_FullMethodName        = "/Teams/PostRequest"
 	Teams_RejectRequest_FullMethodName      = "/Teams/RejectRequest"
 	Teams_GetUserExps_FullMethodName        = "/Teams/GetUserExps"
+	Teams_MakeRef_FullMethodName            = "/Teams/MakeRef"
+	Teams_GetRefInfo_FullMethodName         = "/Teams/GetRefInfo"
+	Teams_JoinTeamByRef_FullMethodName      = "/Teams/JoinTeamByRef"
 )
 
 // TeamsClient is the client API for Teams service.
@@ -53,6 +56,9 @@ type TeamsClient interface {
 	PostRequest(ctx context.Context, in *PostRequestRequest, opts ...grpc.CallOption) (*PostRequestResponse, error)
 	RejectRequest(ctx context.Context, in *RejectRequestRequest, opts ...grpc.CallOption) (*RejectRequestResponse, error)
 	GetUserExps(ctx context.Context, in *GetUserExpsRequest, opts ...grpc.CallOption) (*GetUserExpsResponse, error)
+	MakeRef(ctx context.Context, in *MakeRefRequest, opts ...grpc.CallOption) (*MakeRefResponse, error)
+	GetRefInfo(ctx context.Context, in *GetRefInfoRequest, opts ...grpc.CallOption) (*GetRefInfoResponse, error)
+	JoinTeamByRef(ctx context.Context, in *JoinTeamByRefRequest, opts ...grpc.CallOption) (*JoinTeamByRefResponse, error)
 }
 
 type teamsClient struct {
@@ -203,6 +209,36 @@ func (c *teamsClient) GetUserExps(ctx context.Context, in *GetUserExpsRequest, o
 	return out, nil
 }
 
+func (c *teamsClient) MakeRef(ctx context.Context, in *MakeRefRequest, opts ...grpc.CallOption) (*MakeRefResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MakeRefResponse)
+	err := c.cc.Invoke(ctx, Teams_MakeRef_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *teamsClient) GetRefInfo(ctx context.Context, in *GetRefInfoRequest, opts ...grpc.CallOption) (*GetRefInfoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetRefInfoResponse)
+	err := c.cc.Invoke(ctx, Teams_GetRefInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *teamsClient) JoinTeamByRef(ctx context.Context, in *JoinTeamByRefRequest, opts ...grpc.CallOption) (*JoinTeamByRefResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(JoinTeamByRefResponse)
+	err := c.cc.Invoke(ctx, Teams_JoinTeamByRef_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TeamsServer is the server API for Teams service.
 // All implementations must embed UnimplementedTeamsServer
 // for forward compatibility.
@@ -221,6 +257,9 @@ type TeamsServer interface {
 	PostRequest(context.Context, *PostRequestRequest) (*PostRequestResponse, error)
 	RejectRequest(context.Context, *RejectRequestRequest) (*RejectRequestResponse, error)
 	GetUserExps(context.Context, *GetUserExpsRequest) (*GetUserExpsResponse, error)
+	MakeRef(context.Context, *MakeRefRequest) (*MakeRefResponse, error)
+	GetRefInfo(context.Context, *GetRefInfoRequest) (*GetRefInfoResponse, error)
+	JoinTeamByRef(context.Context, *JoinTeamByRefRequest) (*JoinTeamByRefResponse, error)
 	mustEmbedUnimplementedTeamsServer()
 }
 
@@ -272,6 +311,15 @@ func (UnimplementedTeamsServer) RejectRequest(context.Context, *RejectRequestReq
 }
 func (UnimplementedTeamsServer) GetUserExps(context.Context, *GetUserExpsRequest) (*GetUserExpsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserExps not implemented")
+}
+func (UnimplementedTeamsServer) MakeRef(context.Context, *MakeRefRequest) (*MakeRefResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MakeRef not implemented")
+}
+func (UnimplementedTeamsServer) GetRefInfo(context.Context, *GetRefInfoRequest) (*GetRefInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRefInfo not implemented")
+}
+func (UnimplementedTeamsServer) JoinTeamByRef(context.Context, *JoinTeamByRefRequest) (*JoinTeamByRefResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method JoinTeamByRef not implemented")
 }
 func (UnimplementedTeamsServer) mustEmbedUnimplementedTeamsServer() {}
 func (UnimplementedTeamsServer) testEmbeddedByValue()               {}
@@ -546,6 +594,60 @@ func _Teams_GetUserExps_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Teams_MakeRef_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MakeRefRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TeamsServer).MakeRef(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Teams_MakeRef_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TeamsServer).MakeRef(ctx, req.(*MakeRefRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Teams_GetRefInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRefInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TeamsServer).GetRefInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Teams_GetRefInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TeamsServer).GetRefInfo(ctx, req.(*GetRefInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Teams_JoinTeamByRef_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(JoinTeamByRefRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TeamsServer).JoinTeamByRef(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Teams_JoinTeamByRef_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TeamsServer).JoinTeamByRef(ctx, req.(*JoinTeamByRefRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Teams_ServiceDesc is the grpc.ServiceDesc for Teams service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -608,6 +710,18 @@ var Teams_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserExps",
 			Handler:    _Teams_GetUserExps_Handler,
+		},
+		{
+			MethodName: "MakeRef",
+			Handler:    _Teams_MakeRef_Handler,
+		},
+		{
+			MethodName: "GetRefInfo",
+			Handler:    _Teams_GetRefInfo_Handler,
+		},
+		{
+			MethodName: "JoinTeamByRef",
+			Handler:    _Teams_JoinTeamByRef_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

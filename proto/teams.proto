@@ -19,6 +19,9 @@ service Teams {
     rpc PostRequest(PostRequestRequest) returns (PostRequestResponse);
     rpc RejectRequest(RejectRequestRequest) returns (RejectRequestResponse);
     rpc GetUserExps(GetUserExpsRequest) returns (GetUserExpsResponse);
+    rpc MakeRef(MakeRefRequest) returns (MakeRefResponse);
+    rpc GetRefInfo(GetRefInfoRequest) returns (GetRefInfoResponse);
+    rpc JoinTeamByRef(JoinTeamByRefRequest) returns (JoinTeamByRefResponse);
 } 
 
 message Team {
@@ -198,4 +201,35 @@ message GetUserExpsRequest {
 
 message GetUserExpsResponse {
     repeated Exp Exps = 1;
+}
+
+message MakeRefRequest {
+    int64 UserId = 1;
+    int64 RoleId = 2;
+    string Timeout = 3;
+    string Message = 4;
+}
+
+message MakeRefResponse {
+    string Link = 1;
+}
+
+message GetRefInfoRequest {
+    string Link = 1;
+}
+
+message GetRefInfoResponse {
+    string Message = 1;
+    string RoleName = 2;
+    string MainTechnology = 3;
+    string TeamProjectName = 4;
+    int64 UserName = 6;
+}
+
+message JoinTeamByRefRequest {
+    string Link = 1;
+}
+
+message JoinTeamByRefResponse {
+    string Status = 1;
 }
