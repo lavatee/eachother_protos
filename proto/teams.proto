@@ -228,6 +228,7 @@ message GetRefInfoResponse {
 
 message JoinTeamByRefRequest {
     string Link = 1;
+    int64 UserId = 2;
 }
 
 message JoinTeamByRefResponse {
