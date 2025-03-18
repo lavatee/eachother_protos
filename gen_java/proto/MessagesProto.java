@@ -3654,6 +3654,18 @@ public final class MessagesProto {
      * @return The chatId.
      */
     long getChatId();
+
+    /**
+     * <code>string TimeZone = 2;</code>
+     * @return The timeZone.
+     */
+    java.lang.String getTimeZone();
+    /**
+     * <code>string TimeZone = 2;</code>
+     * @return The bytes for timeZone.
+     */
+    com.google.protobuf.ByteString
+        getTimeZoneBytes();
   }
   /**
    * Protobuf type {@code GetChatMessagesRequest}
@@ -3677,6 +3689,7 @@ public final class MessagesProto {
       super(builder);
     }
     private GetChatMessagesRequest() {
+      timeZone_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -3703,6 +3716,45 @@ public final class MessagesProto {
       return chatId_;
     }
 
+    public static final int TIMEZONE_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object timeZone_ = "";
+    /**
+     * <code>string TimeZone = 2;</code>
+     * @return The timeZone.
+     */
+    @java.lang.Override
+    public java.lang.String getTimeZone() {
+      java.lang.Object ref = timeZone_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        timeZone_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string TimeZone = 2;</code>
+     * @return The bytes for timeZone.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTimeZoneBytes() {
+      java.lang.Object ref = timeZone_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        timeZone_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3720,6 +3772,9 @@ public final class MessagesProto {
       if (chatId_ != 0L) {
         output.writeInt64(1, chatId_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(timeZone_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, timeZone_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3732,6 +3787,9 @@ public final class MessagesProto {
       if (chatId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(1, chatId_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(timeZone_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, timeZone_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -3750,6 +3808,8 @@ public final class MessagesProto {
 
       if (getChatId()
           != other.getChatId()) return false;
+      if (!getTimeZone()
+          .equals(other.getTimeZone())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -3764,6 +3824,8 @@ public final class MessagesProto {
       hash = (37 * hash) + CHATID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getChatId());
+      hash = (37 * hash) + TIMEZONE_FIELD_NUMBER;
+      hash = (53 * hash) + getTimeZone().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3896,6 +3958,7 @@ public final class MessagesProto {
         super.clear();
         bitField0_ = 0;
         chatId_ = 0L;
+        timeZone_ = "";
         return this;
       }
 
@@ -3932,6 +3995,9 @@ public final class MessagesProto {
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.chatId_ = chatId_;
         }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.timeZone_ = timeZone_;
+        }
       }
 
       @java.lang.Override
@@ -3948,6 +4014,11 @@ public final class MessagesProto {
         if (other == proto.MessagesProto.GetChatMessagesRequest.getDefaultInstance()) return this;
         if (other.getChatId() != 0L) {
           setChatId(other.getChatId());
+        }
+        if (!other.getTimeZone().isEmpty()) {
+          timeZone_ = other.timeZone_;
+          bitField0_ |= 0x00000002;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -3980,6 +4051,11 @@ public final class MessagesProto {
                 bitField0_ |= 0x00000001;
                 break;
               } // case 8
+              case 18: {
+                timeZone_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4025,6 +4101,78 @@ public final class MessagesProto {
       public Builder clearChatId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         chatId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object timeZone_ = "";
+      /**
+       * <code>string TimeZone = 2;</code>
+       * @return The timeZone.
+       */
+      public java.lang.String getTimeZone() {
+        java.lang.Object ref = timeZone_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          timeZone_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string TimeZone = 2;</code>
+       * @return The bytes for timeZone.
+       */
+      public com.google.protobuf.ByteString
+          getTimeZoneBytes() {
+        java.lang.Object ref = timeZone_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          timeZone_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string TimeZone = 2;</code>
+       * @param value The timeZone to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeZone(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        timeZone_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string TimeZone = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimeZone() {
+        timeZone_ = getDefaultInstance().getTimeZone();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string TimeZone = 2;</code>
+       * @param value The bytes for timeZone to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeZoneBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        timeZone_ = value;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -8420,29 +8568,29 @@ public final class MessagesProto {
       "ssageResponse\022\n\n\002Id\030\001 \001(\003\"9\n\024DeleteMessa" +
       "geRequest\022\016\n\006UserId\030\001 \001(\003\022\021\n\tMessageId\030\002" +
       " \001(\003\"\'\n\025DeleteMessageResponse\022\016\n\006Status\030" +
-      "\001 \001(\t\"(\n\026GetChatMessagesRequest\022\016\n\006ChatI" +
-      "d\030\001 \001(\003\"5\n\027GetChatMessagesResponse\022\032\n\010Me" +
-      "ssages\030\001 \003(\0132\010.Message\"E\n\022EditMessageReq" +
-      "uest\022\016\n\006UserId\030\001 \001(\003\022\021\n\tMessageId\030\002 \001(\003\022" +
-      "\014\n\004Text\030\003 \001(\t\"%\n\023EditMessageResponse\022\016\n\006" +
-      "Status\030\001 \001(\t\",\n\032GetUserLastMessagesReque" +
-      "st\022\016\n\006UserId\030\001 \001(\003\"8\n\033GetUserLastMessage" +
-      "sResponse\022\031\n\007Message\030\001 \003(\0132\010.Message\".\n\034" +
-      "GetChatPinnedMessagesRequest\022\016\n\006ChatId\030\001" +
-      " \001(\003\";\n\035GetChatPinnedMessagesResponse\022\032\n" +
-      "\010Messages\030\001 \003(\0132\010.Message2\256\003\n\010Messages\0228" +
-      "\n\013PostMessage\022\023.PostMessageRequest\032\024.Pos" +
-      "tMessageResponse\022>\n\rDeleteMessage\022\025.Dele" +
-      "teMessageRequest\032\026.DeleteMessageResponse" +
-      "\022D\n\017GetChatMessages\022\027.GetChatMessagesReq" +
-      "uest\032\030.GetChatMessagesResponse\0228\n\013EditMe" +
-      "ssage\022\023.EditMessageRequest\032\024.EditMessage" +
-      "Response\022P\n\023GetUserLastMessages\022\033.GetUse" +
-      "rLastMessagesRequest\032\034.GetUserLastMessag" +
-      "esResponse\022V\n\025GetChatPinnedMessages\022\035.Ge" +
-      "tChatPinnedMessagesRequest\032\036.GetChatPinn" +
-      "edMessagesResponseB\037\n\005protoB\rMessagesPro" +
-      "toZ\007.;protob\006proto3"
+      "\001 \001(\t\":\n\026GetChatMessagesRequest\022\016\n\006ChatI" +
+      "d\030\001 \001(\003\022\020\n\010TimeZone\030\002 \001(\t\"5\n\027GetChatMess" +
+      "agesResponse\022\032\n\010Messages\030\001 \003(\0132\010.Message" +
+      "\"E\n\022EditMessageRequest\022\016\n\006UserId\030\001 \001(\003\022\021" +
+      "\n\tMessageId\030\002 \001(\003\022\014\n\004Text\030\003 \001(\t\"%\n\023EditM" +
+      "essageResponse\022\016\n\006Status\030\001 \001(\t\",\n\032GetUse" +
+      "rLastMessagesRequest\022\016\n\006UserId\030\001 \001(\003\"8\n\033" +
+      "GetUserLastMessagesResponse\022\031\n\007Message\030\001" +
+      " \003(\0132\010.Message\".\n\034GetChatPinnedMessagesR" +
+      "equest\022\016\n\006ChatId\030\001 \001(\003\";\n\035GetChatPinnedM" +
+      "essagesResponse\022\032\n\010Messages\030\001 \003(\0132\010.Mess" +
+      "age2\256\003\n\010Messages\0228\n\013PostMessage\022\023.PostMe" +
+      "ssageRequest\032\024.PostMessageResponse\022>\n\rDe" +
+      "leteMessage\022\025.DeleteMessageRequest\032\026.Del" +
+      "eteMessageResponse\022D\n\017GetChatMessages\022\027." +
+      "GetChatMessagesRequest\032\030.GetChatMessages" +
+      "Response\0228\n\013EditMessage\022\023.EditMessageReq" +
+      "uest\032\024.EditMessageResponse\022P\n\023GetUserLas" +
+      "tMessages\022\033.GetUserLastMessagesRequest\032\034" +
+      ".GetUserLastMessagesResponse\022V\n\025GetChatP" +
+      "innedMessages\022\035.GetChatPinnedMessagesReq" +
+      "uest\032\036.GetChatPinnedMessagesResponseB\037\n\005" +
+      "protoB\rMessagesProtoZ\007.;protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -8483,7 +8631,7 @@ public final class MessagesProto {
     internal_static_GetChatMessagesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetChatMessagesRequest_descriptor,
-        new java.lang.String[] { "ChatId", });
+        new java.lang.String[] { "ChatId", "TimeZone", });
     internal_static_GetChatMessagesResponse_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_GetChatMessagesResponse_fieldAccessorTable = new

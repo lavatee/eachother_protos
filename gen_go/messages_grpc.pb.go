@@ -19,11 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Messages_PostMessage_FullMethodName         = "/Messages/PostMessage"
-	Messages_DeleteMessage_FullMethodName       = "/Messages/DeleteMessage"
-	Messages_GetChatMessages_FullMethodName     = "/Messages/GetChatMessages"
-	Messages_EditMessage_FullMethodName         = "/Messages/EditMessage"
-	Messages_GetUserLastMessages_FullMethodName = "/Messages/GetUserLastMessages"
+	Messages_PostMessage_FullMethodName           = "/Messages/PostMessage"
+	Messages_DeleteMessage_FullMethodName         = "/Messages/DeleteMessage"
+	Messages_GetChatMessages_FullMethodName       = "/Messages/GetChatMessages"
+	Messages_EditMessage_FullMethodName           = "/Messages/EditMessage"
+	Messages_GetUserLastMessages_FullMethodName   = "/Messages/GetUserLastMessages"
+	Messages_GetChatPinnedMessages_FullMethodName = "/Messages/GetChatPinnedMessages"
 )
 
 // MessagesClient is the client API for Messages service.
@@ -35,6 +36,7 @@ type MessagesClient interface {
 	GetChatMessages(ctx context.Context, in *GetChatMessagesRequest, opts ...grpc.CallOption) (*GetChatMessagesResponse, error)
 	EditMessage(ctx context.Context, in *EditMessageRequest, opts ...grpc.CallOption) (*EditMessageResponse, error)
 	GetUserLastMessages(ctx context.Context, in *GetUserLastMessagesRequest, opts ...grpc.CallOption) (*GetUserLastMessagesResponse, error)
+	GetChatPinnedMessages(ctx context.Context, in *GetChatPinnedMessagesRequest, opts ...grpc.CallOption) (*GetChatPinnedMessagesResponse, error)
 }
 
 type messagesClient struct {
@@ -95,6 +97,16 @@ func (c *messagesClient) GetUserLastMessages(ctx context.Context, in *GetUserLas
 	return out, nil
 }
 
+func (c *messagesClient) GetChatPinnedMessages(ctx context.Context, in *GetChatPinnedMessagesRequest, opts ...grpc.CallOption) (*GetChatPinnedMessagesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetChatPinnedMessagesResponse)
+	err := c.cc.Invoke(ctx, Messages_GetChatPinnedMessages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MessagesServer is the server API for Messages service.
 // All implementations must embed UnimplementedMessagesServer
 // for forward compatibility.
@@ -104,6 +116,7 @@ type MessagesServer interface {
 	GetChatMessages(context.Context, *GetChatMessagesRequest) (*GetChatMessagesResponse, error)
 	EditMessage(context.Context, *EditMessageRequest) (*EditMessageResponse, error)
 	GetUserLastMessages(context.Context, *GetUserLastMessagesRequest) (*GetUserLastMessagesResponse, error)
+	GetChatPinnedMessages(context.Context, *GetChatPinnedMessagesRequest) (*GetChatPinnedMessagesResponse, error)
 	mustEmbedUnimplementedMessagesServer()
 }
 
@@ -128,6 +141,9 @@ func (UnimplementedMessagesServer) EditMessage(context.Context, *EditMessageRequ
 }
 func (UnimplementedMessagesServer) GetUserLastMessages(context.Context, *GetUserLastMessagesRequest) (*GetUserLastMessagesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserLastMessages not implemented")
+}
+func (UnimplementedMessagesServer) GetChatPinnedMessages(context.Context, *GetChatPinnedMessagesRequest) (*GetChatPinnedMessagesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetChatPinnedMessages not implemented")
 }
 func (UnimplementedMessagesServer) mustEmbedUnimplementedMessagesServer() {}
 func (UnimplementedMessagesServer) testEmbeddedByValue()                  {}
@@ -240,6 +256,24 @@ func _Messages_GetUserLastMessages_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Messages_GetChatPinnedMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetChatPinnedMessagesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MessagesServer).GetChatPinnedMessages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Messages_GetChatPinnedMessages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MessagesServer).GetChatPinnedMessages(ctx, req.(*GetChatPinnedMessagesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Messages_ServiceDesc is the grpc.ServiceDesc for Messages service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -266,6 +300,10 @@ var Messages_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserLastMessages",
 			Handler:    _Messages_GetUserLastMessages_Handler,
+		},
+		{
+			MethodName: "GetChatPinnedMessages",
+			Handler:    _Messages_GetChatPinnedMessages_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

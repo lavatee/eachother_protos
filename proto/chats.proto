@@ -87,6 +87,7 @@ message PostTaskResponse {
 
 message GetUserCurrentTasksRequest {
     int64 UserId = 1;
+    string TimeZone = 2;
 }
 
 message GetUserCurrentTasksResponse {
@@ -95,6 +96,7 @@ message GetUserCurrentTasksResponse {
 
 message GetUserFailedTasksRequest {
     int64 UserId = 1;
+    string TimeZone = 2;
 }
 
 message GetUserFailedTasksResponse {
@@ -103,6 +105,7 @@ message GetUserFailedTasksResponse {
 
 message GetUserCompletedTasksRequest {
     int64 UserId = 1;
+    string TimeZone = 2;
 }
 
 message GetUserCompletedTasksResponse {
@@ -112,6 +115,7 @@ message GetUserCompletedTasksResponse {
 message GetUserCurrentTasksInTeamRequest {
     int64 UserId = 1;
     int64 TeamId = 2;
+    string TimeZone = 3;
 }
 
 message GetUserCurrentTasksInTeamResponse {
@@ -129,6 +133,7 @@ message GetUserProductivityInTeamResponse {
 
 message GetTasksUserCreatedRequest {
     int64 CreatorId = 1;
+    string TimeZone = 2;
 }
 
 message GetTasksUserCreatedResponse {

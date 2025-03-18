@@ -47,6 +47,7 @@ message DeleteMessageResponse {
 
 message GetChatMessagesRequest {
     int64 ChatId = 1;
+    string TimeZone = 2;
 }
 
 message GetChatMessagesResponse {
