@@ -60,6 +60,7 @@ message Request {
     string RoleMainTechnology = 7;
     string CV = 8;
     string UserName = 9;
+    int64 Points = 10;
 }
 
 message GetCreatorRequestsRequest {
@@ -193,6 +194,7 @@ message Exp {
     int64 FailedTasksAmount = 5;
     string Role = 6;
     string MainTechnology = 7;
+    int32 Productivity = 8;
 }
 
 message GetUserExpsRequest {

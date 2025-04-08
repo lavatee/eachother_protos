@@ -25,6 +25,7 @@ message Question {
     string TeamProjectName = 4;
     string Role = 5;
     string MainTechnology = 6;
+    int32 Index = 7;
 }
 
 message MakeInterviewRequest {
